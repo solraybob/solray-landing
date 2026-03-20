@@ -1,0 +1,140 @@
+"use client";
+
+import { useState } from "react";
+
+export default function WaitlistForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
+
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(
+        err instanceof Error ? err.message : "Something went wrong. Try again."
+      );
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="text-center py-8">
+        <div
+          className="font-heading font-light text-4xl md:text-5xl mb-4"
+          style={{ color: "#c9a84c" }}
+        >
+          You&apos;re on the list.
+        </div>
+        <p
+          className="font-body font-light text-base"
+          style={{ color: "#9b8ec4" }}
+        >
+          We&apos;ll be in touch.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+      <div className="space-y-4">
+        <div>
+          <input
+            type="text"
+            placeholder="Your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            disabled={status === "loading"}
+            className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-all duration-200"
+            style={{
+              background: "rgba(15,15,40,0.8)",
+              border: "1px solid rgba(155,142,196,0.2)",
+              borderRadius: "2px",
+              color: "#e8e4f0",
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = "rgba(201,168,76,0.4)";
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = "rgba(155,142,196,0.2)";
+            }}
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={status === "loading"}
+            className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-all duration-200"
+            style={{
+              background: "rgba(15,15,40,0.8)",
+              border: "1px solid rgba(155,142,196,0.2)",
+              borderRadius: "2px",
+              color: "#e8e4f0",
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = "rgba(201,168,76,0.4)";
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = "rgba(155,142,196,0.2)";
+            }}
+          />
+        </div>
+
+        {status === "error" && (
+          <p
+            className="font-body text-xs text-center"
+            style={{ color: "#c49b9b" }}
+          >
+            {errorMsg}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="w-full px-10 py-4 font-body font-medium tracking-widest text-sm uppercase transition-all duration-300"
+          style={{
+            background:
+              status === "loading"
+                ? "rgba(201,168,76,0.5)"
+                : "linear-gradient(135deg, #c9a84c, #e0c06a)",
+            color: "#050510",
+            borderRadius: "2px",
+            cursor: status === "loading" ? "not-allowed" : "pointer",
+          }}
+        >
+          {status === "loading" ? "Joining..." : "Join Waitlist"}
+        </button>
+      </div>
+    </form>
+  );
+}
