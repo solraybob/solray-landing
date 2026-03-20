@@ -44,13 +44,13 @@ export default function WaitlistForm() {
       <div className="text-center py-8">
         <div
           className="font-heading font-light text-4xl md:text-5xl mb-4"
-          style={{ color: "#c9a84c" }}
+          style={{ color: "#e8821a" }}
         >
           You&apos;re on the list.
         </div>
         <p
           className="font-body font-light text-base"
-          style={{ color: "#9b8ec4" }}
+          style={{ color: "#8a9e8d" }}
         >
           We&apos;ll be in touch.
         </p>
@@ -59,55 +59,51 @@ export default function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="w-full">
       <div className="space-y-4">
-        <div>
-          <input
-            type="text"
-            placeholder="Your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            disabled={status === "loading"}
-            className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-all duration-200"
-            style={{
-              background: "rgba(15,15,40,0.8)",
-              border: "1px solid rgba(155,142,196,0.2)",
-              borderRadius: "2px",
-              color: "#e8e4f0",
-            }}
-            onFocus={(e) => {
-              e.target.style.borderColor = "rgba(201,168,76,0.4)";
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "rgba(155,142,196,0.2)";
-            }}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          disabled={status === "loading"}
+          className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-colors duration-200"
+          style={{
+            background: "#0a1f12",
+            border: "1px solid #8a9e8d",
+            borderRadius: "2px",
+            color: "#f5f0e8",
+          }}
+          onFocus={(e) => {
+            e.target.style.borderColor = "#e8821a";
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = "#8a9e8d";
+          }}
+        />
 
-        <div>
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            disabled={status === "loading"}
-            className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-all duration-200"
-            style={{
-              background: "rgba(15,15,40,0.8)",
-              border: "1px solid rgba(155,142,196,0.2)",
-              borderRadius: "2px",
-              color: "#e8e4f0",
-            }}
-            onFocus={(e) => {
-              e.target.style.borderColor = "rgba(201,168,76,0.4)";
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "rgba(155,142,196,0.2)";
-            }}
-          />
-        </div>
+        <input
+          type="email"
+          placeholder="Your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled={status === "loading"}
+          className="w-full px-5 py-4 font-body font-light text-sm outline-none transition-colors duration-200"
+          style={{
+            background: "#0a1f12",
+            border: "1px solid #8a9e8d",
+            borderRadius: "2px",
+            color: "#f5f0e8",
+          }}
+          onFocus={(e) => {
+            e.target.style.borderColor = "#e8821a";
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = "#8a9e8d";
+          }}
+        />
 
         {status === "error" && (
           <p
@@ -121,18 +117,16 @@ export default function WaitlistForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full px-10 py-4 font-body font-medium tracking-widest text-sm uppercase transition-all duration-300"
+          className="w-full px-10 py-4 font-body font-medium tracking-widest text-sm uppercase transition-opacity duration-200"
           style={{
-            background:
-              status === "loading"
-                ? "rgba(201,168,76,0.5)"
-                : "linear-gradient(135deg, #c9a84c, #e0c06a)",
-            color: "#050510",
+            background: status === "loading" ? "#c9891a" : "#e8821a",
+            color: "#050f08",
             borderRadius: "2px",
             cursor: status === "loading" ? "not-allowed" : "pointer",
+            opacity: status === "loading" ? 0.7 : 1,
           }}
         >
-          {status === "loading" ? "Joining..." : "Join Waitlist"}
+          {status === "loading" ? "Joining..." : "Join the Waitlist"}
         </button>
       </div>
     </form>

@@ -9,29 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cosmic: {
-          black: "#050510",
-          navy: "#0a0a1a",
-          deep: "#0d0d22",
-          card: "#0f0f28",
+        forest: {
+          deepest: "#050f08",
+          deep: "#071510",
+          card: "#0a1f12",
+          border: "#1a3020",
         },
-        gold: {
-          DEFAULT: "#c9a84c",
-          light: "#e0c06a",
-          dim: "#8a6e2a",
+        amber: {
+          DEFAULT: "#e8821a",
+          gold: "#c9891a",
         },
-        lavender: {
-          DEFAULT: "#9b8ec4",
-          light: "#b8aedd",
-          dim: "#6b5e94",
+        ink: {
+          primary: "#f5f0e8",
+          secondary: "#8a9e8d",
+          dim: "#4a5e4d",
         },
       },
       fontFamily: {
         heading: ["var(--font-cormorant)", "Georgia", "serif"],
         body: ["var(--font-inter)", "system-ui", "sans-serif"],
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
