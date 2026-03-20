@@ -1,7 +1,7 @@
 const items = [
   {
     title: "Not a horoscope",
-    body: "Every person born at the same moment in the same place gets the same horoscope. Solray calculates your exact chart — down to the degree — and reads today's sky against your specific placements.",
+    body: "Every person born at the same moment in the same place gets the same horoscope. Solray calculates your exact chart, down to the degree, and reads today's sky against your specific placements.",
   },
   {
     title: "Live engines, not templates",
@@ -9,7 +9,7 @@ const items = [
   },
   {
     title: "Your Higher Self speaks",
-    body: "An AI trained to know you at a soul level. It knows your authority, your shadows, your gifts. When you ask it anything, it answers from your chart — not from a knowledge base.",
+    body: "An AI trained to know you at a soul level. It knows your authority, your shadows, your gifts. When you ask it anything, it answers from your chart, not from a knowledge base.",
   },
 ];
 

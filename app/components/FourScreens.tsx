@@ -24,7 +24,7 @@ const screens = [
     name: "Chart",
     tagline: "Your blueprint.",
     description:
-      "Every planet, every gate, every Gene Key — your complete energetic map.",
+      "Every planet, every gate, every Gene Key. Your complete energetic map.",
     symbol: "⬡",
   },
 ];

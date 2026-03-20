@@ -46,7 +46,7 @@ export default function Hero() {
           style={{ color: "#8a9e8d" }}
         >
           The most personalised spiritual companion ever built. Powered by live
-          calculation engines that know your exact chart — not your sun sign.
+          calculation engines that know your exact chart. Not your sun sign.
         </p>
 
         {/* CTA */}
