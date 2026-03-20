@@ -45,8 +45,8 @@ export default function Hero() {
           className="font-body font-light text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-12"
           style={{ color: "#8a9e8d" }}
         >
-          The most personalised spiritual companion ever built. Powered by live
-          calculation engines that know your exact chart. Not your sun sign.
+          The most personalised companion ever built. Powered by live
+          calculation engines that give you 360 degree vision of your energy.
         </p>
 
         {/* CTA */}
