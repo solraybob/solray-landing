@@ -37,7 +37,7 @@ export default function Hero() {
         >
           Your Higher Self,
           <br />
-          <span style={{ color: "#e8821a" }}>Calculated.</span>
+          <span style={{ color: "#e8821a" }}>Unlocked.</span>
         </h1>
 
         {/* Subheadline */}
