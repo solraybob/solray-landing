@@ -14,7 +14,7 @@ export default function Footer() {
             style={{ border: "1px solid #1a3020" }}
           >
             <Image
-              src="/logo.jpg"
+              src="/logo.svg"
               alt="Solray AI"
               fill
               style={{ objectFit: "cover" }}

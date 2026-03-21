@@ -15,7 +15,7 @@ export default function Hero() {
           <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
             style={{ border: "1px solid #1a3020" }}>
             <Image
-              src="/logo.jpg"
+              src="/logo.svg"
               alt="Solray AI"
               fill
               style={{ objectFit: "cover" }}
