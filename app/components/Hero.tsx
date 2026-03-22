@@ -50,17 +50,33 @@ export default function Hero() {
         </p>
 
         {/* CTA */}
-        <a
-          href="#waitlist"
-          className="inline-block px-10 py-4 font-body font-medium tracking-widest text-sm uppercase"
-          style={{
-            background: "#e8821a",
-            color: "#050f08",
-            borderRadius: "2px",
-          }}
-        >
-          Join the Waitlist
-        </a>
+        <div className="flex flex-col items-center gap-4">
+          <a
+            href="#waitlist"
+            className="inline-block px-10 py-4 font-body font-medium tracking-widest text-sm uppercase"
+            style={{
+              background: "#e8821a",
+              color: "#050f08",
+              borderRadius: "2px",
+            }}
+          >
+            Join the Waitlist
+          </a>
+          <a
+            href="https://solray-app.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-7 py-2.5 font-body font-medium tracking-widest text-xs uppercase"
+            style={{
+              background: "transparent",
+              color: "#e8821a",
+              border: "1px solid #e8821a",
+              borderRadius: "2px",
+            }}
+          >
+            Try the App
+          </a>
+        </div>
       </div>
     </section>
   );
