@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Difference from "./components/Difference";
 import FourScreens from "./components/FourScreens";
 import HowItWorks from "./components/HowItWorks";
+import InstallApp from "./components/InstallApp";
 import Waitlist from "./components/Waitlist";
 import Footer from "./components/Footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Difference />
       <FourScreens />
       <HowItWorks />
+      <InstallApp />
       <Waitlist />
       <Footer />
     </main>
