@@ -52,7 +52,9 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4">
           <a
-            href="#waitlist"
+            href="https://solray-app.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-10 py-4 font-body font-medium tracking-widest text-sm uppercase"
             style={{
               background: "#e8821a",
@@ -60,12 +62,10 @@ export default function Hero() {
               borderRadius: "2px",
             }}
           >
-            Join the Waitlist
+            Download the App
           </a>
           <a
-            href="https://solray-app.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#waitlist"
             className="inline-block px-7 py-2.5 font-body font-medium tracking-widest text-xs uppercase"
             style={{
               background: "transparent",
@@ -74,7 +74,7 @@ export default function Hero() {
               borderRadius: "2px",
             }}
           >
-            Try the App
+            Join the Oracle
           </a>
         </div>
       </div>

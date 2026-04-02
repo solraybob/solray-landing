@@ -12,15 +12,14 @@ export default function Waitlist() {
           className="font-heading font-light text-5xl md:text-6xl mb-4"
           style={{ color: "#f5f0e8" }}
         >
-          Be among the first.
+          Join the Oracle.
         </h2>
 
         <p
           className="font-body font-light text-sm leading-loose mb-10"
           style={{ color: "#8a9e8d" }}
         >
-          Solray AI is launching soon. Join the waitlist to get early access and
-          founding member pricing.
+          Enter your email to receive cosmic intelligence directly. Early access, founding member pricing, and the oracle speaks.
         </p>
 
         <WaitlistForm />

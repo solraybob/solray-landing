@@ -126,7 +126,7 @@ export default function WaitlistForm() {
             opacity: status === "loading" ? 0.7 : 1,
           }}
         >
-          {status === "loading" ? "Joining..." : "Join the Waitlist"}
+          {status === "loading" ? "Entering..." : "Enter the Oracle"}
         </button>
       </div>
     </form>
