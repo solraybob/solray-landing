@@ -3,14 +3,14 @@
 import { useState } from "react";
 
 const iphoneSteps = [
-  "Open solray-app.vercel.app in Safari",
+  "Open app.solray.ai in Safari",
   "Tap the Share button (the box with an arrow pointing up)",
   'Scroll down and tap "Add to Home Screen"',
   'Tap "Add"',
 ];
 
 const androidSteps = [
-  "Open solray-app.vercel.app in Chrome",
+  "Open app.solray.ai in Chrome",
   "Tap the three-dot menu in the top right",
   'Tap "Add to Home Screen"',
   'Tap "Add"',
@@ -140,7 +140,7 @@ export default function InstallApp() {
 
           {/* Open Web */}
           <a
-            href="https://solray-app.vercel.app"
+            href="https://app.solray.ai"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 px-7 py-4 text-sm font-body font-light tracking-widest uppercase transition-all duration-200"
