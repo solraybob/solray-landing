@@ -34,6 +34,31 @@ export default function Footer() {
         >
           Built for those ready to know themselves.
         </p>
+
+        <div className="flex items-center gap-6 mt-2">
+          <a
+            href="/legal"
+            className="font-body font-light text-xs tracking-wider uppercase hover:opacity-80 transition-opacity"
+            style={{ color: "#4a5e4d" }}
+          >
+            Terms & Privacy
+          </a>
+          <span style={{ color: "#1a3020" }}>·</span>
+          <a
+            href="mailto:support@solray.ai"
+            className="font-body font-light text-xs tracking-wider uppercase hover:opacity-80 transition-opacity"
+            style={{ color: "#4a5e4d" }}
+          >
+            Contact
+          </a>
+          <span style={{ color: "#1a3020" }}>·</span>
+          <span
+            className="font-body font-light text-xs tracking-wider"
+            style={{ color: "#4a5e4d" }}
+          >
+            $23/month · 30-day refund
+          </span>
+        </div>
       </div>
     </footer>
   );
