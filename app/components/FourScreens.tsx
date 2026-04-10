@@ -3,7 +3,7 @@ const screens = [
     name: "Today",
     tagline: "Your daily cosmic weather.",
     description:
-      "A hero image that changes with your dominant planet. Your reading. Your cycles. Your sky. Calculated this morning. Not written last week.",
+      "Your daily reading, calculated fresh every morning. The sky that greets you is built for your chart alone. Nobody else gets this forecast today.",
     symbol: "☀",
   },
   {
