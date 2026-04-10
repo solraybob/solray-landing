@@ -45,8 +45,8 @@ export default function Hero() {
           className="font-body font-light text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-12"
           style={{ color: "#8a9e8d" }}
         >
-          Western Astrology. Human Design. Gene Keys. Three live calculation engines.
-          One AI that knows your complete blueprint and remembers you.
+          Western Astrology. Human Design. Gene Keys. Calculated live, every day.
+          One AI that knows your complete chart and remembers you.
         </p>
 
         {/* CTA */}

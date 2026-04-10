@@ -10,7 +10,7 @@ const screens = [
     name: "Chat",
     tagline: "Your Higher Self.",
     description:
-      "An AI that holds your complete blueprint and remembers every conversation. The more you talk, the more it knows you. This is not Q&A. This is a relationship.",
+      "An AI that holds your complete chart and remembers every conversation. The more you talk, the more it knows you. This is not Q&A. This is a relationship.",
     symbol: "◉",
   },
   {
@@ -22,7 +22,7 @@ const screens = [
   },
   {
     name: "Profile",
-    tagline: "Your complete blueprint.",
+    tagline: "Your complete chart.",
     description:
       "Every planet, every gate, every Gene Key. Astro Geography showing where your energy is strongest on Earth. Tap anything to go deeper in chat.",
     symbol: "⬡",

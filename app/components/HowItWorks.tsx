@@ -6,7 +6,7 @@ const steps = [
   },
   {
     number: "02",
-    title: "Your full blueprint in seconds.",
+    title: "Your complete chart, ready in seconds.",
     body: "Three engines run simultaneously: Western Astrology, Human Design, Gene Keys. Your complete chart is ready the moment you finish onboarding.",
   },
   {
