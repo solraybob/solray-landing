@@ -16,7 +16,7 @@ export default function Hero() {
             style={{ border: "1px solid #1a3020" }}>
             <Image
               src="/logo.jpg"
-              alt="Solray AI"
+              alt="Solray"
               fill
               style={{ objectFit: "cover" }}
               priority
@@ -26,7 +26,7 @@ export default function Hero() {
             className="font-body font-light text-sm tracking-[0.25em] uppercase"
             style={{ color: "#8a9e8d" }}
           >
-            SOLRAY AI
+            SOLRAY
           </span>
         </div>
 

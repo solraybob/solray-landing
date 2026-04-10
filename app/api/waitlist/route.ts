@@ -28,9 +28,9 @@ const EMAIL_1_HTML = (name: string) => `<!DOCTYPE html>
 
 <p>Hi ${name},</p>
 
-<p>You're on the Solray AI waitlist. That means something.</p>
+<p>You're on the Solray waitlist. That means something.</p>
 
-<p>You were born as a specific moment in the solar system. The chart is not a symbol. It is a record. Solray AI reads that record every day and speaks directly to you from it.</p>
+<p>You were born as a specific moment in the solar system. The chart is not a symbol. It is a record. Solray reads that record every day and speaks directly to you from it.</p>
 
 <p>Solray is a spiritual companion powered by live astrology, Human Design, and Gene Keys calculations. Not generic horoscopes. Not one-size-fits-all readings. Every insight is calculated fresh from your birth data and the sky right now.</p>
 
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
-          from: "Solray AI <onboarding@resend.dev>",
+          from: "Solray <onboarding@resend.dev>",
           to: [`${name.trim()} <${email.trim().toLowerCase()}>`],
           subject: "You're on the list.",
           html: EMAIL_1_HTML(name.trim()),

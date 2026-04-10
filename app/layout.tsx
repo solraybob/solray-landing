@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Solray AI. Know Yourself at a Soul Level",
+  title: "Solray. Know Yourself at a Soul Level",
   description:
     "The world's most personalised spiritual companion. Powered by live astrology engines, Human Design, and Gene Keys, speaking directly to your specific chart, every single day.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "personalised horoscope",
   ],
   openGraph: {
-    title: "Solray AI. Your Higher Self, Calculated.",
+    title: "Solray. Your Higher Self, Calculated.",
     description:
       "A spiritual companion powered by live astrology, Human Design, and Gene Keys. Your chart. Your reading. Every day.",
     type: "website",

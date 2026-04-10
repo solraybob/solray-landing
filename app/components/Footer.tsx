@@ -15,7 +15,7 @@ export default function Footer() {
           >
             <Image
               src="/logo.jpg"
-              alt="Solray AI"
+              alt="Solray"
               fill
               style={{ objectFit: "cover" }}
             />
