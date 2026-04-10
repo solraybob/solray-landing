@@ -52,9 +52,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-4">
           <a
-            href="https://app.solray.ai"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://app.solray.ai/preview"
             className="inline-block px-10 py-4 font-body font-medium tracking-widest text-sm uppercase"
             style={{
               background: "#e8821a",
