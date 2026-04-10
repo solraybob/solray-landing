@@ -3,28 +3,28 @@ const screens = [
     name: "Today",
     tagline: "Your daily cosmic weather.",
     description:
-      "A personalised forecast calculated fresh every morning from where the planets actually are.",
+      "A hero image that changes with your dominant planet. Your reading. Your cycles. Your sky. Calculated this morning. Not written last week.",
     symbol: "☀",
   },
   {
     name: "Chat",
     tagline: "Your Higher Self.",
     description:
-      "An AI that holds your complete blueprint and speaks to you directly from it.",
+      "An AI that holds your complete blueprint and remembers every conversation. The more you talk, the more it knows you. This is not Q&A. This is a relationship.",
     symbol: "◉",
   },
   {
     name: "Souls",
     tagline: "Your constellation.",
     description:
-      "Add people you love and explore the dynamic between your charts.",
+      "Add the people you love and explore the dynamic between your charts. A shared reading where the AI speaks to both of you at once.",
     symbol: "✦",
   },
   {
-    name: "Chart",
-    tagline: "Your blueprint.",
+    name: "Profile",
+    tagline: "Your complete blueprint.",
     description:
-      "Every planet, every gate, every Gene Key. Your complete energetic map.",
+      "Every planet, every gate, every Gene Key. Astro Geography showing where your energy is strongest on Earth. Tap anything to go deeper in chat.",
     symbol: "⬡",
   },
 ];
@@ -33,7 +33,6 @@ export default function FourScreens() {
   return (
     <section className="py-24 px-6" style={{ borderTop: "1px solid #1a3020" }}>
       <div className="max-w-6xl mx-auto">
-        {/* Section header */}
         <div className="text-center mb-16">
           <p
             className="text-xs tracking-[0.3em] uppercase font-body font-light mb-4"
@@ -45,7 +44,7 @@ export default function FourScreens() {
             className="font-heading font-light text-4xl md:text-5xl"
             style={{ color: "#f5f0e8" }}
           >
-            Four ways to know yourself
+            Four ways to know yourself.
           </h2>
         </div>
 
@@ -60,31 +59,24 @@ export default function FourScreens() {
                 borderRadius: "2px",
               }}
             >
-              {/* Symbol */}
               <div
                 className="font-heading text-3xl mb-6"
                 style={{ color: "#e8821a" }}
               >
                 {screen.symbol}
               </div>
-
-              {/* Screen name */}
               <h3
                 className="font-heading font-light text-2xl mb-2"
                 style={{ color: "#f5f0e8" }}
               >
                 {screen.name}
               </h3>
-
-              {/* Tagline */}
               <p
                 className="font-body text-sm font-medium mb-3"
                 style={{ color: "#c9891a" }}
               >
                 {screen.tagline}
               </p>
-
-              {/* Description */}
               <p
                 className="font-body font-light text-sm leading-relaxed"
                 style={{ color: "#8a9e8d" }}
