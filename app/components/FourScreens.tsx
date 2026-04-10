@@ -1,30 +1,30 @@
 const screens = [
   {
     name: "Today",
-    tagline: "Your daily cosmic weather.",
+    tagline: "What the sky is saying to you.",
     description:
-      "Your daily reading, calculated fresh every morning. The sky that greets you is built for your chart alone. Nobody else gets this forecast today.",
+      "Every morning, a reading built only for you. Your cycles, your transits, your energy levels. Calculated for today. Nobody else on earth gets this exact forecast.",
     symbol: "☀",
   },
   {
     name: "Chat",
-    tagline: "Your Higher Self.",
+    tagline: "The conversation you have been waiting for.",
     description:
-      "An AI that holds your complete chart and remembers every conversation. The more you talk, the more it knows you. This is not Q&A. This is a relationship.",
+      "An AI that knows your complete chart and remembers every session. Ask it anything. It answers from who you actually are, not from generic wisdom. The more you talk, the better it knows you.",
     symbol: "◉",
   },
   {
     name: "Souls",
-    tagline: "Your constellation.",
+    tagline: "The people who shape you.",
     description:
-      "Add the people you love and explore the dynamic between your charts. A shared reading where the AI speaks to both of you at once.",
+      "Connect with the people in your life and see the real dynamic between your charts. A shared reading where your Higher Self speaks to both of you at once.",
     symbol: "✦",
   },
   {
     name: "Profile",
-    tagline: "Your complete chart.",
+    tagline: "Every layer of who you are.",
     description:
-      "Every planet, every gate, every Gene Key. Astro Geography showing where your energy is strongest on Earth. Tap anything to go deeper in chat.",
+      "Your complete chart. Every planet, every Human Design gate, every Gene Key. A world map showing where your energy is strongest on Earth. Tap anything to go deeper.",
     symbol: "⬡",
   },
 ];
@@ -38,7 +38,7 @@ export default function FourScreens() {
             className="text-xs tracking-[0.3em] uppercase font-body font-light mb-4"
             style={{ color: "#4a5e4d" }}
           >
-            The App
+            Inside the app
           </p>
           <h2
             className="font-heading font-light text-4xl md:text-5xl"

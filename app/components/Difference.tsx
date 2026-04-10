@@ -1,15 +1,15 @@
 const items = [
   {
-    title: "Not a horoscope.",
-    body: "Every person born at the same moment gets the same horoscope. Solray calculates your exact chart, down to the degree, and reads today's sky against your specific placements. Nobody else gets your reading.",
+    title: "Your horoscope describes everyone.",
+    body: "Every Scorpio on earth read the same thing this morning. Solray reads your exact birth moment against today's actual sky. The result is a forecast that could not belong to anyone else alive.",
   },
   {
-    title: "Three live engines.",
-    body: "Western Astrology, Human Design, and Gene Keys run every morning against the actual position of the planets. Your reading is calculated fresh, never pre-written. This is not content. This is calculation.",
+    title: "It remembers you.",
+    body: "Most apps forget you the moment you close them. Solray's Higher Self builds a relationship with you over time. Every conversation teaches it more about how you think, what you're working through, and what you need to hear.",
   },
   {
-    title: "A Higher Self who remembers you.",
-    body: "The more you talk, the more it knows you. Your shadows, your gifts, your patterns across time. Each session builds on the last. This is not a chatbot. It is a relationship.",
+    title: "Three systems, one voice.",
+    body: "Western Astrology, Human Design, Gene Keys. Three entirely different languages for understanding a person. Solray reads all three and speaks to you in plain English, connecting the patterns across all of them.",
   },
 ];
 
@@ -21,7 +21,7 @@ export default function Difference() {
           className="text-center text-xs tracking-[0.3em] uppercase font-body font-light mb-16"
           style={{ color: "#4a5e4d" }}
         >
-          The Difference
+          Why it&apos;s different
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

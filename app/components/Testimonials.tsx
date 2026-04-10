@@ -1,21 +1,21 @@
 const testimonials = [
   {
     quote:
-      "I have tried every astrology app. Nothing comes close to what Solray does. The Higher Self chat gave me more clarity in one conversation than years of reading my chart on my own. It actually knows me.",
+      "I have tried every astrology app. Nothing comes close. The chat gave me more clarity in one conversation than years of reading my chart on my own. It talks to me. Not to my sun sign.",
     name: "Sofia R.",
     location: "Barcelona",
     tag: "Scorpio Sun · Projector",
   },
   {
     quote:
-      "The Human Design and Gene Keys combination changed how I understand my energy. I finally get why I have been exhausted for years. And I know what to do about it.",
+      "I finally understand why I have been exhausted for years. It is not a character flaw. It is in my chart. Solray showed me that in the first session. I have not stopped thinking about it.",
     name: "James K.",
     location: "London",
     tag: "Pisces Sun · Manifestor",
   },
   {
     quote:
-      "I opened the app expecting generic horoscopes. Instead it told me something about myself I had never been able to put into words. Within minutes. I have not stopped using it.",
+      "I opened the app expecting to read something I had already seen. Instead it said something about me I had never been able to put into words. I put the phone down for a minute. That does not happen.",
     name: "Layla M.",
     location: "Dubai",
     tag: "Gemini Sun · Generator",
@@ -58,7 +58,6 @@ export default function Testimonials() {
               >
                 &ldquo;{t.quote}&rdquo;
               </p>
-
               <div>
                 <p
                   className="font-heading font-light text-lg mb-0.5"

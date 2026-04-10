@@ -10,7 +10,7 @@ export default function Hero() {
       }}
     >
       <div className="max-w-2xl mx-auto">
-        {/* Nav-style logo row */}
+        {/* Logo row */}
         <div className="flex items-center justify-center gap-3 mb-16">
           <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
             style={{ border: "1px solid #1a3020" }}>
@@ -35,9 +35,9 @@ export default function Hero() {
           className="font-heading font-light text-5xl md:text-7xl lg:text-8xl leading-tight mb-8"
           style={{ color: "#f5f0e8" }}
         >
-          Your Higher Self,
+          Finally, an app
           <br />
-          <span style={{ color: "#e8821a" }}>Unlocked.</span>
+          <span style={{ color: "#e8821a" }}>that knows you.</span>
         </h1>
 
         {/* Subheadline */}
@@ -45,8 +45,7 @@ export default function Hero() {
           className="font-body font-light text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-12"
           style={{ color: "#8a9e8d" }}
         >
-          Western Astrology. Human Design. Gene Keys. Calculated live, every day.
-          One AI that knows your complete chart and remembers you.
+          Not your sun sign. You. Your exact birth moment, read against today&apos;s sky, every morning. Western Astrology, Human Design and Gene Keys, combined into one daily reading that could not belong to anyone else.
         </p>
 
         {/* CTA */}
@@ -72,7 +71,7 @@ export default function Hero() {
               borderRadius: "2px",
             }}
           >
-            Join the Oracle
+            Join the Waitlist
           </a>
         </div>
       </div>

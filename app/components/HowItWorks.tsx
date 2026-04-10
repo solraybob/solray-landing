@@ -2,17 +2,17 @@ const steps = [
   {
     number: "01",
     title: "See your chart before you sign up.",
-    body: "Enter your birth date, time and city. We calculate your Sun, Moon, Rising and Human Design type instantly. No account. No email. Just your chart.",
+    body: "Enter your birth date, time and city. In seconds you see your Sun sign, Moon sign, Rising and Human Design type. No account. No email. Just your chart. Then decide if you want to go deeper.",
   },
   {
     number: "02",
-    title: "Your complete chart, ready in seconds.",
-    body: "Three engines run simultaneously: Western Astrology, Human Design, Gene Keys. Your complete chart is ready the moment you finish onboarding.",
+    title: "Create your profile.",
+    body: "One screen. Your name, your details, your account. The moment you finish, your complete chart is ready. Three systems, calculated together, waiting for you.",
   },
   {
     number: "03",
-    title: "Your Higher Self wakes up with you.",
-    body: "Every morning a forecast built only for you. Every conversation an AI that knows your chart, remembers your sessions, and speaks to who you actually are.",
+    title: "Your Higher Self speaks every morning.",
+    body: "Open the app and find a reading built for today's sky and your specific chart. Ask it anything. It answers from your chart, not from a knowledge base. And it remembers what you told it yesterday.",
   },
 ];
 
@@ -25,13 +25,13 @@ export default function HowItWorks() {
             className="text-xs tracking-[0.3em] uppercase font-body font-light mb-4"
             style={{ color: "#4a5e4d" }}
           >
-            How It Works
+            Getting started
           </p>
           <h2
             className="font-heading font-light text-4xl md:text-5xl"
             style={{ color: "#f5f0e8" }}
           >
-            Three steps to know yourself.
+            Three minutes to know yourself.
           </h2>
         </div>
 
