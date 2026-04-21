@@ -429,17 +429,28 @@ section.compact { padding: 80px 0; }
 .chat-input .send { background: linear-gradient(135deg, var(--wisteria), #5a4a5e); color: var(--pearl); }
 
 .oracle-copy h2 { margin-bottom: 24px; }
+/* Eyebrow + attribution in the Oracle section pick up the wisteria tint
+   so the chrome matches the chat bubbles to the left. Same pigment that
+   runs the user bubble gradient and the oracle bubble border, so the
+   section reads as one object. */
+.oracle-copy .eyebrow { color: var(--wisteria); }
 .oracle-copy .quote {
   margin-top: 28px;
   padding-left: 20px;
-  border-left: 1px solid var(--amber-dim);
+  border-left: 1px solid rgba(155, 134, 160, 0.55);
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.1rem;
   line-height: 1.55;
   color: var(--pearl-dim);
 }
-.oracle-copy .attr { margin-top: 14px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); }
+.oracle-copy .attr {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wisteria);
+}
 
 /* Today preview ------------------------------------------------------- */
 .today-layout {
