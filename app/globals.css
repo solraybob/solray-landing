@@ -17,9 +17,9 @@
 
   /* Pigments */
   --pearl:          #ece4cf;
-  --pearl-dim:      #cfc6ae;
-  --moss:           #8a9e66;
-  --moss-dim:       #5e7040;
+  --pearl-dim:      #e0d8c2;
+  --moss:           #9caf78;
+  --moss-dim:       #7d8e58;
   --wisteria:       #9b86a0;
   --mist:           #9babb9;
   --indigo:         #6a8692;
@@ -27,8 +27,8 @@
 
   /* Text */
   --text-primary:   #f2ecd8;
-  --text-secondary: #a8b8ab;
-  --text-muted:     #8a9e8d;
+  --text-secondary: #c4d1c6;
+  --text-muted:     #a4b7a7;
 
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans:  "Inter", system-ui, sans-serif;
@@ -40,8 +40,8 @@ body {
   background: var(--forest-deep);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-weight: 300;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -99,9 +99,9 @@ h3.card-heading {
 
 p.lead {
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--text-secondary);
-  font-weight: 300;
+  font-weight: 400;
 }
 p.body {
   font-size: 0.95rem;
@@ -524,7 +524,7 @@ section.compact { padding: 80px 0; }
 }
 .philosophy .narrow { text-align: left; }
 .philosophy h2 { margin-bottom: 32px; }
-.philosophy p { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.65; color: var(--pearl-dim); margin-bottom: 28px; font-weight: 300; }
+.philosophy p { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.7; color: var(--pearl-dim); margin-bottom: 28px; font-weight: 400; }
 .philosophy p.lede { font-size: 1.55rem; color: var(--pearl); font-style: italic; }
 .philosophy .author-strip {
   margin-top: 80px; padding-top: 40px;
@@ -581,7 +581,7 @@ section.compact { padding: 80px 0; }
 }
 .pricing-card .amount .per {
   font-size: 1rem; color: var(--moss); letter-spacing: 0.05em;
-  font-family: var(--font-sans); font-weight: 300;
+  font-family: var(--font-sans); font-weight: 400;
   margin-left: 8px;
 }
 .pricing-card .trial {
