@@ -142,7 +142,9 @@ export default function LandingRefresh() {
           <div className="oracle-frame">
             <div className="phone">
               <div className="phone-screen">
-                <div className="chat-avatar"></div>
+                <div className="chat-avatar" aria-hidden="true">
+                  <Image src="/icon-512.png" alt="" width={44} height={44} />
+                </div>
                 <div className="chat-handle">Higher Self</div>
                 <div className="chat-kicker">Oracle · remembers everything</div>
                 <div className="chat-scroll">
