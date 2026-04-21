@@ -295,58 +295,41 @@ export default function LandingRefresh() {
         <div className="wrap">
           <div className="today-layout" style={{ alignItems: "stretch" }}>
             <div className="souls-canvas">
-              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <radialGradient id="soulsSunGrad" cx="38%" cy="34%">
-                    <stop offset="0%" stopColor="#fad48a" />
-                    <stop offset="55%" stopColor="#f39230" />
-                    <stop offset="100%" stopColor="#6a2e0a" />
-                  </radialGradient>
-                </defs>
+              {/* Faithful mock of the BondCard component on /souls. Same
+                  gradient, same indigo border, same pill grammar, same
+                  Dynamic → CTA. The Romantic lens is the active one so
+                  the whisper line tells you the partner's sun sign +
+                  Human Design type, exactly as the real card does for
+                  non-family bonds. */}
+              <div className="bond-mock" aria-hidden="true">
+                <div className="bond-eyebrow">Dynamics</div>
+                <h3 className="bond-heading">Where two charts meet.</h3>
 
-                <circle cx="200" cy="150" r="130" fill="none" stroke="#1a3020" strokeWidth="0.5" />
-                <circle cx="200" cy="150" r="95" fill="none" stroke="#1a3020" strokeWidth="0.5" strokeDasharray="3 4" />
-                <circle cx="200" cy="150" r="60" fill="none" stroke="#1a3020" strokeWidth="0.5" />
+                <div className="bond-pills">
+                  <div className="bond-pill you">
+                    <div className="bond-avatar you-avatar">B</div>
+                    <span>You</span>
+                  </div>
+                  <div className="bond-pill partner">
+                    <span className="bond-star">✦</span>
+                    <div className="bond-avatar partner-avatar">E</div>
+                    <span>Eva</span>
+                    <span className="bond-remove">×</span>
+                  </div>
+                </div>
 
-                <line x1="200" y1="150" x2="320" y2="100" stroke="#f39230" strokeWidth="0.6" opacity="0.6" />
-                <line x1="200" y1="150" x2="90" y2="120" stroke="#9b86a0" strokeWidth="0.6" opacity="0.55" />
-                <line x1="200" y1="150" x2="140" y2="220" stroke="#9babb9" strokeWidth="0.6" opacity="0.45" />
+                <div className="bond-whisper">☉ Libra · Projector 3/5</div>
 
-                <circle cx="200" cy="150" r="22" fill="url(#soulsSunGrad)" />
-                <circle cx="200" cy="150" r="22" fill="none" stroke="rgba(243,146,48,0.35)" strokeWidth="0.8" />
-                <text x="200" y="155" fill="#ece4cf" fontFamily="Cormorant Garamond" fontStyle="italic" fontSize="13" textAnchor="middle">
-                  you
-                </text>
+                <div className="bond-lens-label">Lens</div>
+                <div className="bond-lens-pills">
+                  <span className="bond-lens-pill">Family</span>
+                  <span className="bond-lens-pill">Friendship</span>
+                  <span className="bond-lens-pill active">Romantic</span>
+                  <span className="bond-lens-pill">Working</span>
+                </div>
 
-                <g>
-                  <circle cx="320" cy="100" r="14" fill="#0e2416" stroke="#f39230" strokeWidth="0.9" />
-                  <text x="320" y="104" fill="#f5a44a" fontFamily="Cormorant Garamond" fontStyle="italic" fontSize="11" textAnchor="middle">
-                    Eva
-                  </text>
-                </g>
-                <g>
-                  <circle cx="90" cy="120" r="14" fill="#0e2416" stroke="#9b86a0" strokeWidth="0.9" />
-                  <text x="90" y="124" fill="#9b86a0" fontFamily="Cormorant Garamond" fontStyle="italic" fontSize="11" textAnchor="middle">
-                    Jon
-                  </text>
-                </g>
-                <g>
-                  <circle cx="140" cy="220" r="14" fill="#0e2416" stroke="#9babb9" strokeWidth="0.9" />
-                  <text x="140" y="224" fill="#9babb9" fontFamily="Cormorant Garamond" fontStyle="italic" fontSize="11" textAnchor="middle">
-                    Mom
-                  </text>
-                </g>
-
-                <text x="260" y="130" fill="#8a9e8d" fontFamily="Inter" fontSize="8" letterSpacing="2">
-                  TRINE · VENUS
-                </text>
-                <text x="120" y="142" fill="#8a9e8d" fontFamily="Inter" fontSize="8" letterSpacing="2">
-                  CHANNEL 1-8
-                </text>
-                <text x="160" y="195" fill="#8a9e8d" fontFamily="Inter" fontSize="8" letterSpacing="2">
-                  MOON CONJ.
-                </text>
-              </svg>
+                <div className="bond-cta">Read the Dynamic →</div>
+              </div>
             </div>
 
             <div className="souls-copy">
