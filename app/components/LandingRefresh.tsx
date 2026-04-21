@@ -107,7 +107,7 @@ export default function LandingRefresh() {
 
           <div className="three">
             <div className="card">
-              <div className="glyph" aria-hidden="true">
+              <div className="glyph astro" aria-hidden="true">
                 {/* Natal chart wheel: outer circle, inner house ring, ASC-DSC + MC-IC cross. */}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
                   <circle cx="12" cy="12" r="9.4" />
@@ -123,7 +123,7 @@ export default function LandingRefresh() {
               <div className="note">Nature-based rulerships</div>
             </div>
             <div className="card">
-              <div className="glyph" aria-hidden="true">
+              <div className="glyph hd" aria-hidden="true">
                 {/* Simplified bodygraph skeleton: crown triangle, ajna square, G-center diamond. */}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round" strokeLinecap="round">
                   <path d="M7 3 L17 3 L12 7.5 Z" />
@@ -140,7 +140,7 @@ export default function LandingRefresh() {
               <div className="note">Bodygraph, unaltered</div>
             </div>
             <div className="card">
-              <div className="glyph" aria-hidden="true">
+              <div className="glyph gk" aria-hidden="true">
                 {/* I-Ching hexagram 63 (Already Across): perfect alternation, yin above yang, reading top-down. Six lines, broken/solid/broken/solid/broken/solid. */}
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <rect x="4" y="4.2" width="7" height="1.2" rx="0.4" />
