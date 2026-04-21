@@ -112,7 +112,7 @@ export default function LandingRefresh() {
               <p>
                 Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Mercury, Venus, Mars read through the body they actually rule. Earth gets Taurus back. Ceres gets Virgo.
               </p>
-              <div className="note">Skywalker framework</div>
+              <div className="note">Nature-based rulerships</div>
             </div>
             <div className="card">
               <div className="glyph">&#x25B3;</div>
@@ -357,35 +357,6 @@ export default function LandingRefresh() {
             This is the Japanese way. Strip until only the essential remains. Trust the material. Make the whole thing livable before you make it beautiful, and then let beauty emerge on its own, because it will.
           </p>
 
-          <div className="author-strip">
-            <div className="book">
-              <span>Book one</span>
-              <em>Skywalker</em>
-            </div>
-            <div className="book">
-              <span>Book two</span>
-              <em>God Is Watching</em>
-            </div>
-            <div className="book">
-              <span>Book three</span>
-              <em>Eat The Location</em>
-            </div>
-            <div className="book">
-              <span>Book four</span>
-              <em>Bright Days, Dark Nights</em>
-            </div>
-            <div className="book">
-              <span>Book five</span>
-              <em>Meditations</em>
-            </div>
-            <div className="book">
-              <span>Book six</span>
-              <em>Superior Physique</em>
-            </div>
-          </div>
-          <p className="small" style={{ marginTop: 22 }}>
-            The framework Solray reads from, in its full form, in the author&apos;s own words.
-          </p>
         </div>
       </section>
 
