@@ -308,7 +308,8 @@ section.hero {
   font-size: 11.5px;
   letter-spacing: 0.22em;
 }
-.hero-ctas .btn.hero-primary {
+.hero-ctas .btn.hero-primary,
+.btn.primary.pricing-cta {
   background: linear-gradient(135deg, var(--amber-bright) 0%, var(--amber) 100%);
   color: var(--forest-deep);
   box-shadow:
@@ -317,13 +318,20 @@ section.hero {
     inset 0 1px 0 rgba(255, 220, 170, 0.4);
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
-.hero-ctas .btn.hero-primary:hover {
+.hero-ctas .btn.hero-primary:hover,
+.btn.primary.pricing-cta:hover {
   background: linear-gradient(135deg, #ffb85e 0%, var(--amber-bright) 100%);
   transform: translateY(-1px);
   box-shadow:
     0 0 0 1px rgba(243, 146, 48, 0.4),
     0 14px 36px -10px rgba(243, 146, 48, 0.75),
     inset 0 1px 0 rgba(255, 220, 170, 0.5);
+}
+.btn.primary.pricing-cta {
+  border-radius: 999px;
+  padding: 14px 38px;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
 }
 .hero-ctas .btn.oracle-cta {
   background: rgba(155, 134, 160, 0.08);

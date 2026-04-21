@@ -418,8 +418,8 @@ export default function LandingRefresh() {
             </ul>
 
             <div className="cta">
-              <a href={APP_URL} className="btn primary">
-                Begin your five days
+              <a href={APP_URL} className="btn primary pricing-cta">
+                Five days free trial
               </a>
             </div>
           </div>
