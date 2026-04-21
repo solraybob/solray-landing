@@ -183,10 +183,10 @@ nav.top-nav .links a:not(.btn):hover::after {
 nav.top-nav .links.cta-only { display: none; }
 
 .btn.nav-cta {
-  padding: 10px 22px;
+  padding: 10px 30px;
   border-radius: 999px;
   font-size: 11px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   background: linear-gradient(135deg, var(--amber-bright) 0%, var(--amber) 100%);
   color: var(--forest-deep);
   box-shadow:
