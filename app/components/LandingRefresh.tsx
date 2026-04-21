@@ -120,7 +120,7 @@ export default function LandingRefresh() {
               <p>
                 Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Mercury, Venus, Mars read through the body they actually rule. Earth gets Taurus back. Ceres gets Virgo.
               </p>
-              <div className="note">Nature-based rulerships</div>
+              <div className="note astro">Nature-based rulerships</div>
             </div>
             <div className="card">
               <div className="glyph hd" aria-hidden="true">
@@ -137,7 +137,7 @@ export default function LandingRefresh() {
               <p>
                 Type, authority, profile, defined and open centers, the channels you broadcast, the gates you absorb. A mechanical map of how your energy actually works, so you stop forcing the shape you think you should be.
               </p>
-              <div className="note">Bodygraph, unaltered</div>
+              <div className="note hd">Bodygraph, unaltered</div>
             </div>
             <div className="card">
               <div className="glyph gk" aria-hidden="true">
@@ -158,7 +158,7 @@ export default function LandingRefresh() {
               <p>
                 Your four primary gates read as shadow, gift, siddhi. Contemplation, not prescription. The current you&apos;re being asked to turn toward, the frequency under it, the grace waiting on the other side.
               </p>
-              <div className="note">Lifework + primary 11</div>
+              <div className="note gk">Lifework + primary 11</div>
             </div>
           </div>
         </div>

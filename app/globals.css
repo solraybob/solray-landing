@@ -331,6 +331,12 @@ section.compact { padding: 80px 0; }
   margin-top: auto; padding-top: 24px;
   color: var(--moss-dim); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
 }
+/* Bottom caption picks up the same pigment as its card's icon, so the
+   top and bottom of each card rhyme. Sit the note at ~0.78 alpha so
+   the icon stays the loudest voice in the card. */
+.three .card .note.astro { color: rgba(243, 146, 48, 0.82); }
+.three .card .note.hd    { color: rgba(156, 175, 120, 0.85); }
+.three .card .note.gk    { color: rgba(106, 134, 146, 0.92); }
 
 /* Oracle preview ------------------------------------------------------- */
 .oracle-frame {
