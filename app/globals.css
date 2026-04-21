@@ -135,14 +135,13 @@ nav.top-nav .brand {
   position: relative;
 }
 nav.top-nav .brand .wordmark {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.36em;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
   color: var(--pearl);
   text-transform: uppercase;
-  padding-left: 2px;
-  text-shadow: 0 0 24px rgba(243, 146, 48, 0.2);
+  text-shadow: 0 0 24px rgba(243, 146, 48, 0.18);
 }
 nav.top-nav .links {
   display: flex; gap: 36px; align-items: center;
