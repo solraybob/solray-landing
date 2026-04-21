@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 const APP_URL = "https://app.solray.ai/onboard";
+const LOGIN_URL = "https://app.solray.ai/login";
 
 export default function LandingRefresh() {
   return (
@@ -20,13 +21,13 @@ export default function LandingRefresh() {
           <a href="#oracle">The Oracle</a>
           <a href="#today">Today</a>
           <a href="#philosophy">Living By Design</a>
-          <a href={APP_URL} className="btn primary nav-cta">
-            Begin
+          <a href={LOGIN_URL} className="btn primary nav-cta">
+            Log in
           </a>
         </div>
         <div className="links cta-only">
-          <a href={APP_URL} className="btn primary nav-cta">
-            Begin
+          <a href={LOGIN_URL} className="btn primary nav-cta">
+            Log in
           </a>
         </div>
       </nav>
