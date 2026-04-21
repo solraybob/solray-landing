@@ -464,24 +464,35 @@ section.compact { padding: 80px 0; }
   font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--moss); margin-bottom: 28px;
 }
-.today-widget .bar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.today-widget .bar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
 .today-widget .bar-label {
-  width: 92px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss);
+  width: 88px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-secondary);
 }
 .today-widget .bar {
-  flex: 1; height: 2px; background: rgba(26, 48, 32, 0.7); border-radius: 1px; position: relative;
+  flex: 1; height: 6px;
+  background: rgba(26, 48, 32, 0.5);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
 }
 .today-widget .bar span {
   position: absolute; left: 0; top: 0; height: 100%;
-  border-radius: 1px;
+  border-radius: 999px;
 }
-.today-widget .bar .fill-amber  { background: linear-gradient(90deg, var(--amber-dim), var(--amber)); }
-.today-widget .bar .fill-wist   { background: linear-gradient(90deg, #7a6580, var(--wisteria)); }
-.today-widget .bar .fill-mist   { background: linear-gradient(90deg, #6a8692, var(--mist)); }
-.today-widget .bar .fill-ember  { background: linear-gradient(90deg, #8a4a3c, #c86858); }
+/* Fills use a linear-gradient that fades to transparent at the draw edge,
+   mirroring the EnergyBar component in solray-app/app/today/page.tsx. The
+   opaque pigment sits at the start so the line reads as ink laid down,
+   then dissolves into the track rather than hitting a hard stop. */
+.today-widget .bar .fill-mental    { background: linear-gradient(to right, #9babb9, transparent); }
+.today-widget .bar .fill-emotional { background: linear-gradient(to right, #d47a52, transparent); }
+.today-widget .bar .fill-physical  { background: linear-gradient(to right, #8a9e66, transparent); }
+.today-widget .bar .fill-intuitive { background: linear-gradient(to right, #9b86a0, transparent); }
 .today-widget .bar-pct {
-  width: 32px; text-align: right;
-  font-size: 10px; font-family: var(--font-sans); color: var(--pearl-dim);
+  width: 28px; text-align: right;
+  font-family: var(--font-serif); font-size: 15px;
+  color: var(--text-secondary); opacity: 0.8;
+  font-feature-settings: "lnum";
 }
 .today-widget .insight {
   margin-top: 28px;

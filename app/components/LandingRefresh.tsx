@@ -221,32 +221,32 @@ export default function LandingRefresh() {
               <div className="sky">Sun in Taurus · Moon waxing in Virgo</div>
 
               <div className="bar-row">
-                <span className="bar-label">Clarity</span>
+                <span className="bar-label">Mental</span>
                 <div className="bar">
-                  <span className="fill-amber" style={{ width: "78%" }}></span>
+                  <span className="fill-mental" style={{ width: "82%" }}></span>
                 </div>
-                <span className="bar-pct">78</span>
+                <span className="bar-pct">82</span>
               </div>
               <div className="bar-row">
-                <span className="bar-label">Connection</span>
+                <span className="bar-label">Emotional</span>
                 <div className="bar">
-                  <span className="fill-wist" style={{ width: "88%" }}></span>
+                  <span className="fill-emotional" style={{ width: "64%" }}></span>
+                </div>
+                <span className="bar-pct">64</span>
+              </div>
+              <div className="bar-row">
+                <span className="bar-label">Physical</span>
+                <div className="bar">
+                  <span className="fill-physical" style={{ width: "71%" }}></span>
+                </div>
+                <span className="bar-pct">71</span>
+              </div>
+              <div className="bar-row">
+                <span className="bar-label">Intuitive</span>
+                <div className="bar">
+                  <span className="fill-intuitive" style={{ width: "88%" }}></span>
                 </div>
                 <span className="bar-pct">88</span>
-              </div>
-              <div className="bar-row">
-                <span className="bar-label">Drive</span>
-                <div className="bar">
-                  <span className="fill-ember" style={{ width: "54%" }}></span>
-                </div>
-                <span className="bar-pct">54</span>
-              </div>
-              <div className="bar-row">
-                <span className="bar-label">Stillness</span>
-                <div className="bar">
-                  <span className="fill-mist" style={{ width: "41%" }}></span>
-                </div>
-                <span className="bar-pct">41</span>
               </div>
 
               <div className="insight">
