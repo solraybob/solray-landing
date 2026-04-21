@@ -104,7 +104,7 @@ p.lead {
   font-weight: 400;
 }
 p.body {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -443,7 +443,7 @@ section.compact { padding: 80px 0; }
 /* Oracle preview ------------------------------------------------------- */
 .oracle-frame {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
 }
@@ -555,8 +555,8 @@ section.compact { padding: 80px 0; }
   border-left: 1px solid rgba(155, 134, 160, 0.55);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.55;
+  font-size: 1.15rem;
+  line-height: 1.6;
   color: var(--pearl-dim);
 }
 .oracle-copy .attr {
@@ -569,9 +569,9 @@ section.compact { padding: 80px 0; }
 
 /* Today preview ------------------------------------------------------- */
 .today-layout {
-  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
-.today-layout .today-copy h2 { margin-bottom: 20px; }
+.today-layout .today-copy h2 { margin-bottom: 24px; }
 /* Today copy-column picks up amber — same hue as the Sun glyph, the
    amber-sun hero on the real Today screen, and the pulse around the
    moon phase. Keeps this section visually tied to the product page it
@@ -807,7 +807,7 @@ section.compact { padding: 80px 0; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.souls-copy h2 { margin-bottom: 20px; }
+.souls-copy h2 { margin-bottom: 24px; }
 /* Souls copy-column picks up indigo — same pigment as the Bond hero
    card on the real Souls page (background gradient, border, Dynamics
    eyebrow). */
@@ -823,8 +823,8 @@ section.compact { padding: 80px 0; }
 .philosophy .narrow { text-align: left; }
 .philosophy .eyebrow { color: var(--amber); }
 .philosophy h2 { margin-bottom: 32px; }
-.philosophy p { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.7; color: var(--pearl-dim); margin-bottom: 28px; font-weight: 400; }
-.philosophy p.lede { font-size: 1.55rem; color: var(--pearl); font-style: italic; }
+.philosophy p { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.7; color: var(--pearl-dim); margin-bottom: 24px; font-weight: 400; }
+.philosophy p.lede { font-size: 1.3rem; color: var(--pearl); font-style: italic; }
 .philosophy .author-strip {
   margin-top: 80px; padding-top: 40px;
   border-top: 1px dashed var(--forest-edge);
@@ -984,9 +984,14 @@ footer.site .socials svg {
 @media (max-width: 900px) {
   .three { grid-template-columns: 1fr; gap: 18px; }
   .three .card { min-height: auto; padding: 32px 28px; }
-  .oracle-frame, .today-layout { grid-template-columns: 1fr; gap: 48px; }
+  .oracle-frame, .today-layout { grid-template-columns: 1fr; gap: 72px; }
+  /* Stack every section with the mockup FIRST, copy below. Today's
+     desktop order puts copy on the left, so flip it on mobile. Oracle
+     and Souls already stack mock-first because of JSX order. */
+  .today-layout .today-copy { order: 2; }
+  .today-layout .today-widget { order: 1; }
   .philosophy .author-strip { grid-template-columns: 1fr; gap: 18px; }
-  section.pad { padding: 80px 0; }
+  section.pad { padding: 88px 0; }
   nav.top-nav .links { display: none; }
   nav.top-nav .links.cta-only { display: flex; }
 }
@@ -1078,11 +1083,13 @@ footer.site .socials svg {
   .three .card { padding: 28px 22px; }
   .three .card p { font-size: 0.9rem; }
 
-  /* Oracle */
-  .oracle-frame, .today-layout { gap: 36px; }
+  /* Oracle / Today / Souls shared stacking */
+  .oracle-frame, .today-layout { gap: 64px; }
   .phone { max-width: 300px; padding: 14px; border-radius: 36px; }
   .phone-screen { border-radius: 24px; padding: 36px 14px 14px; }
-  .oracle-copy .quote { font-size: 1rem; padding-left: 16px; }
+  .oracle-copy .quote { font-size: 1.05rem; padding-left: 16px; }
+  .oracle-copy h2, .today-copy h2, .souls-copy h2 { margin-bottom: 20px; }
+  p.body { font-size: 0.98rem; }
 
   /* Today widget */
   .today-widget { padding: 28px 22px; }
