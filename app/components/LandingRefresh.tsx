@@ -293,7 +293,7 @@ export default function LandingRefresh() {
       {/* Souls */}
       <section>
         <div className="wrap">
-          <div className="today-layout" style={{ alignItems: "stretch" }}>
+          <div className="today-layout">
             <div className="souls-canvas">
               {/* Faithful mock of the BondCard component on /souls. Same
                   gradient, same indigo border, same pill grammar, same
