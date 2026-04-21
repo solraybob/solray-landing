@@ -457,6 +457,11 @@ section.compact { padding: 80px 0; }
   display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
 }
 .today-layout .today-copy h2 { margin-bottom: 20px; }
+/* Today copy-column picks up amber — same hue as the Sun glyph, the
+   amber-sun hero on the real Today screen, and the pulse around the
+   moon phase. Keeps this section visually tied to the product page it
+   previews. */
+.today-copy .eyebrow { color: var(--amber); }
 .today-widget {
   background: linear-gradient(180deg, rgba(14,36,22,0.7) 0%, var(--forest-dark) 100%);
   border: 1px solid var(--forest-border);
@@ -536,6 +541,10 @@ section.compact { padding: 80px 0; }
 }
 .souls-canvas svg { width: 100%; height: 100%; display: block; }
 .souls-copy h2 { margin-bottom: 20px; }
+/* Souls copy-column picks up indigo — same pigment as the Bond hero
+   card on the real Souls page (background gradient, border, Dynamics
+   eyebrow). */
+.souls-copy .eyebrow { color: var(--indigo); }
 
 /* Philosophy ---------------------------------------------------------- */
 .philosophy {
