@@ -990,3 +990,152 @@ footer.site .socials svg {
   nav.top-nav .links { display: none; }
   nav.top-nav .links.cta-only { display: flex; }
 }
+
+/* Phone (≤640px) ------------------------------------------------------ */
+@media (max-width: 640px) {
+  /* Wrappers */
+  .wrap, .narrow { padding: 0 20px; }
+  section.pad { padding: 64px 0; }
+
+  /* Nav */
+  nav.top-nav { padding: 14px 20px; }
+  nav.top-nav .brand .wordmark {
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+  }
+  .btn.nav-cta {
+    padding: 9px 26px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    min-width: 0;
+  }
+
+  /* Hero */
+  section.hero { padding: 104px 20px 72px; }
+  .hero .sun-mark {
+    width: 108px; height: 108px;
+    margin-bottom: 18px;
+  }
+  .hero .brand-lockup {
+    margin: 0 auto 36px;
+  }
+  .hero .brand-lockup .name {
+    font-size: 1.55rem;
+    letter-spacing: 0.12em;
+  }
+  .hero .brand-lockup .tagline {
+    font-size: 0.92rem;
+    margin-top: 10px;
+  }
+  h1.display {
+    font-size: clamp(2rem, 9.5vw, 2.7rem);
+    letter-spacing: -0.005em;
+  }
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .hero-ctas {
+    margin-top: 36px;
+    gap: 12px;
+    width: 100%;
+  }
+  .hero-ctas .btn {
+    padding: 13px 24px;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .hero-tag {
+    margin-top: 22px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+  }
+
+  /* Specimen card */
+  .specimen {
+    margin-top: 56px;
+    padding: 26px 22px;
+  }
+  .specimen .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 0;
+  }
+  .specimen .row .label { font-size: 9px; letter-spacing: 0.22em; }
+  .specimen .row .value { font-size: 1.02rem; }
+
+  /* Section headings */
+  h2.section { font-size: clamp(1.55rem, 5.5vw, 2.1rem); }
+  .section-head { margin-bottom: 40px; }
+  p.lead { font-size: 0.98rem; line-height: 1.65; }
+
+  /* Three cards */
+  .three .card { padding: 28px 22px; }
+  .three .card p { font-size: 0.9rem; }
+
+  /* Oracle */
+  .oracle-frame, .today-layout { gap: 36px; }
+  .phone { max-width: 300px; padding: 14px; border-radius: 36px; }
+  .phone-screen { border-radius: 24px; padding: 36px 14px 14px; }
+  .oracle-copy .quote { font-size: 1rem; padding-left: 16px; }
+
+  /* Today widget */
+  .today-widget { padding: 28px 22px; }
+  .today-widget .bar-row { gap: 12px; margin-bottom: 14px; }
+  .today-widget .bar-label { font-size: 10px; }
+
+  /* Souls / Bond mock */
+  .souls-canvas {
+    min-height: auto;
+    padding: 28px 20px;
+  }
+  .bond-mock { padding: 22px 18px; }
+  .bond-heading { font-size: 1.05rem; }
+  .bond-pills { gap: 10px; }
+  .bond-pill { padding: 10px 12px; font-size: 11px; }
+  .bond-avatar { width: 28px; height: 28px; }
+  .bond-lens-pills { gap: 6px; }
+  .bond-lens-pill { padding: 7px 10px; font-size: 10px; }
+
+  /* Philosophy */
+  .philosophy { padding: 72px 0; }
+  .philosophy p { font-size: 1.1rem; line-height: 1.65; margin-bottom: 22px; }
+  .philosophy p.lede { font-size: 1.22rem; }
+
+  /* Pricing */
+  .pricing { padding: 72px 0; }
+  .pricing .kicker { margin-bottom: 36px; }
+  .pricing-card {
+    padding: 36px 24px;
+    max-width: 100%;
+  }
+  .pricing-card .amount { font-size: 2.4rem; }
+  .pricing-card ul { margin-top: 24px; padding-top: 22px; }
+  .pricing-card li { font-size: 0.9rem; gap: 12px; }
+  .btn.primary.pricing-cta {
+    padding: 13px 28px;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+  }
+
+  /* Invocation */
+  .invocation { padding: 84px 0; }
+  .invocation p { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
+
+  /* Footer */
+  footer.site { padding: 48px 0 36px; }
+  footer.site nav { gap: 18px; flex-wrap: wrap; }
+}
+
+/* Small phone (≤380px) ----------------------------------------------- */
+@media (max-width: 380px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; }
+  nav.top-nav .brand .wordmark { font-size: 1rem; letter-spacing: 0.16em; }
+  .btn.nav-cta { padding: 8px 20px; }
+}
