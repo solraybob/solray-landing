@@ -813,6 +813,7 @@ section.compact { padding: 80px 0; }
     var(--forest-deep);
 }
 .philosophy .narrow { text-align: left; }
+.philosophy .eyebrow { color: var(--amber); }
 .philosophy h2 { margin-bottom: 32px; }
 .philosophy p { font-family: var(--font-serif); font-size: 1.35rem; line-height: 1.7; color: var(--pearl-dim); margin-bottom: 28px; font-weight: 400; }
 .philosophy p.lede { font-size: 1.55rem; color: var(--pearl); font-style: italic; }
