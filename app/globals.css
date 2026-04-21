@@ -314,9 +314,9 @@ section.compact { padding: 80px 0; }
   border: 1px solid rgba(243, 146, 48, 0.35);
   border-radius: 50%;
   color: var(--amber);
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-style: italic;
+}
+.three .card .glyph svg {
+  width: 22px; height: 22px; display: block;
 }
 .three .card h3 { margin-bottom: 14px; }
 .three .card p { font-size: 0.92rem; line-height: 1.75; color: var(--text-secondary); }

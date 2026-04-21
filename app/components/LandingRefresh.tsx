@@ -107,7 +107,15 @@ export default function LandingRefresh() {
 
           <div className="three">
             <div className="card">
-              <div className="glyph">☉</div>
+              <div className="glyph" aria-hidden="true">
+                {/* Natal chart wheel: outer circle, inner house ring, ASC-DSC + MC-IC cross. */}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round">
+                  <circle cx="12" cy="12" r="9.4" />
+                  <circle cx="12" cy="12" r="3.8" />
+                  <line x1="2.6" y1="12" x2="21.4" y2="12" />
+                  <line x1="12" y1="2.6" x2="12" y2="21.4" />
+                </svg>
+              </div>
               <h3 className="card-heading">Western Astrology</h3>
               <p>
                 Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Mercury, Venus, Mars read through the body they actually rule. Earth gets Taurus back. Ceres gets Virgo.
@@ -115,7 +123,16 @@ export default function LandingRefresh() {
               <div className="note">Nature-based rulerships</div>
             </div>
             <div className="card">
-              <div className="glyph">&#x25B3;</div>
+              <div className="glyph" aria-hidden="true">
+                {/* Simplified bodygraph skeleton: crown triangle, ajna square, G-center diamond. */}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round" strokeLinecap="round">
+                  <path d="M7 3 L17 3 L12 7.5 Z" />
+                  <line x1="12" y1="7.5" x2="12" y2="9" />
+                  <rect x="9.5" y="9" width="5" height="5" />
+                  <line x1="12" y1="14" x2="12" y2="15.5" />
+                  <path d="M12 15.5 L15 18 L12 20.5 L9 18 Z" />
+                </svg>
+              </div>
               <h3 className="card-heading">Human Design</h3>
               <p>
                 Type, authority, profile, defined and open centers, the channels you broadcast, the gates you absorb. A mechanical map of how your energy actually works, so you stop forcing the shape you think you should be.
@@ -123,7 +140,20 @@ export default function LandingRefresh() {
               <div className="note">Bodygraph, unaltered</div>
             </div>
             <div className="card">
-              <div className="glyph">◯</div>
+              <div className="glyph" aria-hidden="true">
+                {/* I-Ching hexagram 63 (Already Across): perfect alternation, yin above yang, reading top-down. Six lines, broken/solid/broken/solid/broken/solid. */}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="4" y="4.2" width="7" height="1.2" rx="0.4" />
+                  <rect x="13" y="4.2" width="7" height="1.2" rx="0.4" />
+                  <rect x="4" y="7.4" width="16" height="1.2" rx="0.4" />
+                  <rect x="4" y="10.6" width="7" height="1.2" rx="0.4" />
+                  <rect x="13" y="10.6" width="7" height="1.2" rx="0.4" />
+                  <rect x="4" y="13.8" width="16" height="1.2" rx="0.4" />
+                  <rect x="4" y="17" width="7" height="1.2" rx="0.4" />
+                  <rect x="13" y="17" width="7" height="1.2" rx="0.4" />
+                  <rect x="4" y="20.2" width="16" height="1.2" rx="0.4" />
+                </svg>
+              </div>
               <h3 className="card-heading">Gene Keys</h3>
               <p>
                 Your four primary gates read as shadow, gift, siddhi. Contemplation, not prescription. The current you&apos;re being asked to turn toward, the frequency under it, the grace waiting on the other side.
