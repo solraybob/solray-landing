@@ -356,7 +356,7 @@ export default function LandingRefresh() {
           </p>
 
           <p>
-            This is the Japanese way. Strip until only the essential remains. Trust the material. Make the whole thing livable before you make it beautiful, and then let beauty emerge on its own, because it will.
+            This is living by design. Strip until only the essential remains. Trust the material. Make the whole thing livable before you make it beautiful, and then let beauty emerge on its own, because it will.
           </p>
 
         </div>
