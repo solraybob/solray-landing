@@ -66,7 +66,7 @@ export default function LandingRefresh() {
           <div className="specimen">
             <div className="row">
               <span className="label">Born</span>
-              <span className="value">4 August 1979, 23:47</span>
+              <span className="value">5 September 1989</span>
             </div>
             <div className="row">
               <span className="label">In</span>
@@ -74,11 +74,11 @@ export default function LandingRefresh() {
             </div>
             <div className="row">
               <span className="label">Sun in</span>
-              <span className="value">Leo, 11°42&apos;</span>
+              <span className="value">Virgo, 12°26&apos;</span>
             </div>
             <div className="row">
               <span className="label">Type</span>
-              <span className="value">Manifesting Generator, 3/5</span>
+              <span className="value">Generator, 2/4</span>
             </div>
             <div className="row">
               <span className="label">Life path</span>
@@ -86,7 +86,7 @@ export default function LandingRefresh() {
             </div>
             <div className="row">
               <span className="label">Today&apos;s sky</span>
-              <span className="value">Venus trine your Mars, 0°18&apos; orb</span>
+              <span className="value">Moon trine your Sun, 0°22&apos; orb</span>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function LandingRefresh() {
                 Ask anything. Today&apos;s sky, a hard conversation, the pattern you keep running, the decision you&apos;re stalling on. The Oracle answers from inside your specific chart, your current transits, and what you&apos;ve told it before. Not a generic horoscope. Not a chatbot. A conversation with the version of the sky that&apos;s watching you.
               </p>
               <div className="quote">
-                &ldquo;You are not here to be everyone&apos;s Generator. You&apos;re a 3/5 Manifesting Generator. Your work is to try, fail visibly, and become useful to the people watching.&rdquo;
+                &ldquo;You are not here to be everyone&apos;s Generator. You&apos;re a 2/4 Generator. Your work is to close the door, do the thing, and wait for the ones already near you to pull you back out.&rdquo;
               </div>
               <div className="attr">Oracle, Tuesday 11:14</div>
             </div>
@@ -218,7 +218,7 @@ export default function LandingRefresh() {
 
             <div className="today-widget">
               <div className="date">Monday, 20 April</div>
-              <div className="sky">Venus trine Mars · Moon waxing in Cancer</div>
+              <div className="sky">Sun in Taurus · Moon waxing in Virgo</div>
 
               <div className="bar-row">
                 <span className="bar-label">Clarity</span>
@@ -250,7 +250,7 @@ export default function LandingRefresh() {
               </div>
 
               <div className="insight">
-                A soft Venus-Mars trine is passing over your chart today. The easy thing is the right thing. Reach out to the person you&apos;ve been meaning to. Don&apos;t force the other three.
+                A soft Moon trine is passing over your Sun today. The easy thing is the right thing. Do one quiet thing your body actually wants, the people already near you will notice the result. Don&apos;t force the other three.
               </div>
               <div className="insight-attr">Solray daily · calculated at 05:12 local</div>
             </div>
