@@ -1,45 +1,8 @@
 "use client";
 
-const APP_URL = "https://app.solray.ai/onboard";
+import Image from "next/image";
 
-function FlameSun({ gradientId }: { gradientId: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">
-      <defs>
-        <radialGradient
-          id={gradientId}
-          cx="-22"
-          cy="-28"
-          r="100"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0%" stopColor="#fad48a" />
-          <stop offset="22%" stopColor="#f5a44a" />
-          <stop offset="55%" stopColor="#e8821a" />
-          <stop offset="85%" stopColor="#a04812" />
-          <stop offset="100%" stopColor="#5e2607" />
-        </radialGradient>
-      </defs>
-      <g fill={`url(#${gradientId})`}>
-        <circle r="30" />
-        <path transform="rotate(0)" d="M-14,-10 C-18,-36 -2,-68 -2,-80 Q2,-86 6,-80 C10,-68 18,-36 14,-10 Z" />
-        <path transform="rotate(25.71)" d="M-15,-10 C-19,-26.1 -11,-49.3 -7,-58 Q-2,-65.5 3,-58 C3,-49.3 19,-26.1 15,-10 Z" />
-        <path transform="rotate(51.43)" d="M-14,-10 C-18,-38.7 -5,-73.1 -3.5,-86 Q0.5,-92 4.5,-86 C7,-73.1 18,-38.7 14,-10 Z" />
-        <path transform="rotate(77.14)" d="M-15,-10 C-19,-28.8 -3,-54.4 -3,-64 Q2,-71.5 7,-64 C11,-54.4 19,-28.8 15,-10 Z" />
-        <path transform="rotate(102.86)" d="M-14,-10 C-18,-35.1 -10,-66.3 -6,-78 Q-2,-84 2,-78 C2,-66.3 18,-35.1 14,-10 Z" />
-        <path transform="rotate(128.57)" d="M-15,-10 C-19,-31.5 -6,-59.5 -4.5,-70 Q0.5,-77.5 5.5,-70 C8,-59.5 19,-31.5 15,-10 Z" />
-        <path transform="rotate(154.29)" d="M-14,-10 C-18,-33.8 -2,-63.8 -2,-75 Q2,-81 6,-75 C10,-63.8 18,-33.8 14,-10 Z" />
-        <path transform="rotate(180)" d="M-15,-10 C-19,-29.7 -11,-56.1 -7,-66 Q-2,-73.5 3,-66 C3,-56.1 19,-29.7 15,-10 Z" />
-        <path transform="rotate(205.71)" d="M-14,-10 C-18,-37.8 -5,-71.4 -3.5,-84 Q0.5,-90 4.5,-84 C7,-71.4 18,-37.8 14,-10 Z" />
-        <path transform="rotate(231.43)" d="M-15,-10 C-19,-27 -3,-51 -3,-60 Q2,-67.5 7,-60 C11,-51 19,-27 15,-10 Z" />
-        <path transform="rotate(257.14)" d="M-14,-10 C-18,-36 -10,-68 -6,-80 Q-2,-86 2,-80 C2,-68 18,-36 14,-10 Z" />
-        <path transform="rotate(282.86)" d="M-15,-10 C-19,-31.5 -6,-59.5 -4.5,-70 Q0.5,-77.5 5.5,-70 C8,-59.5 19,-31.5 15,-10 Z" />
-        <path transform="rotate(308.57)" d="M-14,-10 C-18,-36.9 -2,-69.7 -2,-82 Q2,-88 6,-82 C10,-69.7 18,-36.9 14,-10 Z" />
-        <path transform="rotate(334.29)" d="M-15,-10 C-19,-29.2 -11,-55.2 -7,-65 Q-2,-72.5 3,-65 C3,-55.2 19,-29.2 15,-10 Z" />
-      </g>
-    </svg>
-  );
-}
+const APP_URL = "https://app.solray.ai/onboard";
 
 export default function LandingRefresh() {
   return (
@@ -48,7 +11,7 @@ export default function LandingRefresh() {
       <nav className="top-nav">
         <div className="brand">
           <span className="mark" aria-hidden="true">
-            <FlameSun gradientId="navSun" />
+            <Image src="/icon-512.png" alt="" width={32} height={32} priority />
           </span>
           <span>Solray</span>
         </div>
@@ -73,7 +36,11 @@ export default function LandingRefresh() {
         <div className="starfield"></div>
         <div className="hero-inner">
           <div className="sun-mark" aria-hidden="true">
-            <FlameSun gradientId="heroSun" />
+            <Image src="/icon-512.png" alt="" width={150} height={150} priority />
+          </div>
+          <div className="brand-lockup">
+            <div className="name">Solray</div>
+            <div className="tagline">Living by design</div>
           </div>
           <h1 className="display">
             You were born under
