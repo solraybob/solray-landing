@@ -1009,10 +1009,10 @@ footer.site .socials svg {
     letter-spacing: 0.18em;
   }
   .btn.nav-cta {
-    padding: 9px 26px;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    min-width: 0;
+    padding: 11px 38px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    min-width: 118px;
   }
 
   /* Hero */
@@ -1144,5 +1144,9 @@ footer.site .socials svg {
   .hero-ctas { flex-direction: column; }
   .hero-ctas .btn { width: 100%; }
   nav.top-nav .brand .wordmark { font-size: 1rem; letter-spacing: 0.16em; }
-  .btn.nav-cta { padding: 8px 20px; }
+  .btn.nav-cta {
+    padding: 10px 30px;
+    font-size: 10.5px;
+    min-width: 104px;
+  }
 }
