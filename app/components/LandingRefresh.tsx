@@ -11,10 +11,7 @@ export default function LandingRefresh() {
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
-          <span className="mark" aria-hidden="true">
-            <Image src="/icon-512.png" alt="" width={32} height={32} priority />
-          </span>
-          <span>Solray</span>
+          <span className="wordmark">SOLRAY</span>
         </div>
         <div className="links">
           <a href="#map">The Map</a>
@@ -54,11 +51,11 @@ export default function LandingRefresh() {
             Solray reads the exact moment you arrived against the sky overhead right now. Western astrology, Human Design, and Gene Keys, calculated together, against your chart alone. Every morning, in your own language.
           </p>
           <div className="hero-ctas">
-            <a href={APP_URL} className="btn primary">
+            <a href={APP_URL} className="btn primary hero-primary">
               Begin your journey
             </a>
-            <a href="#map" className="btn ghost">
-              See what it reads
+            <a href="#oracle" className="btn ghost oracle-cta">
+              Meet the Oracle
             </a>
           </div>
           <div className="hero-tag">Five days free. $23 a month after. Cancel any time.</div>
