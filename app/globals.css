@@ -384,16 +384,22 @@ section.hero {
 section.pad { padding: 120px 0; position: relative; }
 section.compact { padding: 80px 0; }
 
-/* Default vertical breathing for every <section> that isn't explicitly
-   the hero. Ensures the Map / Oracle / Today / Souls / pricing
-   sections breathe on mobile instead of crowding against the divider
-   rules. Tighter on small viewports, opens up on desktop.
-   Codex landing audit P1.2. */
-section { padding: 72px 0; }
-section.hero,
-section.invocation { padding: 0; }
+/* Default vertical breathing for every <section> that doesn't already
+   define its own padding. Targets the Map / Oracle / Today / Souls /
+   pricing sections so they breathe on mobile instead of crowding
+   against the divider rules. Codex landing audit P1.2.
+
+   Important: previous version of this rule also zeroed
+   section.hero and section.invocation, but those sections have
+   their own carefully-tuned padding (140px each, the hero's
+   protects the logo from the fixed nav), and the override clobbered
+   it. Logo went half-behind the header. Bob caught it on live.
+   The default rule below is intentionally low-specificity so any
+   section with an explicit padding declaration wins automatically.
+   No more overrides needed. */
+section:not(.hero):not(.invocation) { padding: 72px 0; }
 @media (min-width: 768px) {
-  section { padding: 96px 0; }
+  section:not(.hero):not(.invocation) { padding: 96px 0; }
 }
 
 .section-head { margin-bottom: 72px; text-align: left; max-width: 720px; }
