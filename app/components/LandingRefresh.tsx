@@ -23,8 +23,14 @@ export default function LandingRefresh() {
           </a>
         </div>
         <div className="links cta-only">
-          <a href={LOGIN_URL} className="btn primary nav-cta">
-            Log in
+          {/* Mobile-only nav: prioritize signup over login. New
+              visitors on phones outnumber returning users at this
+              surface; the fixed top CTA should serve conversion,
+              not session restore. Login remains accessible from the
+              hero secondary CTA and the footer. Codex landing
+              audit P1.1. */}
+          <a href={APP_URL} className="btn primary nav-cta">
+            Begin
           </a>
         </div>
       </nav>
@@ -116,7 +122,7 @@ export default function LandingRefresh() {
               </div>
               <h3 className="card-heading">Western Astrology</h3>
               <p>
-                Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Mercury, Venus, Mars read through the body they actually rule. Earth gets Taurus back. Ceres gets Virgo.
+                Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Earth rules Taurus, the body of the soil. Ceres rules Virgo, the keeper of the harvest. The rulerships read through the planet that actually does the work.
               </p>
               <div className="note astro">Nature-based rulerships</div>
             </div>
@@ -174,7 +180,7 @@ export default function LandingRefresh() {
                   <Image src="/icon-512.png" alt="" width={44} height={44} />
                 </div>
                 <div className="chat-handle">Higher Self</div>
-                <div className="chat-kicker">Oracle · remembers everything</div>
+                <div className="chat-kicker">Oracle · remembers what matters</div>
                 <div className="chat-scroll">
                   <div className="bubble user">Why have I been so restless this week?</div>
                   <div className="bubble oracle">
@@ -341,7 +347,7 @@ export default function LandingRefresh() {
                 Add the birth data of a partner, friend, or family member. Solray computes synastry across all three systems, names the exact aspects you&apos;re running with them, the channels you share, the gates they open in you. Understand the relationship the way the sky drew it, not the way the argument felt.
               </p>
               <p className="body" style={{ marginTop: 18 }}>
-                Only you ever see it. Their data stays on your device.
+                Only you ever see the reading. We never create an account for them.
               </p>
             </div>
           </div>
@@ -419,7 +425,7 @@ export default function LandingRefresh() {
 
             <div className="cta">
               <a href={APP_URL} className="btn primary pricing-cta">
-                Five days free trial
+                Start five days free
               </a>
             </div>
           </div>

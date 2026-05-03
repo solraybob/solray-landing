@@ -384,6 +384,18 @@ section.hero {
 section.pad { padding: 120px 0; position: relative; }
 section.compact { padding: 80px 0; }
 
+/* Default vertical breathing for every <section> that isn't explicitly
+   the hero. Ensures the Map / Oracle / Today / Souls / pricing
+   sections breathe on mobile instead of crowding against the divider
+   rules. Tighter on small viewports, opens up on desktop.
+   Codex landing audit P1.2. */
+section { padding: 72px 0; }
+section.hero,
+section.invocation { padding: 0; }
+@media (min-width: 768px) {
+  section { padding: 96px 0; }
+}
+
 .section-head { margin-bottom: 72px; text-align: left; max-width: 720px; }
 .section-head .eyebrow { display: block; margin-bottom: 14px; }
 .section-head p.lead { margin-top: 20px; max-width: 600px; }
@@ -1140,9 +1152,17 @@ footer.site .socials svg {
 }
 
 /* Small phone (≤380px) ----------------------------------------------- */
-@media (max-width: 380px) {
+/* Stack hero CTAs on every common phone width, not just sub-380.
+   iPhones 12 mini through 16 Pro Max all sit between 375 and 430px,
+   which is exactly where the previous side-by-side layout cramped
+   two long uppercase tracked buttons. Stacking from 480px down
+   gives both CTAs full width and breathing room. Codex P2.3. */
+@media (max-width: 480px) {
   .hero-ctas { flex-direction: column; }
   .hero-ctas .btn { width: 100%; }
+}
+
+@media (max-width: 380px) {
   nav.top-nav .brand .wordmark { font-size: 1rem; letter-spacing: 0.16em; }
   .btn.nav-cta {
     padding: 10px 30px;
