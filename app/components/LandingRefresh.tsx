@@ -23,17 +23,15 @@ export default function LandingRefresh() {
           </a>
         </div>
         <div className="links cta-only">
-          {/* Mobile-only nav. Begin is the primary CTA for new visitors,
-              but a returning user must always have a visible path to
-              login on mobile or they get stuck. Earlier version hid Log
-              in entirely on mobile and a paying user reported they
-              could not find a way back in. The Log in link sits as a
-              quiet secondary alongside Begin. */}
-          <a href={LOGIN_URL} className="nav-login-mobile">
+          {/* Mobile-only nav. The primary CTA in the header is Log in,
+              not Begin. The giant 'Begin your journey' button sits
+              just below the hero copy and serves new visitors. The
+              header exists so returning users have an obvious path
+              back into the app from any scroll position. Earlier
+              version had Begin in the header and no Log in path on
+              mobile; a paying user reported they got stuck. */}
+          <a href={LOGIN_URL} className="btn primary nav-cta">
             Log in
-          </a>
-          <a href={APP_URL} className="btn primary nav-cta">
-            Begin
           </a>
         </div>
       </nav>
