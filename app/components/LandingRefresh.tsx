@@ -23,12 +23,15 @@ export default function LandingRefresh() {
           </a>
         </div>
         <div className="links cta-only">
-          {/* Mobile-only nav: prioritize signup over login. New
-              visitors on phones outnumber returning users at this
-              surface; the fixed top CTA should serve conversion,
-              not session restore. Login remains accessible from the
-              hero secondary CTA and the footer. Codex landing
-              audit P1.1. */}
+          {/* Mobile-only nav. Begin is the primary CTA for new visitors,
+              but a returning user must always have a visible path to
+              login on mobile or they get stuck. Earlier version hid Log
+              in entirely on mobile and a paying user reported they
+              could not find a way back in. The Log in link sits as a
+              quiet secondary alongside Begin. */}
+          <a href={LOGIN_URL} className="nav-login-mobile">
+            Log in
+          </a>
           <a href={APP_URL} className="btn primary nav-cta">
             Begin
           </a>

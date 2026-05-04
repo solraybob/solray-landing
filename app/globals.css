@@ -172,6 +172,23 @@ nav.top-nav .links a:not(.btn):hover::after {
 }
 nav.top-nav .links.cta-only { display: none; }
 
+/* Mobile-only "Log in" sits as a quiet text link to the left of the
+   primary Begin CTA. Visible enough that returning users find it,
+   subtle enough that it does not compete with the conversion CTA. */
+.nav-login-mobile {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 11px 14px;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+.nav-login-mobile:hover {
+  color: var(--text-primary);
+}
+
 .btn.nav-cta {
   padding: 11px 44px;
   border-radius: 999px;
@@ -1011,7 +1028,7 @@ footer.site .socials svg {
   .philosophy .author-strip { grid-template-columns: 1fr; gap: 18px; }
   section.pad { padding: 88px 0; }
   nav.top-nav .links { display: none; }
-  nav.top-nav .links.cta-only { display: flex; }
+  nav.top-nav .links.cta-only { display: flex; align-items: center; gap: 4px; }
 }
 
 /* Phone (≤640px) ------------------------------------------------------ */
