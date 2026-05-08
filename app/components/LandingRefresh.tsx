@@ -41,7 +41,7 @@ export default function LandingRefresh() {
         <div className="starfield"></div>
         <div className="hero-inner">
           <div className="sun-mark" aria-hidden="true">
-            <Image src="/icon-512.png" alt="" width={150} height={150} priority />
+            <Image src="/solray-sun.png" alt="" width={150} height={150} priority />
           </div>
           <div className="brand-lockup">
             <div className="name">Solray</div>
@@ -178,7 +178,7 @@ export default function LandingRefresh() {
             <div className="phone">
               <div className="phone-screen">
                 <div className="chat-avatar" aria-hidden="true">
-                  <Image src="/icon-512.png" alt="" width={44} height={44} />
+                  <Image src="/solray-sun.png" alt="" width={44} height={44} />
                 </div>
                 <div className="chat-handle">Higher Self</div>
                 <div className="chat-kicker">Oracle · remembers what matters</div>
