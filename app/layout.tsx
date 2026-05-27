@@ -34,6 +34,14 @@ export const metadata: Metadata = {
       "A spiritual companion powered by live astrology, Human Design, and Gene Keys. Your chart. Your reading. Every day.",
     type: "website",
   },
+  alternates: {
+    canonical: "https://solray.ai",
+    languages: {
+      "en": "https://solray.ai",
+      "es": "https://solray.ai/es",
+      "x-default": "https://solray.ai",
+    },
+  },
 };
 
 export default function RootLayout({
