@@ -176,20 +176,21 @@ export default function LandingRefreshES() {
           <div className="oracle-frame">
             <div className="phone">
               <div className="phone-screen">
-                <div className="chat-avatar" aria-hidden="true">
-                  <Image src="/solray-sun.png" alt="" width={44} height={44} />
-                </div>
                 <div className="chat-handle">Tu Yo Superior</div>
                 <div className="chat-kicker">ORÁCULO</div>
                 <div className="chat-scroll">
                   <div className="bubble user">¿Por qué he estado tan inquieta esta semana?</div>
+                  <div className="msg-label">Tú</div>
                   <div className="bubble oracle">
                     Marte entró en tu casa 3 el martes y está cuadrando a tu Luna natal. Lo sientes como presión para moverte, para decir algo, para dejar de dar vueltas. Eso es tu centro Raíz abierto amplificando el tránsito. No es un defecto. Es <em>información</em>.
                   </div>
+                  <div className="msg-label">Oráculo</div>
                   <div className="bubble user">¿Qué hago con eso?</div>
+                  <div className="msg-label">Tú</div>
                   <div className="bubble oracle">
                     Caminatas cortas. Bordes duros en decisiones pequeñas. Eres una 3/5, aprendes por contacto. Elige una cosa hoy y chócate con ella a propósito. El viernes Marte sale de la cuadratura y la presión cae.
                   </div>
+                  <div className="msg-label">Oráculo</div>
                 </div>
                 <div className="chat-input">
                   <div className="box">Habla con libertad…</div>

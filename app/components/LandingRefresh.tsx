@@ -177,20 +177,21 @@ export default function LandingRefresh() {
           <div className="oracle-frame">
             <div className="phone">
               <div className="phone-screen">
-                <div className="chat-avatar" aria-hidden="true">
-                  <Image src="/solray-sun.png" alt="" width={44} height={44} />
-                </div>
                 <div className="chat-handle">Your Higher Self</div>
                 <div className="chat-kicker">ORACLE</div>
                 <div className="chat-scroll">
                   <div className="bubble user">Why have I been so restless this week?</div>
+                  <div className="msg-label">You</div>
                   <div className="bubble oracle">
                     Mars entered your 3rd house on Tuesday and is squaring your natal Moon. You feel it as pressure to move, to say something, to stop circling. That is your open Root center amplifying the transit. It is not a flaw. It is <em>information</em>.
                   </div>
+                  <div className="msg-label">Oracle</div>
                   <div className="bubble user">What do I do with it?</div>
+                  <div className="msg-label">You</div>
                   <div className="bubble oracle">
                     Short walks. Hard edges on small decisions. You are a 3/5, you learn by contact. Pick one thing today and bump into it on purpose. By Friday Mars moves off the square and the pressure drops.
                   </div>
+                  <div className="msg-label">Oracle</div>
                 </div>
                 <div className="chat-input">
                   <div className="box">Speak freely…</div>
