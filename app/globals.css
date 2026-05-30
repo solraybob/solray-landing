@@ -505,7 +505,10 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 .phone-screen {
   height: 100%;
   border-radius: 30px;
-  background: var(--forest-deep);
+  /* Soft amber glow at the top, the app chat's signature warm light. */
+  background:
+    radial-gradient(120% 55% at 50% 0%, rgba(216, 162, 74, 0.08), transparent 60%),
+    var(--forest-deep);
   overflow: hidden;
   display: flex; flex-direction: column;
   padding: 42px 18px 18px;
