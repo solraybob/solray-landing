@@ -179,8 +179,8 @@ export default function LandingRefreshES() {
                 <div className="chat-avatar" aria-hidden="true">
                   <Image src="/solray-sun.png" alt="" width={44} height={44} />
                 </div>
-                <div className="chat-handle">Yo Superior</div>
-                <div className="chat-kicker">Oráculo · recuerda lo que importa</div>
+                <div className="chat-handle">Tu Yo Superior</div>
+                <div className="chat-kicker">ORÁCULO</div>
                 <div className="chat-scroll">
                   <div className="bubble user">¿Por qué he estado tan inquieta esta semana?</div>
                   <div className="bubble oracle">

@@ -521,64 +521,78 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   justify-content: center;
 }
 .chat-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* Header matches the app chat: a wisteria 'Your Higher Self' eyebrow over a
+   serif ORACLE title (the .chat-kicker is repurposed as that title). */
 .chat-handle {
   text-align: center;
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--pearl);
-  margin-bottom: 6px;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--wisteria);
+  margin-bottom: 4px;
 }
 .chat-kicker {
   text-align: center;
-  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--moss-dim);
-  margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.15em;
+  color: var(--pearl);
+  margin-bottom: 22px;
 }
 .chat-scroll {
-  flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 10px;
+  flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 16px;
   padding: 4px 2px 12px;
 }
 .bubble {
-  max-width: 82%; padding: 10px 14px; border-radius: 14px;
   font-size: 12.5px; line-height: 1.55;
 }
+/* User: a subtle wisteria-tinted bubble, like the app. */
 .bubble.user {
   align-self: flex-end;
-  background: linear-gradient(135deg, #9b86a0, #5a4a5e);
-  color: var(--pearl);
+  max-width: 82%;
+  padding: 9px 13px;
+  border-radius: 16px;
   border-bottom-right-radius: 4px;
+  background: rgba(155, 134, 160, 0.12);
+  border: 1px solid rgba(155, 134, 160, 0.18);
+  color: rgba(236, 231, 221, 0.85);
 }
+/* Oracle: flowing serif prose, NO bubble, exactly like the app reply. */
 .bubble.oracle {
-  align-self: flex-start;
-  background: rgba(155, 134, 160, 0.05);
-  border: 2px solid rgba(155, 134, 160, 0.3);
-  color: var(--pearl-dim);
-  border-bottom-left-radius: 4px;
+  align-self: stretch;
+  max-width: 100%;
+  padding: 0 2px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(236, 231, 221, 0.82);
 }
 .bubble.oracle em { color: var(--wisteria); font-style: italic; }
 .chat-input {
   display: flex; gap: 8px;
-  padding-top: 10px;
+  padding-top: 12px;
   border-top: 1px solid var(--forest-border);
 }
 .chat-input .box {
-  flex: 1; height: 38px;
-  border: 1px solid var(--forest-border);
-  background: var(--forest-card);
-  border-radius: 10px;
-  padding: 0 12px;
+  flex: 1; height: 40px;
+  border: 1px solid rgba(236, 231, 221, 0.12);
+  background: rgba(236, 231, 221, 0.06);
+  border-radius: 22px;
+  padding: 0 16px;
   display: flex; align-items: center;
   color: var(--moss-dim);
-  font-size: 11px;
+  font-size: 12px;
   font-style: italic;
 }
 .chat-input .mic, .chat-input .send {
-  width: 38px; height: 38px; border-radius: 10px;
+  width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
 }
 .chat-input .mic { background: rgba(106, 134, 146, 0.12); color: var(--mist); border: 1px solid rgba(106,134,146,0.35); }
-.chat-input .send { background: linear-gradient(135deg, var(--wisteria), #5a4a5e); color: var(--pearl); }
+.chat-input .send { background: rgba(216, 162, 74, 0.16); color: #D8A24A; border: 1px solid rgba(216, 162, 74, 0.4); }
 
 .oracle-copy h2 { margin-bottom: 24px; }
 /* Eyebrow + attribution in the Oracle section pick up the wisteria tint

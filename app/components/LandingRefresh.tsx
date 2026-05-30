@@ -180,8 +180,8 @@ export default function LandingRefresh() {
                 <div className="chat-avatar" aria-hidden="true">
                   <Image src="/solray-sun.png" alt="" width={44} height={44} />
                 </div>
-                <div className="chat-handle">Higher Self</div>
-                <div className="chat-kicker">Oracle · remembers what matters</div>
+                <div className="chat-handle">Your Higher Self</div>
+                <div className="chat-kicker">ORACLE</div>
                 <div className="chat-scroll">
                   <div className="bubble user">Why have I been so restless this week?</div>
                   <div className="bubble oracle">
