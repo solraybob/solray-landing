@@ -219,7 +219,7 @@ export default function LandingRefreshES() {
                 y te recuerda.
               </h2>
               <p className="body">
-                Pregunta lo que sea. El cielo de hoy, una conversación difícil, el patrón que repites, la decisión que estás postergando. El Oráculo responde desde dentro de tu carta específica, tus tránsitos del momento y lo que ya le has contado. No un horóscopo genérico. No un chatbot. Una conversación con la versión del cielo que te observa.
+                Pregunta lo que sea. El cielo de hoy, una conversación difícil, el patrón que repites, la decisión que estás postergando. El Oráculo responde desde dentro de tu carta específica, tus tránsitos del momento y todo lo que ya le has contado. Habla desde la configuración exacta de tu nacimiento, como lo haría alguien que te conoce desde hace años, si además pudiera leer el cielo.
               </p>
               <div className="quote">
                 &ldquo;No estás aquí para ser la Generadora de todos. Eres una Generadora 2/4. Tu trabajo es cerrar la puerta, hacer la cosa, y esperar a que los que ya están cerca te saquen.&rdquo;
@@ -244,7 +244,7 @@ export default function LandingRefreshES() {
                 para tu carta.
               </h2>
               <p className="body">
-                Cada mañana Solray calcula qué está haciendo el cielo contra tu carta natal específicamente, nombra los aspectos, mide la energía en cuatro canales que puedes sentir, y te da una frase clara sobre cómo gastar el día. Sin afirmaciones vagas. Posiciones reales, orbes reales, guía real.
+                Cada mañana Solray calcula qué está haciendo el cielo contra tu carta natal específicamente, nombra los aspectos, mide la energía en cuatro canales que puedes sentir, y te da una frase clara sobre cómo pasar el día. Cada línea remite a una posición real en el cielo, medida al grado.
               </p>
               <p className="body" style={{ marginTop: 18 }}>
                 Léelo en cuarenta segundos. Cárgalo todo el día.
@@ -383,7 +383,7 @@ export default function LandingRefreshES() {
             Un solo plan. Todo dentro.
           </h2>
           <p className="kicker" style={{ marginTop: 16 }}>
-            Sin niveles. Sin desbloqueos ocultos. Un precio, el mapa entero.
+            Un precio abre el mapa entero. Nada espera detrás de un nivel superior.
           </p>
 
           <div className="pricing-card">
@@ -401,7 +401,7 @@ export default function LandingRefreshES() {
                 <span className="tick">✓</span> Pronóstico diario calculado contra tu carta de nacimiento, con una acción para el día
               </li>
               <li>
-                <span className="tick">✓</span> El Oráculo, consejo en chat que lee tu carta y te recuerda
+                <span className="tick">✓</span> El Oráculo, un consejo en chat que responde desde dentro de tu carta y recuerda cada conversación
               </li>
               <li>
                 <span className="tick">✓</span> Entrada de voz, para que hables la pregunta en lugar de escribirla
@@ -423,7 +423,7 @@ export default function LandingRefreshES() {
               </a>
             </div>
           </div>
-          <p className="note">Calculado con precisión de Swiss Ephemeris. Tus datos siguen siendo tuyos.</p>
+          <p className="note">Preciso al grado. Tus datos siguen siendo tuyos.</p>
         </div>
       </section>
 

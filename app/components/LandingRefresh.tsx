@@ -220,7 +220,7 @@ export default function LandingRefresh() {
                 and remembers you.
               </h2>
               <p className="body">
-                Ask anything. Today&apos;s sky, a hard conversation, the pattern you keep running, the decision you&apos;re stalling on. The Oracle answers from inside your specific chart, your current transits, and what you&apos;ve told it before. Not a generic horoscope. Not a chatbot. A conversation with the version of the sky that&apos;s watching you.
+                Ask anything. Today&apos;s sky, a hard conversation, the pattern you keep running, the decision you&apos;re stalling on. The Oracle answers from inside your specific chart, your current transits, and everything you have already told it. It speaks from the exact configuration of your birth, the way someone who has known you for years might, if they could also read the sky.
               </p>
               <div className="quote">
                 &ldquo;You are not here to be everyone&apos;s Generator. You&apos;re a 2/4 Generator. Your work is to close the door, do the thing, and wait for the ones already near you to pull you back out.&rdquo;
@@ -245,7 +245,7 @@ export default function LandingRefresh() {
                 for your chart.
               </h2>
               <p className="body">
-                Each morning Solray computes what the sky is doing against your birth chart specifically, names the aspects, measures the energy across four channels you can feel, and gives you one clear sentence about how to spend the day. No vague affirmations. Actual positions, actual orbs, actual guidance.
+                Each morning Solray computes what the sky is doing against your birth chart specifically, names the aspects, measures the energy across four channels you can feel, and gives you one clear sentence about how to spend the day. Every line traces back to a real position in the sky, measured to the degree.
               </p>
               <p className="body" style={{ marginTop: 18 }}>
                 Read it in forty seconds. Carry it all day.
@@ -391,7 +391,7 @@ export default function LandingRefresh() {
             One tier. Everything in it.
           </h2>
           <p className="kicker" style={{ marginTop: 16 }}>
-            No feature tiers. No hidden unlocks. One price, the whole map.
+            One price opens the whole map. Nothing waits behind a higher tier.
           </p>
 
           <div className="pricing-card">
@@ -409,7 +409,7 @@ export default function LandingRefresh() {
                 <span className="tick">✓</span> Daily forecast computed against your birth chart, with a single action for the day
               </li>
               <li>
-                <span className="tick">✓</span> The Oracle, chat counsel that reads your chart and remembers you
+                <span className="tick">✓</span> The Oracle, a chat counsel that answers from inside your chart and recalls every conversation
               </li>
               <li>
                 <span className="tick">✓</span> Voice input, so you can speak the question instead of typing it
@@ -431,7 +431,7 @@ export default function LandingRefresh() {
               </a>
             </div>
           </div>
-          <p className="note">Calculated with Swiss Ephemeris precision. Your data stays yours.</p>
+          <p className="note">Precise to the degree. Your data stays yours.</p>
         </div>
       </section>
 
