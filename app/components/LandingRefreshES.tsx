@@ -124,9 +124,9 @@ export default function LandingRefreshES() {
               </div>
               <h3 className="card-heading">Astrología occidental</h3>
               <p>
-                Planetas, casas, aspectos, tránsitos, progresiones. Interpretación basada en la naturaleza, no horóscopo de tabloide. La Tierra rige a Tauro, el cuerpo del suelo. Ceres rige a Virgo, la guardiana de la cosecha. Las regencias leídas a través del planeta que realmente hace el trabajo.
+                Planetas, casas, aspectos, tránsitos, progresiones, leídos como un mapa vivo de dónde llegaste y lo que el cielo le está haciendo ahora. Calculado al grado exacto desde tu momento de nacimiento, no sacado de una columna de signo solar.
               </p>
-              <div className="note astro">Regencias basadas en la naturaleza</div>
+              <div className="note astro">Al grado exacto</div>
             </div>
             <div className="card">
               <div className="glyph hd" aria-hidden="true">

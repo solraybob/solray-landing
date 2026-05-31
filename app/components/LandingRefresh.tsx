@@ -123,9 +123,9 @@ export default function LandingRefresh() {
               </div>
               <h3 className="card-heading">Western Astrology</h3>
               <p>
-                Planets, houses, aspects, transits, progressions. Nature-based sign interpretation, not tabloid horoscope. Earth rules Taurus, the body of the soil. Ceres rules Virgo, the keeper of the harvest. The rulerships read through the planet that actually does the work.
+                Planets, houses, aspects, transits, progressions, read as a living map of where you arrived and what the sky is doing to it now. Calculated to the exact degree from your birth moment, not pulled from a sun-sign column.
               </p>
-              <div className="note astro">Nature-based rulerships</div>
+              <div className="note astro">To the exact degree</div>
             </div>
             <div className="card">
               <div className="glyph hd" aria-hidden="true">
