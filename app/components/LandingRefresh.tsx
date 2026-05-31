@@ -18,6 +18,7 @@ export default function LandingRefresh() {
           <a href="#oracle">The Oracle</a>
           <a href="#today">Today</a>
           <a href="#philosophy">Living By Design</a>
+          <a href="/es" className="lang-switch" aria-label="Versión en español">ES</a>
           <a href={LOGIN_URL} className="btn primary nav-cta">
             Log in
           </a>
@@ -512,6 +513,7 @@ export default function LandingRefresh() {
             <a href="/legal">Privacy</a>
             <a href="/legal">Terms</a>
             <a href="mailto:hello@solray.ai">Contact</a>
+            <a href="/es">Español</a>
           </nav>
         </div>
       </footer>
