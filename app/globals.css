@@ -172,6 +172,23 @@ nav.top-nav .links a:not(.btn):hover::after {
 }
 nav.top-nav .links.cta-only { display: none; }
 
+/* Language switch: a small bordered pill so it reads clearly as a toggle,
+   not as another text link. No hover underline. */
+nav.top-nav .links a.lang-switch {
+  border: 1px solid var(--forest-border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  transition: color 280ms ease, border-color 280ms ease;
+}
+nav.top-nav .links a.lang-switch:hover {
+  color: var(--pearl);
+  border-color: var(--pearl-dim);
+}
+nav.top-nav .links a.lang-switch::after { display: none; }
+
 /* Mobile-only "Log in" sits as a quiet text link to the left of the
    primary Begin CTA. Visible enough that returning users find it,
    subtle enough that it does not compete with the conversion CTA. */

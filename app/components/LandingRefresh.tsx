@@ -31,6 +31,7 @@ export default function LandingRefresh() {
               back into the app from any scroll position. Earlier
               version had Begin in the header and no Log in path on
               mobile; a paying user reported they got stuck. */}
+          <a href="/es" className="lang-switch" aria-label="Versión en español">ES</a>
           <a href={LOGIN_URL} className="btn primary nav-cta">
             Log in
           </a>

@@ -33,6 +33,7 @@ export default function LandingRefreshES() {
           </a>
         </div>
         <div className="links cta-only">
+          <a href="/" className="lang-switch" aria-label="English version">EN</a>
           <a href={LOGIN_URL} className="btn primary nav-cta">
             Iniciar sesión
           </a>
