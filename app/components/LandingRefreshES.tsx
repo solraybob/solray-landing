@@ -1,6 +1,37 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import SkyTaste from "./SkyTaste";
+
+const SIGNOS: Record<string, string> = {
+  Capricorn: "Capricornio", Aquarius: "Acuario", Pisces: "Piscis",
+  Aries: "Aries", Taurus: "Tauro", Gemini: "Géminis", Cancer: "Cáncer",
+  Leo: "Leo", Virgo: "Virgo", Libra: "Libra", Scorpio: "Escorpio",
+  Sagittarius: "Sagitario",
+};
+
+function signoSolar(d: Date): string {
+  const m = d.getMonth() + 1, day = d.getDate();
+  const signs: [number, number, string][] = [
+    [1, 20, "Capricorn"], [2, 19, "Aquarius"], [3, 21, "Pisces"],
+    [4, 20, "Aries"], [5, 21, "Taurus"], [6, 21, "Gemini"],
+    [7, 23, "Cancer"], [8, 23, "Leo"], [9, 23, "Virgo"],
+    [10, 23, "Libra"], [11, 22, "Scorpio"], [12, 22, "Sagittarius"],
+  ];
+  let en = "Capricorn";
+  for (const [mm, cutoff, sign] of signs) {
+    if (m === mm) { en = day < cutoff ? sign : signs[mm % 12][2]; break; }
+  }
+  return SIGNOS[en];
+}
+
+function faseLunar(d: Date): string {
+  const ref = Date.UTC(2000, 0, 6, 18, 14);
+  const days = (d.getTime() - ref) / 86400000;
+  const phase = ((days % 29.53059) + 29.53059) % 29.53059;
+  return phase < 14.765 ? "creciente" : "menguante";
+}
 
 // LandingRefreshES, Spanish (Latin American neutral) landing page.
 //
@@ -102,6 +133,10 @@ export default function LandingRefreshES() {
 
       <div className="rule"></div>
 
+      <SkyTaste locale="es" />
+
+      <div className="rule"></div>
+
       {/* El Mapa */}
       <section id="map">
         <div className="wrap">
@@ -163,7 +198,7 @@ export default function LandingRefreshES() {
               <p>
                 Tus cuatro puertas principales leídas como sombra, don, siddhi. Contemplación, no prescripción. La corriente que se te pide mirar, la frecuencia debajo de ella, la gracia esperando del otro lado.
               </p>
-              <div className="note gk">Obra de vida + 11 principales</div>
+              <div className="note gk">El perfil hologenético</div>
             </div>
           </div>
         </div>
@@ -189,7 +224,7 @@ export default function LandingRefreshES() {
                   <div className="bubble user">¿Qué hago con eso?</div>
                   <div className="msg-label">Tú</div>
                   <div className="bubble oracle">
-                    Caminatas cortas. Bordes duros en decisiones pequeñas. Eres una 3/5, aprendes por contacto. Elige una cosa hoy y chócate con ella a propósito. El viernes Marte sale de la cuadratura y la presión cae.
+                    Caminatas cortas. Bordes duros en decisiones pequeñas. Eres una 2/4: la claridad llega cuando cierras la puerta, y las respuestas vienen de la gente que ya te quiere. Tómate una hora a solas hoy, y luego contesta la llamada que te encuentre. El viernes Marte sale de la cuadratura y la presión cae.
                   </div>
                   <div className="msg-label">Oráculo</div>
                 </div>
@@ -253,8 +288,7 @@ export default function LandingRefreshES() {
             </div>
 
             <div className="today-widget">
-              <div className="date">Lunes, 20 de abril</div>
-              <div className="sky">Sol en Tauro · Luna creciente en Virgo</div>
+              <TodayHeaderES />
 
               <div className="bar-row">
                 <span className="bar-label">Mental</span>
@@ -444,6 +478,8 @@ export default function LandingRefreshES() {
         </div>
       </section>
 
+      <FaqSectionES />
+
       {/* Footer */}
       <footer className="site">
         <div className="wrap">
@@ -469,6 +505,78 @@ export default function LandingRefreshES() {
           </nav>
         </div>
       </footer>
+    </>
+  );
+}
+
+function TodayHeaderES() {
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => setNow(new Date()), []);
+  if (!now) {
+    return (
+      <>
+        <div className="date">Hoy</div>
+        <div className="sky">Calculado contra tu carta cada mañana</div>
+      </>
+    );
+  }
+  const date = now.toLocaleDateString("es-ES", {
+    weekday: "long", day: "numeric", month: "long",
+  });
+  const cap = date.charAt(0).toUpperCase() + date.slice(1);
+  return (
+    <>
+      <div className="date">{cap}</div>
+      <div className="sky">
+        Sol en {signoSolar(now)} · Luna {faseLunar(now)}
+      </div>
+    </>
+  );
+}
+
+const FAQS_ES: [string, string][] = [
+  [
+    "No sé mi hora exacta de nacimiento.",
+    "Empieza con lo que sabes. Tu fecha y lugar de nacimiento ya le dan a Solray tu Sol, tu camino de vida, tus Claves Genéticas y los planetas lentos, con exactitud. El ascendente, las casas y partes del Diseño Humano se afinan cuando añades la hora, y puedes actualizarla en ajustes cuando la encuentres (un certificado de nacimiento suele tenerla); todo se recalcula al instante.",
+  ],
+  [
+    "¿Esto es una IA inventando cosas?",
+    "Los cálculos no son IA. Cada posición se calcula con Swiss Ephemeris, el mismo motor que usan los astrólogos profesionales, al grado exacto. El Oráculo habla desde esos hechos calculados, y cada respuesta se verifica contra tu carta real antes de que la veas. Si una frase no coincide con tu cielo, no te llega.",
+  ],
+  [
+    "¿Qué pasa con mis datos?",
+    "Tus datos de nacimiento y tus conversaciones son tuyos. No vendemos datos, no ponemos anuncios, y las personas que añades en Almas nunca se convierten en cuentas ni reciben mensajes. Puedes borrar tu cuenta y todo lo que contiene en cualquier momento.",
+  ],
+  [
+    "¿Y si quiero cancelar?",
+    "Cancela dentro de la app en dos toques, cuando quieras. Si cancelas durante los cinco días gratis no pagas nada. Si cancelas después, tu acceso simplemente llega hasta el final del mes que ya pagaste.",
+  ],
+  [
+    "¿En qué se diferencia de otras apps de astrología?",
+    "Tres sistemas completos, astrología occidental, Diseño Humano y Claves Genéticas, calculados juntos desde un mismo momento de nacimiento y puestos a dialogar entre sí. Una lectura diaria calculada contra tu carta, no contra tu signo solar. Y un Oráculo que recuerda cada conversación, así que se vuelve más preciso contigo cuanto más te quedas. Sin columnas de horóscopo en ningún sitio.",
+  ],
+];
+
+function FaqSectionES() {
+  return (
+    <>
+      <div className="rule"></div>
+      <section className="faq" id="faq">
+        <div className="narrow">
+          <span className="eyebrow">Preguntas</span>
+          <h2 className="section" style={{ marginTop: 14 }}>
+            Preguntado, respondido.
+          </h2>
+          <div className="faq-list">
+            {FAQS_ES.map(([q, a]) => (
+              <details key={q} className="faq-item">
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

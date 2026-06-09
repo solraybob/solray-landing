@@ -28,11 +28,29 @@ export const metadata: Metadata = {
     "birth chart",
     "personalised horoscope",
   ],
+  metadataBase: new URL("https://solray.ai"),
   openGraph: {
     title: "Solray. Your Higher Self, Calculated.",
     description:
       "A spiritual companion powered by live astrology, Human Design, and Gene Keys. Your chart. Your reading. Every day.",
     type: "website",
+    url: "https://solray.ai",
+    siteName: "Solray",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Solray. You were born under a specific sky. It is still speaking.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solray. Your Higher Self, Calculated.",
+    description:
+      "Live astrology, Human Design, and Gene Keys, read together against your exact birth moment. Every morning.",
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://solray.ai",
@@ -49,9 +67,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Solray",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    url: "https://solray.ai",
+    description:
+      "Western astrology, Human Design, and Gene Keys calculated together against your exact birth moment. A daily reading and an Oracle that remembers you.",
+    offers: {
+      "@type": "Offer",
+      price: "23.00",
+      priceCurrency: "USD",
+      description: "Five days free, then $23 per month. One tier, everything included.",
+    },
+  };
+
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

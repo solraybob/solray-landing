@@ -1,9 +1,37 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import SkyTaste from "./SkyTaste";
 
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
+
+// Real current date + sun sign + moon phase for the Today specimen, so the
+// page that promises "to the exact degree" never shows last April. Sun sign
+// by date range and moon phase by synodic approximation are both exact
+// enough at sign/phase level; the numbers in the card stay illustrative.
+function sunSignFor(d: Date): string {
+  const m = d.getMonth() + 1, day = d.getDate();
+  const signs: [number, number, string][] = [
+    [1, 20, "Capricorn"], [2, 19, "Aquarius"], [3, 21, "Pisces"],
+    [4, 20, "Aries"], [5, 21, "Taurus"], [6, 21, "Gemini"],
+    [7, 23, "Cancer"], [8, 23, "Leo"], [9, 23, "Virgo"],
+    [10, 23, "Libra"], [11, 22, "Scorpio"], [12, 22, "Sagittarius"],
+  ];
+  for (const [mm, cutoff, sign] of signs) {
+    if (m === mm) return day < cutoff ? sign : signs[mm % 12][2];
+  }
+  return "Capricorn";
+}
+
+function moonPhaseWord(d: Date): string {
+  // New moon reference: 2000-01-06 18:14 UTC; synodic month 29.53059 days.
+  const ref = Date.UTC(2000, 0, 6, 18, 14);
+  const days = (d.getTime() - ref) / 86400000;
+  const phase = ((days % 29.53059) + 29.53059) % 29.53059;
+  return phase < 14.765 ? "waxing" : "waning";
+}
 
 export default function LandingRefresh() {
   return (
@@ -101,6 +129,10 @@ export default function LandingRefresh() {
 
       <div className="rule"></div>
 
+      <SkyTaste locale="en" />
+
+      <div className="rule"></div>
+
       {/* The Map */}
       <section id="map">
         <div className="wrap">
@@ -165,7 +197,7 @@ export default function LandingRefresh() {
               <p>
                 Your four primary gates read as shadow, gift, siddhi. Contemplation, not prescription. The current you&apos;re being asked to turn toward, the frequency under it, the grace waiting on the other side.
               </p>
-              <div className="note gk">Lifework + primary 11</div>
+              <div className="note gk">The hologenetic profile</div>
             </div>
           </div>
         </div>
@@ -191,7 +223,7 @@ export default function LandingRefresh() {
                   <div className="bubble user">What do I do with it?</div>
                   <div className="msg-label">You</div>
                   <div className="bubble oracle">
-                    Short walks. Hard edges on small decisions. You are a 3/5, you learn by contact. Pick one thing today and bump into it on purpose. By Friday Mars moves off the square and the pressure drops.
+                    Short walks. Hard edges on small decisions. You are a 2/4: clarity comes when you close the door, and the answers arrive through people who already love you. Take one hour alone today, then answer the call that finds you. By Friday Mars moves off the square and the pressure drops.
                   </div>
                   <div className="msg-label">Oracle</div>
                 </div>
@@ -255,8 +287,7 @@ export default function LandingRefresh() {
             </div>
 
             <div className="today-widget">
-              <div className="date">Monday, 20 April</div>
-              <div className="sky">Sun in Taurus · Moon waxing in Virgo</div>
+              <TodayHeader />
 
               <div className="bar-row">
                 <span className="bar-label">Mental</span>
@@ -453,6 +484,8 @@ export default function LandingRefresh() {
         </div>
       </section>
 
+      <FaqSection />
+
       {/* Footer */}
       <footer className="site">
         <div className="wrap">
@@ -518,6 +551,79 @@ export default function LandingRefresh() {
           </nav>
         </div>
       </footer>
+    </>
+  );
+}
+
+function TodayHeader() {
+  // Rendered client-side after mount so SSR and client never disagree
+  // about "today" across a midnight boundary.
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => setNow(new Date()), []);
+  if (!now) {
+    return (
+      <>
+        <div className="date">Today</div>
+        <div className="sky">Computed against your chart each morning</div>
+      </>
+    );
+  }
+  const date = now.toLocaleDateString("en-GB", {
+    weekday: "long", day: "numeric", month: "long",
+  });
+  return (
+    <>
+      <div className="date">{date}</div>
+      <div className="sky">
+        Sun in {sunSignFor(now)} · Moon {moonPhaseWord(now)}
+      </div>
+    </>
+  );
+}
+
+const FAQS: [string, string][] = [
+  [
+    "I don't know my exact birth time.",
+    "Start with what you know. Your birth date and place already give Solray your Sun, your life path, your Gene Keys and the slower planets, exactly. The rising sign, houses and parts of Human Design sharpen once you add a time, and you can update it in settings whenever you find it (a birth certificate usually has it); everything recalculates instantly.",
+  ],
+  [
+    "Is this AI making things up?",
+    "The calculations are not AI. Every position is computed with Swiss Ephemeris, the same engine professional astrologers use, to the exact degree. The Oracle speaks from those computed facts, and every reply is checked against your actual chart before you see it. If a sentence does not match your sky, it does not reach you.",
+  ],
+  [
+    "What happens to my data?",
+    "Your birth data and your conversations stay yours. We do not sell data, we do not run ads, and the people you add in Souls never become accounts or get contacted. You can delete your account and everything in it at any time.",
+  ],
+  [
+    "What if I want to cancel?",
+    "Cancel inside the app in two taps, any time. Cancel during the five free days and you pay nothing at all. Cancel later and your access simply runs to the end of the month you already paid for.",
+  ],
+  [
+    "How is this different from other astrology apps?",
+    "Three complete systems, Western astrology, Human Design and Gene Keys, calculated together from one birth moment and allowed to speak to each other. A daily reading computed against your chart, not your sun sign. And an Oracle that remembers every conversation, so it gets more precise about you the longer you stay. No horoscope columns anywhere.",
+  ],
+];
+
+function FaqSection() {
+  return (
+    <>
+      <div className="rule"></div>
+      <section className="faq" id="faq">
+        <div className="narrow">
+          <span className="eyebrow">Questions</span>
+          <h2 className="section" style={{ marginTop: 14 }}>
+            Asked, answered.
+          </h2>
+          <div className="faq-list">
+            {FAQS.map(([q, a]) => (
+              <details key={q} className="faq-item">
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
