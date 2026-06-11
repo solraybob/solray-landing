@@ -58,7 +58,7 @@ export default function SupportPage() {
     <main
       style={{
         minHeight: "100vh",
-        background: "var(--forest-deep)",
+        background: "transparent",
         color: "var(--pearl)",
         padding: "72px 24px 96px",
       }}
@@ -88,7 +88,7 @@ export default function SupportPage() {
         </h1>
         <p style={{ color: "var(--pearl-dim)", fontSize: 16, lineHeight: 1.6, marginTop: 18 }}>
           The fastest way to reach a person is email. Write to us at{" "}
-          <a href={`mailto:${CONTACT}`} style={{ color: "var(--pearl)" }}>
+          <a href={`mailto:${CONTACT}`} style={{ color: "var(--amber)" }}>
             {CONTACT}
           </a>{" "}
           and we will get back to you. Below are answers to the most common
@@ -128,10 +128,10 @@ export default function SupportPage() {
           }}
         >
           Solray, by Bobby ehf., Iceland. Contact{" "}
-          <a href={`mailto:${CONTACT}`} style={{ color: "var(--pearl)" }}>
+          <a href={`mailto:${CONTACT}`} style={{ color: "var(--amber)" }}>
             {CONTACT}
           </a>
-          . <a href="/" style={{ color: "var(--pearl)" }}>Back to solray.ai</a>
+          . <a href="/" style={{ color: "var(--amber)" }}>Back to solray.ai</a>
         </div>
       </div>
     </main>
