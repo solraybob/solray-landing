@@ -90,9 +90,12 @@ const ASPECT_MAX_ORB: Record<string, number> = {
 };
 
 // Chart convention: 0 degrees Aries at nine o'clock, longitudes increase
-// counterclockwise.
+// counterclockwise (Cancer 0 at the bottom, Libra 0 at three o'clock,
+// Capricorn 0 at the top), matching every printed ephemeris wheel.
+// (180 - lon) mirrored the wheel vertically: with SVG's y axis growing
+// downward, the minus sign sent rising longitudes clockwise instead.
 function point(lon: number, r: number, c: number): [number, number] {
-  const th = ((180 - lon) * Math.PI) / 180;
+  const th = ((180 + lon) * Math.PI) / 180;
   return [c + r * Math.cos(th), c - r * Math.sin(th)];
 }
 
