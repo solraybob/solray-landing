@@ -1329,14 +1329,105 @@ footer.site .socials svg {
 }
 
 /* ===========================================================================
-   LIFE LAYER. Motion grammar for the page. Every rule below is gated behind
-   html.alive, which LifeLayer.tsx only adds when JavaScript is present AND
-   the visitor has not asked for reduced motion. Without it, the page is the
-   same still page it always was. Transforms and opacity only; nothing here
-   can cause layout work.
+   LIFE LAYER v2. The cosmos edition. Everything still gates behind
+   html.alive; the still page without JS is untouched.
    ======================================================================== */
 
-/* --- Reveals ------------------------------------------------------------ */
+/* --- Full-page cosmos ------------------------------------------------------
+   z-index -1 paints above the body background and below all content, so the
+   sky runs continuously behind every section. */
+.alv-cosmos {
+  position: fixed; inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.alv-cosmos canvas { position: absolute; inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); }
+
+/* Sections that used to carry opaque grounds go translucent so the one sky
+   shows through; their glows stay. */
+.alive section.hero {
+  background: radial-gradient(ellipse 60% 45% at 50% 42%, rgba(243, 146, 48, 0.06) 0%, transparent 70%);
+}
+.alive .invocation {
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(243, 146, 48, 0.05), transparent 70%);
+}
+/* The old hero-only star layers retire when the cosmos is alive. */
+.alive .starfield { display: none; }
+
+/* --- Film grain ------------------------------------------------------------ */
+.alv-grain {
+  position: fixed; inset: -50%;
+  width: 200%; height: 200%;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: alv-grain-shift 1.4s steps(3) infinite;
+}
+@keyframes alv-grain-shift {
+  0% { transform: translate3d(0, 0, 0); }
+  33% { transform: translate3d(-2%, 1%, 0); }
+  66% { transform: translate3d(1%, -2%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* --- The instrument ring --------------------------------------------------- */
+.alv-instrument {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 130vmin; height: 130vmin;
+  margin: -65vmin 0 0 -65vmin;
+  z-index: 0;
+  pointer-events: none;
+  animation: alv-instrument-turn 600s linear infinite;
+  opacity: 0;
+  transition: opacity 3.5s ease 0.8s;
+}
+.alive .alv-instrument { opacity: 1; }
+.alv-instrument-inner {
+  width: 94vmin; height: 94vmin;
+  margin: -47vmin 0 0 -47vmin;
+  animation: alv-instrument-turn 600s linear infinite reverse;
+  opacity: 0;
+  transition: opacity 3.5s ease 1.4s;
+}
+.alive .alv-instrument-inner { opacity: 0.6; }
+@keyframes alv-instrument-turn {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Headline letters: blur to sharp, in reading order ---------------------- */
+.alive .alv-letters .alv-letter {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(0.18em);
+}
+.alive .alv-letters.alv-letters-in .alv-letter {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms);
+}
+/* The amber line shimmers once it has finished arriving. */
+.alive .alv-letters.alv-letters-in .amber-accent {
+  background: linear-gradient(100deg, var(--amber) 0%, var(--amber) 42%, var(--amber-bright) 50%, var(--amber) 58%, var(--amber) 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: alv-amber-shimmer 7s ease-in-out 3.2s infinite;
+}
+@keyframes alv-amber-shimmer {
+  0%, 72%, 100% { background-position: 125% 0; }
+  86% { background-position: -25% 0; }
+}
+
+/* --- Reveals (v1, kept) ----------------------------------------------------- */
 .alive .alv {
   opacity: 0;
   transform: translate3d(0, 22px, 0);
@@ -1350,84 +1441,118 @@ footer.site .socials svg {
     opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
 }
-/* Hero entrance rises a touch further and takes a breath longer. */
 .alive .alv.alv-hero { transform: translate3d(0, 28px, 0); }
 .alive .alv.alv-hero.alv-in {
   transition:
     opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
     transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
 }
-/* Specimen rows slide from the left like entries being written. */
 .alive .specimen .row.alv { transform: translate3d(-14px, 0, 0); }
 
-/* --- Starfield canvas ---------------------------------------------------- */
-.starfield-canvas {
-  position: absolute; inset: -12px;
-  width: calc(100% + 24px); height: calc(100% + 24px);
-  pointer-events: none;
+/* --- Asterism dividers ------------------------------------------------------ */
+.alive .alv-rule {
+  position: relative;
+  overflow: visible;
+  opacity: 1 !important;
+  transform: none !important;
 }
-/* The static CSS stars stay as the no-JS fallback; once the canvas exists
-   they would double up, so fade them far back. */
-.alive .starfield::before,
-.alive .starfield::after { opacity: 0.18; }
+.alv-asterism {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 160px; height: 24px;
+  transform: translate(-50%, -50%);
+  background: var(--forest-deep);
+  padding: 0 14px;
+}
+.alive .alv-rule .alv-asterism-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.alive .alv-rule.alv-in .alv-asterism-line {
+  animation: alv-draw 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+.alive .alv-rule .alv-asterism-star {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  scale: 0;
+}
+.alive .alv-rule.alv-in .alv-asterism-star {
+  animation: alv-star-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(0.25s + var(--si, 0) * 0.18s);
+}
+@keyframes alv-draw { to { stroke-dashoffset: 0; } }
+@keyframes alv-star-pop { to { opacity: 1; scale: 1; } }
 
-/* --- The sun breathes and turns ----------------------------------------- */
-.alive .hero .sun-mark img {
-  animation: alv-sun-turn 240s linear infinite;
-}
-.alive .hero .sun-mark {
-  animation: alv-sun-breathe 9s ease-in-out infinite;
-}
-@keyframes alv-sun-turn {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes alv-sun-breathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.03); }
-}
+/* --- The sun ----------------------------------------------------------------- */
+.alive .hero .sun-mark img { animation: alv-sun-turn 240s linear infinite; }
+.alive .hero .sun-mark { animation: alv-sun-breathe 9s ease-in-out 1.8s infinite; }
+@keyframes alv-sun-turn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes alv-sun-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
-/* --- The live specimen row glows like the present tense ------------------ */
-.alive .specimen .row.alv-live-row .value {
-  animation: alv-live-pulse 5.5s ease-in-out infinite;
-}
+/* --- Live specimen row ------------------------------------------------------- */
+.alive .specimen .row.alv-live-row .value { animation: alv-live-pulse 5.5s ease-in-out infinite; }
 @keyframes alv-live-pulse {
   0%, 100% { color: var(--text-primary); text-shadow: none; }
   50%      { color: var(--amber-bright); text-shadow: 0 0 18px rgba(243, 146, 48, 0.35); }
 }
 
-/* --- Buttons: a quiet sheen, a confident hover --------------------------- */
+/* --- Buttons ------------------------------------------------------------------ */
 .alive .btn.primary {
   position: relative;
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.25s ease, translate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .alive .btn.primary::after {
   content: "";
   position: absolute; top: 0; bottom: 0; left: -60%;
   width: 40%;
   background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
-  transform: skewX(-18deg) translateX(0);
-  transition: none;
+  transform: skewX(-18deg);
   opacity: 0;
 }
 .alive .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(243, 146, 48, 0.32); }
-.alive .btn.primary:hover::after {
-  opacity: 1;
-  animation: alv-sheen 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
+.alive .btn.primary:hover::after { opacity: 1; animation: alv-sheen 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 .alive .btn.primary:active { transform: translateY(0) scale(0.985); }
-@keyframes alv-sheen {
-  from { left: -60%; }
-  to   { left: 130%; }
-}
+@keyframes alv-sheen { from { left: -60%; } to { left: 130%; } }
 
-/* --- Cards: lift, and let the glyph wake up ------------------------------ */
+/* --- Cards: aurora borders + self-drawing glyphs ------------------------------ */
 .alive .three .card {
+  position: relative;
   transition:
     opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
     border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.alive .three .card::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(243, 146, 48, 0.0) 0deg,
+    rgba(243, 146, 48, 0.35) 70deg,
+    rgba(156, 175, 120, 0.25) 140deg,
+    rgba(155, 134, 160, 0.25) 220deg,
+    rgba(243, 146, 48, 0.0) 300deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: alv-aurora-spin 7s linear infinite;
+  pointer-events: none;
+}
+.alive .three .card:hover::after { opacity: 1; }
+@keyframes alv-aurora-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@supports not (mask-composite: exclude) {
+  .alive .three .card::after { display: none; }
 }
 .alive .three .card:hover {
   transform: translate3d(0, -5px, 0);
@@ -1439,19 +1564,59 @@ footer.site .socials svg {
   transform: scale(1.08) rotate(-3deg);
   filter: drop-shadow(0 0 14px currentColor);
 }
-
-/* --- Tilt objects -------------------------------------------------------- */
-.alive .alv-tilt {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  transform-style: preserve-3d;
+/* Stroke shapes redraw themselves on hover (pathLength normalized to 1). */
+.alive .three .card:hover .glyph svg [stroke] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: alv-draw 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* --- Pricing card: a steady aurora, always on --------------------------------- */
+.alive .pricing-card {
+  position: relative;
+}
+.alive .pricing-card::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(243, 146, 48, 0.0) 0deg,
+    rgba(243, 146, 48, 0.4) 60deg,
+    rgba(243, 146, 48, 0.0) 130deg,
+    rgba(155, 134, 160, 0.22) 220deg,
+    rgba(243, 146, 48, 0.0) 320deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: alv-aurora-spin 11s linear infinite;
+  pointer-events: none;
+}
+@supports not (mask-composite: exclude) {
+  .alive .pricing-card::after { display: none; }
+}
+
+/* --- Tilt --------------------------------------------------------------------- */
+.alive .alv-tilt { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; }
 .alive .alv-tilt:hover { transition: transform 0.12s linear; }
-
-/* --- Oracle conversation replay ------------------------------------------ */
-.alive .chat-scroll .alv-msg {
-  opacity: 0;
-  transform: translate3d(0, 14px, 0) scale(0.98);
+.alive .alv-tilt.alv-in {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0ms,
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
 }
+
+/* --- Phone -------------------------------------------------------------------- */
+.alive .phone { animation: alv-float 11s ease-in-out infinite; }
+@keyframes alv-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -7px; }
+}
+
+/* --- Oracle replay -------------------------------------------------------------- */
+.alive .chat-scroll .alv-msg { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.98); }
 .alive .chat-scroll .alv-msg.alv-msg-in {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
@@ -1476,44 +1641,158 @@ footer.site .socials svg {
   30%           { opacity: 1; transform: translateY(-3px); }
 }
 
-/* --- Energy bars fill like instruments warming up ------------------------ */
-.alive .alv-fill {
-  transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+/* --- Bars ---------------------------------------------------------------------- */
+.alive .alv-fill { transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* --- Invocation: words ignite as you read ---------------------------------------- */
+.alive .alv-word {
+  opacity: 0.16;
+  transition: opacity 0.7s ease, color 0.7s ease, text-shadow 0.7s ease;
+}
+.alive .alv-word.alv-word-lit {
+  opacity: 1;
+  color: var(--text-primary);
+}
+/* The last few words of the line earn the amber. */
+.alive .invocation p .alv-word.alv-word-lit:nth-last-child(-n + 4) {
+  color: var(--amber-bright);
+  text-shadow: 0 0 26px rgba(243, 146, 48, 0.3);
 }
 
-/* --- Nav deepens once the page is in motion ------------------------------ */
+/* --- Nav ------------------------------------------------------------------------- */
 .alive nav.top-nav { transition: box-shadow 0.4s ease, background 0.4s ease; }
-.alive nav.top-nav.alv-scrolled {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-}
+.alive nav.top-nav.alv-scrolled { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); }
 
-/* --- FAQ opens like a held breath ----------------------------------------- */
+/* --- FAQ ------------------------------------------------------------------------- */
 .alive .faq-item summary { transition: color 0.25s ease; }
 .alive .faq-item summary:hover { color: var(--amber-bright); }
 
-/* --- Phone floats, barely ------------------------------------------------- */
-.alive .phone {
-  animation: alv-float 11s ease-in-out infinite;
-}
-@keyframes alv-float {
-  0%, 100% { translate: 0 0; }
-  50%      { translate: 0 -7px; }
-}
-
-/* Safety net: any environment that ignores html.alive gating but honors the
-   media query still gets stillness. */
+/* --- Stillness for anyone who asked for it ----------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .alive .alv, .alive .alv.alv-in { opacity: 1; transform: none; transition: none; }
+  .alive .alv-letters .alv-letter { opacity: 1; filter: none; transform: none; }
+  .alive .alv-word { opacity: 1; }
   .alive .hero .sun-mark, .alive .hero .sun-mark img, .alive .phone { animation: none; }
   .alive .specimen .row.alv-live-row .value { animation: none; }
-  .starfield-canvas { display: none; }
+  .alv-cosmos, .alv-grain, .alv-instrument { display: none; }
 }
 
-/* Tilt objects that have completed their reveal need the tilt's own snappy
-   transform timing, not the reveal's slow delayed one. Same specificity as
-   .alive .alv.alv-in but later in the cascade, so it wins. */
-.alive .alv-tilt.alv-in {
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0ms,
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
+/* ===========================================================================
+   SKY NOW: the observatory. Live neutral sky weather, real ephemeris.
+   ======================================================================== */
+.skynow { padding: 96px 0; }
+.skynow .section-head { margin-bottom: 40px; }
+
+.skynow-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
 }
+.skynow-orrery svg { width: 100%; height: auto; display: block; }
+
+/* Planets arrive like they are being plotted */
+.alive .skynow-planet {
+  opacity: 0;
+  animation: alv-plot 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes alv-plot { to { opacity: 1; } }
+.alive .skynow-sundot { animation: alv-sun-glowpulse 6s ease-in-out infinite; }
+@keyframes alv-sun-glowpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.78; }
+}
+
+/* Aspect chords draw themselves */
+.alive .skynow-chord {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: alv-draw 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* The observatory's minute hand: one sweep per minute, barely there */
+.skynow-sweep {
+  transform-origin: 280px 280px;
+  transform-box: view-box;
+  animation: alv-instrument-turn 60s linear infinite;
+  opacity: 0.5;
+}
+
+/* Moon fades up last */
+.alive .skynow-moon {
+  opacity: 0;
+  animation: alv-plot 1.2s ease 1.6s forwards;
+}
+
+/* Right panel */
+.skynow-weather {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  line-height: 1.45;
+  color: var(--text-primary);
+  margin-bottom: 22px;
+}
+.skynow-moonline {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 28px;
+}
+.skynow-aspects { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.skynow-aspect {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px;
+  border: 1px solid rgba(26, 48, 32, 0.9);
+  border-radius: 4px;
+  background: rgba(14, 36, 22, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 13.5px;
+}
+.skynow-aspect .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; box-shadow: 0 0 8px currentColor; }
+.skynow-aspect .pair { color: var(--text-secondary); }
+.skynow-aspect .orb { margin-left: auto; color: var(--text-muted); font-size: 12px; letter-spacing: 0.06em; white-space: nowrap; }
+.skynow-stamp {
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--moss-dim);
+}
+
+/* Loading: three breathing dots, never a broken instrument */
+.skynow-loading { display: flex; gap: 8px; padding: 40px 0; }
+.skynow-loading span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--moss);
+  animation: alv-typing-dot 1.1s ease-in-out infinite;
+}
+.skynow-loading span:nth-child(2) { animation-delay: 0.18s; }
+.skynow-loading span:nth-child(3) { animation-delay: 0.36s; }
+
+@media (max-width: 880px) {
+  .skynow-frame { grid-template-columns: 1fr; gap: 36px; }
+  .skynow-orrery { max-width: 460px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skynow-sweep { animation: none; opacity: 0; }
+  .alive .skynow-planet, .alive .skynow-moon { opacity: 1; animation: none; }
+  .alive .skynow-chord { stroke-dashoffset: 0; animation: none; }
+}
+
+/* While the Oracle writes, a thin amber caret breathes at the bubble's end */
+.alive .bubble.oracle.alv-writing::after {
+  content: "";
+  display: inline-block;
+  width: 2px; height: 0.95em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--amber);
+  animation: alv-caret 0.9s steps(2) infinite;
+}
+@keyframes alv-caret { 50% { opacity: 0; } }

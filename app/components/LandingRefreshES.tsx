@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SkyTaste from "./SkyTaste";
+import SkyNow from "./SkyNow";
 
 const SIGNOS: Record<string, string> = {
   Capricorn: "Capricornio", Aquarius: "Acuario", Pisces: "Piscis",
@@ -130,6 +131,10 @@ export default function LandingRefreshES() {
           </div>
         </div>
       </section>
+
+      <div className="rule"></div>
+
+      <SkyNow locale="es" />
 
       <div className="rule"></div>
 

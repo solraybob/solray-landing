@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SkyTaste from "./SkyTaste";
+import SkyNow from "./SkyNow";
 
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
@@ -126,6 +127,10 @@ export default function LandingRefresh() {
           </div>
         </div>
       </section>
+
+      <div className="rule"></div>
+
+      <SkyNow locale="en" />
 
       <div className="rule"></div>
 
