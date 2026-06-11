@@ -203,15 +203,15 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
               <circle cx={C} cy={C} r={250} fill="url(#snGlow)" />
 
               {/* Bezel */}
-              <circle cx={C} cy={C} r={250} fill="none" stroke="rgba(242,236,216,0.14)" strokeWidth="1" />
-              <circle cx={C} cy={C} r={214} fill="none" stroke="rgba(242,236,216,0.1)" strokeWidth="1" />
+              <circle cx={C} cy={C} r={250} fill="none" stroke="rgba(242,236,216,0.3)" strokeWidth="1.2" />
+              <circle cx={C} cy={C} r={214} fill="none" stroke="rgba(242,236,216,0.22)" strokeWidth="1" />
               <circle cx={C} cy={C} r={120} fill="none" stroke="rgba(242,236,216,0.05)" strokeWidth="1" strokeDasharray="1 6" />
 
               {/* Sign sectors + ticks */}
               {Array.from({ length: 12 }, (_, i) => {
                 const [x1, y1] = point(i * 30, 214, C);
                 const [x2, y2] = point(i * 30, 250, C);
-                return <line key={`sep-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(242,236,216,0.16)" strokeWidth="1" />;
+                return <line key={`sep-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(242,236,216,0.26)" strokeWidth="1" />;
               })}
               {Array.from({ length: 72 }, (_, i) => {
                 if (i % 6 === 0) return null;
@@ -223,8 +223,8 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
                 const [x, y] = point(i * 30 + 15, 232, C);
                 return (
                   <text key={name} x={x} y={y} textAnchor="middle" dominantBaseline="central"
-                    fill="rgba(242,236,216,0.4)"
-                    style={{ fontSize: 9.5, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
+                    fill="rgba(242,236,216,0.72)"
+                    style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
                     {name.slice(0, 3)}
                   </text>
                 );
