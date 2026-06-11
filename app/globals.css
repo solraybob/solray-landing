@@ -1500,9 +1500,9 @@ footer.site .socials svg {
 
 /* --- The sun ----------------------------------------------------------------- */
 .alive .hero .sun-mark img { animation: alv-sun-turn 240s linear infinite; }
-.alive .hero .sun-mark { animation: alv-sun-breathe 9s ease-in-out 1.8s infinite; }
+.alive .hero .sun-mark { animation: alv-sun-breathe 14s ease-in-out 5s infinite; }
 @keyframes alv-sun-turn { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes alv-sun-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes alv-sun-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.016); } }
 
 /* --- Live specimen row ------------------------------------------------------- */
 .alive .specimen .row.alv-live-row .value { animation: alv-live-pulse 5.5s ease-in-out infinite; }
