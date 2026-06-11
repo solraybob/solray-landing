@@ -153,9 +153,20 @@ export default function LifeLayer() {
 
     let rafId = 0;
     let last = performance.now();
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    let frameFlip = false;
     const frame = (now: number) => {
       rafId = 0;
       if (!ctx || document.hidden) return;
+      // Phones paint every second frame: half the canvas cost, and at
+      // these drift speeds the eye cannot tell 30 from 60.
+      if (coarsePointer) {
+        frameFlip = !frameFlip;
+        if (frameFlip) {
+          rafId = requestAnimationFrame(frame);
+          return;
+        }
+      }
       const dt = Math.min(now - last, 50);
       last = now;
       const t = now / 1000;

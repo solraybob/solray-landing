@@ -1822,3 +1822,14 @@ footer.site .socials svg {
   .alv-instrument, .alv-instrument-inner { display: none; }
   .alive .phone { animation: none; }
 }
+
+/* Finding from the final audit: an 18px backdrop blur on the fixed nav is
+   recomputed on every scrolled frame on phones. Flat translucency reads
+   nearly identically at phone sizes and costs nothing. */
+@media (max-width: 760px), (pointer: coarse) {
+  nav.top-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5, 15, 8, 0.92);
+  }
+}
