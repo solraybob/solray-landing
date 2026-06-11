@@ -1810,3 +1810,15 @@ footer.site .socials svg {
   animation: alv-caret 0.9s steps(2) infinite;
 }
 @keyframes alv-caret { 50% { opacity: 0; } }
+
+/* ===========================================================================
+   Mobile performance: a phone GPU should never fight the decoration.
+   The grain animation and the giant rotating bezel are the two heaviest
+   composited layers; on small screens the grain goes still and the bezel
+   goes away. Reported in the wild on Android: scroll jank + jumping.
+   ======================================================================== */
+@media (max-width: 760px), (pointer: coarse) {
+  .alv-grain { animation: none; }
+  .alv-instrument, .alv-instrument-inner { display: none; }
+  .alive .phone { animation: none; }
+}

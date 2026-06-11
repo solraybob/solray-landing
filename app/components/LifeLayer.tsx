@@ -113,7 +113,8 @@ export default function LifeLayer() {
       canvas.height = Math.round(h * dpr);
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
-      const count = Math.round(Math.min(230, (w * h) / 7000));
+      const coarse = window.matchMedia("(pointer: coarse)").matches;
+      const count = Math.round(Math.min(coarse ? 110 : 230, (w * h) / (coarse ? 11000 : 7000)));
       stars = Array.from({ length: count }, () => {
         const band = Math.random() < 0.45 ? 0 : Math.random() < 0.65 ? 1 : 2;
         const depth = [0.4, 0.7, 1][band];
@@ -248,7 +249,21 @@ export default function LifeLayer() {
       }
     };
     document.addEventListener("visibilitychange", onVis);
-    const onResize = () => seed();
+    let lastW = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth !== lastW) {
+        lastW = window.innerWidth;
+        seed();
+        return;
+      }
+      // Height-only resize = the mobile URL bar collapsing during scroll.
+      // Resize the canvas and keep every star exactly where it was;
+      // reseeding here made the whole sky jump back and forth on Android.
+      h = window.innerHeight;
+      docH = Math.max(document.documentElement.scrollHeight - h, 1);
+      canvas.height = Math.round(h * dpr);
+      canvas.style.height = `${h}px`;
+    };
     window.addEventListener("resize", onResize, { passive: true });
     cleanups.push(() => {
       if (rafId) cancelAnimationFrame(rafId);
