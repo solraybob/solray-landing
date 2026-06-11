@@ -1327,3 +1327,193 @@ footer.site .socials svg {
   line-height: 1.7;
   font-size: 0.97rem;
 }
+
+/* ===========================================================================
+   LIFE LAYER. Motion grammar for the page. Every rule below is gated behind
+   html.alive, which LifeLayer.tsx only adds when JavaScript is present AND
+   the visitor has not asked for reduced motion. Without it, the page is the
+   same still page it always was. Transforms and opacity only; nothing here
+   can cause layout work.
+   ======================================================================== */
+
+/* --- Reveals ------------------------------------------------------------ */
+.alive .alv {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: none;
+  will-change: opacity, transform;
+}
+.alive .alv.alv-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
+}
+/* Hero entrance rises a touch further and takes a breath longer. */
+.alive .alv.alv-hero { transform: translate3d(0, 28px, 0); }
+.alive .alv.alv-hero.alv-in {
+  transition:
+    opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
+}
+/* Specimen rows slide from the left like entries being written. */
+.alive .specimen .row.alv { transform: translate3d(-14px, 0, 0); }
+
+/* --- Starfield canvas ---------------------------------------------------- */
+.starfield-canvas {
+  position: absolute; inset: -12px;
+  width: calc(100% + 24px); height: calc(100% + 24px);
+  pointer-events: none;
+}
+/* The static CSS stars stay as the no-JS fallback; once the canvas exists
+   they would double up, so fade them far back. */
+.alive .starfield::before,
+.alive .starfield::after { opacity: 0.18; }
+
+/* --- The sun breathes and turns ----------------------------------------- */
+.alive .hero .sun-mark img {
+  animation: alv-sun-turn 240s linear infinite;
+}
+.alive .hero .sun-mark {
+  animation: alv-sun-breathe 9s ease-in-out infinite;
+}
+@keyframes alv-sun-turn {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes alv-sun-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+
+/* --- The live specimen row glows like the present tense ------------------ */
+.alive .specimen .row.alv-live-row .value {
+  animation: alv-live-pulse 5.5s ease-in-out infinite;
+}
+@keyframes alv-live-pulse {
+  0%, 100% { color: var(--text-primary); text-shadow: none; }
+  50%      { color: var(--amber-bright); text-shadow: 0 0 18px rgba(243, 146, 48, 0.35); }
+}
+
+/* --- Buttons: a quiet sheen, a confident hover --------------------------- */
+.alive .btn.primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.25s ease;
+}
+.alive .btn.primary::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: -60%;
+  width: 40%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: skewX(-18deg) translateX(0);
+  transition: none;
+  opacity: 0;
+}
+.alive .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(243, 146, 48, 0.32); }
+.alive .btn.primary:hover::after {
+  opacity: 1;
+  animation: alv-sheen 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.alive .btn.primary:active { transform: translateY(0) scale(0.985); }
+@keyframes alv-sheen {
+  from { left: -60%; }
+  to   { left: 130%; }
+}
+
+/* --- Cards: lift, and let the glyph wake up ------------------------------ */
+.alive .three .card {
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms),
+    border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.alive .three .card:hover {
+  transform: translate3d(0, -5px, 0);
+  border-color: rgba(243, 146, 48, 0.28);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+}
+.alive .three .card .glyph { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease; }
+.alive .three .card:hover .glyph {
+  transform: scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 0 14px currentColor);
+}
+
+/* --- Tilt objects -------------------------------------------------------- */
+.alive .alv-tilt {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+.alive .alv-tilt:hover { transition: transform 0.12s linear; }
+
+/* --- Oracle conversation replay ------------------------------------------ */
+.alive .chat-scroll .alv-msg {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0) scale(0.98);
+}
+.alive .chat-scroll .alv-msg.alv-msg-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.alv-typing {
+  display: inline-flex; gap: 5px; align-items: center;
+  padding: 10px 14px; margin: 4px 0;
+  border-radius: 14px;
+  background: rgba(26, 48, 32, 0.65);
+  width: fit-content;
+}
+.alv-typing span {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--moss);
+  animation: alv-typing-dot 1.1s ease-in-out infinite;
+}
+.alv-typing span:nth-child(2) { animation-delay: 0.18s; }
+.alv-typing span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes alv-typing-dot {
+  0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+  30%           { opacity: 1; transform: translateY(-3px); }
+}
+
+/* --- Energy bars fill like instruments warming up ------------------------ */
+.alive .alv-fill {
+  transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Nav deepens once the page is in motion ------------------------------ */
+.alive nav.top-nav { transition: box-shadow 0.4s ease, background 0.4s ease; }
+.alive nav.top-nav.alv-scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* --- FAQ opens like a held breath ----------------------------------------- */
+.alive .faq-item summary { transition: color 0.25s ease; }
+.alive .faq-item summary:hover { color: var(--amber-bright); }
+
+/* --- Phone floats, barely ------------------------------------------------- */
+.alive .phone {
+  animation: alv-float 11s ease-in-out infinite;
+}
+@keyframes alv-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -7px; }
+}
+
+/* Safety net: any environment that ignores html.alive gating but honors the
+   media query still gets stillness. */
+@media (prefers-reduced-motion: reduce) {
+  .alive .alv, .alive .alv.alv-in { opacity: 1; transform: none; transition: none; }
+  .alive .hero .sun-mark, .alive .hero .sun-mark img, .alive .phone { animation: none; }
+  .alive .specimen .row.alv-live-row .value { animation: none; }
+  .starfield-canvas { display: none; }
+}
+
+/* Tilt objects that have completed their reveal need the tilt's own snappy
+   transform timing, not the reveal's slow delayed one. Same specificity as
+   .alive .alv.alv-in but later in the cascade, so it wins. */
+.alive .alv-tilt.alv-in {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0ms,
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--alv-d, 0ms);
+}
