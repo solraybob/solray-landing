@@ -1833,3 +1833,17 @@ footer.site .socials svg {
     background: rgba(5, 15, 8, 0.92);
   }
 }
+
+/* Pre-paint hide for the hero while LifeLayer boots (see layout.tsx). Only
+   above-the-fold players need covering; everything below the fold is out of
+   sight during the swap anyway. The cosmos isn't up yet, so the hero keeps
+   its own opaque ground until .alive takes over. */
+.alive-pre .hero .sun-mark,
+.alive-pre .hero .brand-lockup,
+.alive-pre .hero h1.display,
+.alive-pre .hero .hero-sub,
+.alive-pre .hero .hero-ctas,
+.alive-pre .hero .hero-tag,
+.alive-pre .hero .specimen {
+  opacity: 0;
+}

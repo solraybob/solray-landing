@@ -88,6 +88,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body>
+        {/* Pre-paint guard against the hydration flash: without this, the
+            plain server-rendered hero paints first, then LifeLayer hides it
+            and replays the entrance, a visible old-page/new-page swap. This
+            parser-blocking inline script runs BEFORE the hero paints, hiding
+            the hero from the very first frame for motion-enabled visitors.
+            LifeLayer removes the class when its cascade takes over, and the
+            script's own timeout reverts to the still page if LifeLayer never
+            arrives, so nothing can stay hidden. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.classList.add('alive-pre');setTimeout(function(){d.classList.remove('alive-pre')},3000);}}catch(e){}",
+          }}
+        />
         <LifeLayer />
         <script
           type="application/ld+json"

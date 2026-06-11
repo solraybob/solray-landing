@@ -72,6 +72,10 @@ export default function LifeLayer() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const root = document.documentElement;
     root.classList.add("alive");
+    // The pre-paint guard (layout.tsx) hid the hero before first paint so
+    // the still page never flashes; from here the .alv cascade owns
+    // visibility, so the guard retires.
+    root.classList.remove("alive-pre");
 
     const cleanups: (() => void)[] = [];
     const finePointer = window.matchMedia("(pointer: fine)").matches;
