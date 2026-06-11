@@ -107,9 +107,30 @@ export default function LifeLayer() {
         h.style.setProperty("--alv-d", `${1050 + i * 110}ms`);
         els.push(h);
       });
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => els.forEach((el) => el.classList.add("alv-in")))
+      const revealHero = () =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => els.forEach((el) => el.classList.add("alv-in")))
+        );
+      if (document.hidden) {
+        // rAF does not fire in background tabs; play the entrance the moment
+        // the visitor actually arrives.
+        const once = () => {
+          if (document.hidden) return;
+          document.removeEventListener("visibilitychange", once);
+          revealHero();
+        };
+        document.addEventListener("visibilitychange", once);
+        cleanups.push(() => document.removeEventListener("visibilitychange", once));
+      } else {
+        revealHero();
+      }
+      // Absolute failsafe: a hero may never stay hidden. If the entrance has
+      // not played within 3 seconds for any reason, snap it visible.
+      const failsafe = setTimeout(
+        () => els.forEach((el) => el.classList.add("alv-in")),
+        3000
       );
+      cleanups.push(() => clearTimeout(failsafe));
       // The living line: the one row computed from the real sky gets a pulse.
       const lastRow = hero.querySelector(".specimen .row:last-child");
       lastRow?.classList.add("alv-live-row");
