@@ -1461,8 +1461,22 @@ footer.site .socials svg {
   left: 50%; top: 50%;
   width: 160px; height: 24px;
   transform: translate(-50%, -50%);
-  background: var(--forest-deep);
-  padding: 0 14px;
+}
+/* The divider line parts around the asterism instead of hiding behind a
+   solid patch; with the cosmos running behind every section, any opaque
+   box reads as a clumsy rectangle. */
+.alive .alv-rule {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--forest-edge) 20%,
+    var(--forest-edge) 40%,
+    transparent 46%,
+    transparent 54%,
+    var(--forest-edge) 60%,
+    var(--forest-edge) 80%,
+    transparent 100%
+  );
 }
 .alive .alv-rule .alv-asterism-line {
   stroke-dasharray: 1;
