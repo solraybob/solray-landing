@@ -523,7 +523,7 @@ export default function LandingRefresh() {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@Solray_ai"
+              href="https://www.youtube.com/@solrayai"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Solray on YouTube"
