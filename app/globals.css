@@ -399,6 +399,25 @@ section.hero {
   letter-spacing: 0.14em;
 }
 
+/* "Add to home screen" prompt under the hero tag. Routes to app.solray.ai,
+   where the PWA install button lives (the install dialog can only fire on the
+   app's own origin). Quiet, secondary to the two hero CTAs. */
+.hero-getapp {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--amber);
+  opacity: 0.85;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(243, 146, 48, 0.35);
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+.hero-getapp:hover {
+  opacity: 1;
+}
+
 /* Specimen card ------------------------------------------------------- */
 .specimen {
   margin-top: 96px;

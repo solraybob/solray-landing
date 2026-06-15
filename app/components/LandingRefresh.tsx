@@ -97,6 +97,7 @@ export default function LandingRefresh() {
             </a>
           </div>
           <div className="hero-tag">Five days free. $23 a month after. Cancel any time.</div>
+          <a href={LOGIN_URL} className="hero-getapp">On your phone? Add Solray to your home screen.</a>
 
           {/* Specimen card */}
           <div className="specimen">

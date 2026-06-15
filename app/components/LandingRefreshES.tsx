@@ -102,6 +102,7 @@ export default function LandingRefreshES() {
             </a>
           </div>
           <div className="hero-tag">Cinco días gratis. $23 al mes después. Cancela cuando quieras.</div>
+          <a href={LOGIN_URL} className="hero-getapp">¿En tu teléfono? Añade Solray a tu pantalla de inicio.</a>
 
           <div className="specimen">
             <div className="row">
