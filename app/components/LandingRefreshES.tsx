@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import InstallBar from "./InstallBar";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
 
@@ -49,6 +50,11 @@ const LOGIN_URL = "https://app.solray.ai/login";
 export default function LandingRefreshES() {
   return (
     <>
+      <InstallBar
+        text="Añade Solray a tu pantalla de inicio"
+        iosHint="Toca el botón Compartir en la barra del navegador y elige Añadir a pantalla de inicio."
+        dismissLabel="Descartar"
+      />
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
@@ -102,7 +108,6 @@ export default function LandingRefreshES() {
             </a>
           </div>
           <div className="hero-tag">Cinco días gratis. $23 al mes después. Cancela cuando quieras.</div>
-          <a href={LOGIN_URL} className="hero-getapp">¿En tu teléfono? Añade Solray a tu pantalla de inicio.</a>
 
           <div className="specimen">
             <div className="row">

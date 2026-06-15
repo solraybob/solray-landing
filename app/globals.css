@@ -399,25 +399,63 @@ section.hero {
   letter-spacing: 0.14em;
 }
 
-/* "Add to home screen" prompt under the hero tag. Routes to app.solray.ai,
-   where the PWA install button lives (the install dialog can only fire on the
-   app's own origin). Quiet, secondary to the two hero CTAs. */
-.hero-getapp {
-  display: block;
-  width: fit-content;
-  margin: 20px auto 0;
+/* Slim "add to home screen" bar pinned above the header (component: InstallBar).
+   Quiet, readable, dismissible. When present, html.has-ibar drops the fixed nav
+   below it and gives the hero a touch more top room. */
+.solray-ibar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 60;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 9px 44px 9px 20px;
+  background:
+    linear-gradient(to bottom, rgba(5, 15, 8, 0.92) 0%, rgba(5, 15, 8, 0.86) 100%);
+  border-bottom: 1px solid rgba(243, 146, 48, 0.22);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+.solray-ibar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--amber);
-  opacity: 0.85;
-  font-size: 12px;
-  letter-spacing: 0.06em;
   text-decoration: none;
-  border-bottom: 1px solid rgba(243, 146, 48, 0.35);
-  padding-bottom: 2px;
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  opacity: 0.92;
   transition: opacity 0.2s ease;
 }
-.hero-getapp:hover {
-  opacity: 1;
+.solray-ibar-link:hover { opacity: 1; }
+.solray-ibar-x {
+  position: absolute;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  color: var(--pearl-dim);
+  opacity: 0.55;
+  background: none; border: none; cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+.solray-ibar-x:hover { opacity: 0.9; }
+.solray-ibar-hint {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  padding: 8px 20px 10px;
+  background: rgba(5, 15, 8, 0.95);
+  border-bottom: 1px solid rgba(26, 48, 32, 0.9);
+  color: var(--pearl-dim);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+html.has-ibar nav.top-nav { top: 40px; }
+html.has-ibar section.hero { padding-top: 172px; }
 
 /* Specimen card ------------------------------------------------------- */
 .specimen {

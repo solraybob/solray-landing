@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import InstallBar from "./InstallBar";
 import { useEffect, useState } from "react";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
@@ -37,6 +38,11 @@ function moonPhaseWord(d: Date): string {
 export default function LandingRefresh() {
   return (
     <>
+      <InstallBar
+        text="Add Solray to your home screen"
+        iosHint="Tap the Share button in your browser bar, then choose Add to Home Screen."
+        dismissLabel="Dismiss"
+      />
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
@@ -97,7 +103,6 @@ export default function LandingRefresh() {
             </a>
           </div>
           <div className="hero-tag">Five days free. $23 a month after. Cancel any time.</div>
-          <a href={LOGIN_URL} className="hero-getapp">On your phone? Add Solray to your home screen.</a>
 
           {/* Specimen card */}
           <div className="specimen">
