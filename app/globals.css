@@ -403,15 +403,16 @@ section.hero {
    where the PWA install button lives (the install dialog can only fire on the
    app's own origin). Quiet, secondary to the two hero CTAs. */
 .hero-getapp {
-  display: inline-block;
-  margin-top: 12px;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
   color: var(--amber);
   opacity: 0.85;
   font-size: 12px;
   letter-spacing: 0.06em;
   text-decoration: none;
   border-bottom: 1px solid rgba(243, 146, 48, 0.35);
-  padding-bottom: 1px;
+  padding-bottom: 2px;
   transition: opacity 0.2s ease;
 }
 .hero-getapp:hover {
