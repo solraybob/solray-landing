@@ -46,7 +46,13 @@ export default function GalaxyField() {
           return; // no WebGL: the CSS gradient fallback stays
         }
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1.3 : 2));
+        // Full sharpness first: phones render near native density (the 1.3
+        // cap read as "very pixelated" on 3x Androids). The adaptive guard
+        // below steps resolution down ONLY if the device proves it cannot
+        // hold the frame rate, so sharp stays the default and smooth stays
+        // the floor.
+        let pixelCap = coarse ? 2.25 : 2;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelCap));
         renderer.setClearColor(0x000000, 0);
         host.appendChild(renderer.domElement);
 
@@ -290,7 +296,26 @@ export default function GalaxyField() {
           camera.lookAt(0, -prog * 5.4, 0);
           renderer.render(scene, camera);
         }
+        // Adaptive resolution: watch real frame times and step the pixel
+        // ratio down (2.25 -> 1.8 -> 1.5 -> 1.3) only when the device
+        // genuinely cannot keep up. Checks a rolling window, acts at most
+        // every 2s, never steps back up (no oscillation).
+        let ftSum = 0, ftN = 0, lastFt = 0, lastAdapt = 0;
+        function adapt(now: number) {
+          if (lastFt) { ftSum += now - lastFt; ftN++; }
+          lastFt = now;
+          if (ftN >= 60 && now - lastAdapt > 2000) {
+            const avg = ftSum / ftN;
+            ftSum = 0; ftN = 0;
+            if (avg > 24 && pixelCap > 1.3) { // below ~42fps sustained
+              pixelCap = pixelCap > 1.8 ? 1.8 : pixelCap > 1.5 ? 1.5 : 1.3;
+              renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, pixelCap));
+              lastAdapt = now;
+            }
+          }
+        }
         function loop() {
+          adapt(performance.now());
           frame();
           if (!disposed) raf = requestAnimationFrame(loop);
         }
