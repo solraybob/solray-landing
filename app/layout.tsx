@@ -94,11 +94,12 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${inter.variable}`}
-      style={{ backgroundColor: "#050f08" }}
-    >
+    // NEVER put a background on <html>: the galaxy lives at z-index -2 and
+    // a root background paints OVER it (the 2026-07-07 "sky is gone"
+    // regression). color-scheme dark alone keeps the pre-CSS first paint
+    // dark, and body's forest-deep propagates to the canvas beneath the
+    // negative-z sky layers.
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body>
         {/* Pre-paint guard against the hydration flash: without this, the
             plain server-rendered hero paints first, then LifeLayer hides it

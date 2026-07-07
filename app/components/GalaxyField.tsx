@@ -334,7 +334,11 @@ export default function GalaxyField() {
           renderer.domElement.parentNode?.removeChild(renderer.domElement);
         };
       })
-      .catch(() => {});
+      .catch((e) => {
+        // Never swallow the sky silently again: a failed init leaves the
+        // CSS-gradient fallback visible, but the reason must be loggable.
+        console.error("[galaxy] init failed:", e);
+      });
 
     return () => { disposed = true; cleanup(); };
   }, []);
