@@ -5,9 +5,14 @@ import InstallBar from "./InstallBar";
 import { useEffect, useState } from "react";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
+import GalaxyField from "./GalaxyField";
+import Meteors from "./Meteors";
+import ZodiacRail from "./ZodiacRail";
+import ConstellationChapters from "./ConstellationChapters";
 
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
+const PLAY_URL = "https://play.google.com/store/apps/details?id=ai.solray.app";
 
 // Real current date + sun sign + moon phase for the Today specimen, so the
 // page that promises "to the exact degree" never shows last April. Sun sign
@@ -36,8 +41,48 @@ function moonPhaseWord(d: Date): string {
 }
 
 export default function LandingRefresh() {
+  // Play with the live sky wheel: it tilts in 3D toward the pointer, so the
+  // observatory feels like a real instrument you can lean over. Fine pointers
+  // only, off for reduced-motion.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const orrery = document.querySelector<HTMLElement>(".skynow-orrery");
+    if (!orrery) return;
+    let raf = 0;
+    const onMove = (e: PointerEvent) => {
+      const r = orrery.getBoundingClientRect();
+      const rx = ((e.clientY - (r.top + r.height / 2)) / r.height) * -9;
+      const ry = ((e.clientX - (r.left + r.width / 2)) / r.width) * 9;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        orrery.style.transform = `perspective(1100px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+      });
+    };
+    const reset = () => { if (raf) cancelAnimationFrame(raf); raf = 0; orrery.style.transform = ""; };
+    orrery.addEventListener("pointermove", onMove, { passive: true });
+    orrery.addEventListener("pointerleave", reset);
+    return () => {
+      orrery.removeEventListener("pointermove", onMove);
+      orrery.removeEventListener("pointerleave", reset);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <>
+      {/* The living galaxy: a real WebGL spiral galaxy in the palette that
+          descends with the scroll, completely connected to it, behind all
+          content. The sun logo above is its bright anchor. */}
+      <GalaxyField />
+      {/* The deliberate subtraction (2026-07-07): a comet cursor trail
+          lived here for one night. It decorated the pointer instead of
+          serving the sky, so it was cut. The restraint IS the design. */}
+      <Meteors />
+      <ConstellationChapters />
+      <ZodiacRail />
       <InstallBar
         text="Add Solray to your home screen"
         iosHint="Tap the Share button in your browser bar, then choose Add to Home Screen."
@@ -75,22 +120,27 @@ export default function LandingRefresh() {
 
       {/* Hero */}
       <section className="hero">
-        <div className="starfield"></div>
         <div className="hero-inner">
-          <div className="sun-mark" aria-hidden="true">
-            <Image src="/solray-sun.png" alt="" width={150} height={150} priority />
+          {/* The first fold holds ONLY the sun, the name, and the headline,
+              vertically centered; everything else waits below the fold and
+              arrives on scroll. Bob 2026-07-07: the sub-paragraph peeking at
+              the fold edge made the opening feel less clean. */}
+          <div className="hero-fold">
+            <div className="sun-mark" aria-hidden="true">
+              <Image src="/solray-sun.png" alt="" width={216} height={216} priority />
+            </div>
+            <div className="brand-lockup">
+              <div className="name">Solray</div>
+              <div className="tagline">Living by design</div>
+            </div>
+            <h1 className="display">
+              You were born under
+              <br />
+              a specific sky.
+              <br />
+              <span className="amber-accent">It is still speaking.</span>
+            </h1>
           </div>
-          <div className="brand-lockup">
-            <div className="name">Solray</div>
-            <div className="tagline">Living by design</div>
-          </div>
-          <h1 className="display">
-            You were born under
-            <br />
-            a specific sky.
-            <br />
-            <span className="amber-accent">It is still speaking.</span>
-          </h1>
           <p className="hero-sub">
             Solray reads the exact moment you arrived against the sky overhead right now. Western astrology, Human Design, and Gene Keys, calculated together, against your chart alone. Every morning, in your own language.
           </p>
@@ -102,7 +152,24 @@ export default function LandingRefresh() {
               Meet the Oracle
             </a>
           </div>
-          <div className="hero-tag">Five days free. $23 a month after. Cancel any time.</div>
+          <div className="hero-tag">Three days free. $23 a month after. Cancel any time.</div>
+          <div className="store-badges">
+            <a
+              href={PLAY_URL}
+              className="store-badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get Solray on Google Play"
+            >
+              <svg className="gp-mark" viewBox="0 0 26 30" width={18} height={21} aria-hidden="true">
+                <polygon points="0,0 11,6.35 11,15 0,15" fill="#00C3FF" />
+                <polygon points="0,15 11,15 11,23.65 0,30" fill="#00EA80" />
+                <polygon points="11,6.35 26,15 11,15" fill="#FF424B" />
+                <polygon points="11,15 26,15 11,23.65" fill="#FFD400" />
+              </svg>
+              <span>Get it on Google Play</span>
+            </a>
+          </div>
 
           {/* Specimen card */}
           <div className="specimen">
@@ -443,7 +510,7 @@ export default function LandingRefresh() {
             <div className="amount">
               $23<span className="per">per month</span>
             </div>
-            <div className="trial">Five days free. Cancel any time before the trial ends.</div>
+            <div className="trial">Three days free. Cancel any time before the trial ends.</div>
 
             <ul>
               <li>
@@ -471,7 +538,7 @@ export default function LandingRefresh() {
 
             <div className="cta">
               <a href={APP_URL} className="btn primary pricing-cta">
-                Start five days free
+                Start three days free
               </a>
             </div>
           </div>
@@ -479,9 +546,15 @@ export default function LandingRefresh() {
         </div>
       </section>
 
-      {/* Closing invocation */}
+      {/* Closing invocation: the bookend. You left the sun at the top,
+          descended through the whole sky, and arrive back at it. Scrim
+          behind the words so the finale is legible over the galaxy core,
+          then the last ask while the reader is warmest. */}
       <section className="invocation">
         <div className="wrap">
+          <div className="invocation-sun" aria-hidden="true">
+            <Image src="/solray-sun.png" alt="" width={92} height={92} />
+          </div>
           <p>
             The sky will keep speaking
             <br />
@@ -492,6 +565,12 @@ export default function LandingRefresh() {
             where you finally hear it.
           </p>
           <div className="sig">Solray, living by design</div>
+          <div className="invocation-cta">
+            <a href={APP_URL} className="btn primary">
+              Begin your journey
+            </a>
+            <div className="invocation-trial">Three days free. Cancel any time.</div>
+          </div>
         </div>
       </section>
 
@@ -607,7 +686,7 @@ const FAQS: [string, string][] = [
   ],
   [
     "What if I want to cancel?",
-    "Cancel inside the app in two taps, any time. Cancel during the five free days and you pay nothing at all. Cancel later and your access simply runs to the end of the month you already paid for.",
+    "Cancel inside the app in two taps, any time. Cancel during the three free days and you pay nothing at all. Cancel later and your access simply runs to the end of the month you already paid for.",
   ],
   [
     "How is this different from other astrology apps?",

@@ -14,7 +14,7 @@ import LandingRefreshES from "../components/LandingRefreshES";
 
 export const metadata = {
   title: "Solray, Vivir por diseño",
-  description: "Tu mapa cósmico personal. Astrología, Diseño Humano y Gene Keys, calculados juntos contra tu carta natal. Cinco días gratis.",
+  description: "Tu mapa cósmico personal. Astrología, Diseño Humano y Gene Keys, calculados juntos contra tu carta natal. Tres días gratis.",
   alternates: {
     canonical: "https://solray.ai/es",
     languages: {

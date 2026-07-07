@@ -81,7 +81,7 @@ export default function RootLayout({
       "@type": "Offer",
       price: "23.00",
       priceCurrency: "USD",
-      description: "Five days free, then $23 per month. One tier, everything included.",
+      description: "Three days free, then $23 per month. One tier, everything included.",
     },
   };
 

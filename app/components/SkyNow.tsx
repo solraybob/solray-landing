@@ -50,6 +50,7 @@ const STRINGS = {
     computedAt: "computed at",
     utc: "UTC, Swiss Ephemeris",
     retro: "retrograde",
+    liveSoon: "Live sky resumes in a moment.",
   },
   es: {
     eyebrow: "El cielo, en vivo",
@@ -62,6 +63,7 @@ const STRINGS = {
     computedAt: "calculado a las",
     utc: "UTC, Swiss Ephemeris",
     retro: "retrógrado",
+    liveSoon: "El cielo en vivo vuelve en un momento.",
   },
 } as const;
 
@@ -123,16 +125,29 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
 
   useEffect(() => {
     let dead = false;
-    const load = () =>
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    // Retry transient failures (Railway cold start, a dropped request) a few
+    // times with backoff before giving up, so the live wheel never vanishes on
+    // a single blip. Only after the retries are exhausted do we hide it.
+    const load = (attempt = 0) =>
       fetch(`${API_URL}/public/sky-now`)
         .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
         .then((d) => { if (!dead) { setData(d); setFailed(false); } })
-        .catch(() => { if (!dead) setFailed(true); });
+        .catch(() => {
+          if (dead) return;
+          if (attempt < 3) timers.push(setTimeout(() => load(attempt + 1), 1500 * (attempt + 1)));
+          else setFailed(true);
+        });
     load();
-    const iv = setInterval(load, 10 * 60 * 1000);
+    const iv = setInterval(() => load(), 10 * 60 * 1000);
     const onVis = () => { if (!document.hidden) load(); };
     document.addEventListener("visibilitychange", onVis);
-    return () => { dead = true; clearInterval(iv); document.removeEventListener("visibilitychange", onVis); };
+    return () => {
+      dead = true;
+      clearInterval(iv);
+      timers.forEach(clearTimeout);
+      document.removeEventListener("visibilitychange", onVis);
+    };
   }, []);
 
   // Geometry, memoized per payload.
@@ -174,8 +189,9 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
     return { dots, chords, waxing };
   }, [data]);
 
-  if (failed && !data) return null;
-
+  // The wheel always renders. If the live data cannot load, the bezel and the
+  // twelve signs still show (a complete zodiac wheel) and the panel says the
+  // live sky resumes shortly, rather than the whole section disappearing.
   const fmtPlanet = (n: string) => (locale === "es" ? PLANETS_ES[n] || n : n);
   const fmtAspect = (n: string) => (locale === "es" ? ASPECTS_ES[n] || n : n);
 
@@ -307,6 +323,8 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
                   {t.computedAt} {data.computed_at.slice(11, 16)} {t.utc}
                 </div>
               </>
+            ) : failed ? (
+              <div className="skynow-stamp">{t.liveSoon}</div>
             ) : (
               <div className="skynow-loading" aria-hidden="true">
                 <span /><span /><span />

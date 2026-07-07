@@ -12,7 +12,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
     q: "How does the free trial and price work?",
     a: (
       <>
-        Solray starts with five days free. After that it is $23 a month, a single
+        Solray starts with three days free. After that it is $23 a month, a single
         plan with everything included. You can cancel anytime before the trial
         ends and you will not be charged.
       </>

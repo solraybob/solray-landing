@@ -289,62 +289,11 @@ export default function LifeLayer() {
     });
 
     /* ------------------------------------------------------------------ */
-    /* 2. The instrument: a slowly turning astronomical ring in the hero   */
+    /* 2. (retired) The hero instrument ring. Bob 2026-07-07: the big      */
+    /* wheel circles fought the galaxy and the sun; the sky IS the         */
+    /* instrument now. Kept out deliberately, do not restore.              */
     /* ------------------------------------------------------------------ */
     const hero = document.querySelector("section.hero") as HTMLElement | null;
-    if (hero) {
-      const NS = "http://www.w3.org/2000/svg";
-      const ring = document.createElementNS(NS, "svg");
-      ring.setAttribute("viewBox", "0 0 1000 1000");
-      ring.setAttribute("class", "alv-instrument");
-      ring.setAttribute("aria-hidden", "true");
-      const C = 500;
-      const circle = (r: number, opacity: number, dash?: string) => {
-        const c = document.createElementNS(NS, "circle");
-        c.setAttribute("cx", String(C)); c.setAttribute("cy", String(C));
-        c.setAttribute("r", String(r));
-        c.setAttribute("fill", "none");
-        c.setAttribute("stroke", "rgba(242,236,216,1)");
-        c.setAttribute("stroke-opacity", String(opacity));
-        c.setAttribute("stroke-width", "1");
-        if (dash) c.setAttribute("stroke-dasharray", dash);
-        ring.appendChild(c);
-      };
-      circle(478, 0.07);
-      circle(430, 0.05, "1 7");
-      circle(360, 0.06);
-      // 12 house ticks + 60 minor ticks, an instrument bezel, no glyphs.
-      for (let i = 0; i < 60; i++) {
-        const major = i % 5 === 0;
-        const ang = (i / 60) * Math.PI * 2;
-        const r1 = major ? 452 : 466;
-        const r2 = 478;
-        const line = document.createElementNS(NS, "line");
-        line.setAttribute("x1", String(C + r1 * Math.cos(ang)));
-        line.setAttribute("y1", String(C + r1 * Math.sin(ang)));
-        line.setAttribute("x2", String(C + r2 * Math.cos(ang)));
-        line.setAttribute("y2", String(C + r2 * Math.sin(ang)));
-        line.setAttribute("stroke", "rgba(242,236,216,1)");
-        line.setAttribute("stroke-opacity", major ? "0.1" : "0.05");
-        line.setAttribute("stroke-width", major ? "1.4" : "0.8");
-        ring.appendChild(line);
-      }
-      // A few small diamonds riding the middle track, like markers.
-      for (let i = 0; i < 4; i++) {
-        const ang = (i / 4) * Math.PI * 2 + Math.PI / 6;
-        const x = C + 430 * Math.cos(ang), y = C + 430 * Math.sin(ang);
-        const d = document.createElementNS(NS, "path");
-        d.setAttribute("d", `M ${x} ${y - 5} L ${x + 5} ${y} L ${x} ${y + 5} L ${x - 5} ${y} Z`);
-        d.setAttribute("fill", "rgba(243,146,48,0.18)");
-        ring.appendChild(d);
-      }
-      hero.insertBefore(ring, hero.firstChild);
-      // Counter-rotating inner echo.
-      const ring2 = ring.cloneNode(true) as SVGElement;
-      ring2.setAttribute("class", "alv-instrument alv-instrument-inner");
-      hero.insertBefore(ring2, hero.firstChild);
-      cleanups.push(() => { ring.remove(); ring2.remove(); });
-    }
 
     /* ------------------------------------------------------------------ */
     /* 3. Headline writes itself, letter by letter, blur to sharp          */
@@ -366,6 +315,17 @@ export default function LifeLayer() {
           }
           node.parentNode?.replaceChild(frag, node);
         } else if (node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName !== "BR") {
+          // The amber accent stays WHOLE: its shimmer uses background-clip
+          // text + transparent fill, which paints nothing once the text is
+          // split into child spans (the 2026-07-07 "It is still speaking
+          // vanished" bug). It arrives as one line, after the letters.
+          if ((node as Element).classList?.contains("amber-accent")) {
+            const el = node as HTMLElement;
+            el.classList.add("alv-line");
+            el.style.setProperty("--ld", `${420 + li * 26 + 260}ms`);
+            li += (el.textContent || "").length;
+            return;
+          }
           Array.from(node.childNodes).forEach(splitNode);
         }
       };
@@ -410,7 +370,7 @@ export default function LifeLayer() {
     /* 5. Hero entrance cascade                                            */
     /* ------------------------------------------------------------------ */
     if (hero) {
-      const order = [".sun-mark", ".brand-lockup", "h1.display", ".hero-sub", ".hero-ctas", ".hero-tag", ".specimen"];
+      const order = [".sun-mark", ".brand-lockup", "h1.display", ".hero-sub", ".hero-ctas", ".hero-tag", ".store-badges", ".specimen"];
       const els: HTMLElement[] = [];
       order.forEach((sel, i) => {
         const el = hero.querySelector(sel) as HTMLElement | null;
@@ -515,17 +475,19 @@ export default function LifeLayer() {
           }
         };
         collect(el);
-        let ni = 0, ci = 0;
+        let ni = 0, ci = 0, sinceScroll = 0;
         const step = () => {
           if (ni >= nodes.length) { done(); return; }
           const cur = nodes[ni];
           if (ci >= cur.full.length) { ni++; ci = 0; timer.id = setTimeout(step, 0); return; }
           const ch = cur.full[ci];
           cur.node.textContent = cur.full.slice(0, ++ci);
+          // Keep the newest words in view while the Oracle writes.
+          if (++sinceScroll >= 6) { sinceScroll = 0; chat!.scrollTop = chat!.scrollHeight; }
           const pause =
-            ch === "." || ch === "?" ? 190 :
-            ch === "," ? 90 :
-            10 + Math.random() * 18;
+            ch === "." || ch === "?" ? 150 :
+            ch === "," ? 70 :
+            7 + Math.random() * 13;
           timer.id = setTimeout(step, pause);
         };
         step();
@@ -541,6 +503,7 @@ export default function LifeLayer() {
           dots.className = "alv-typing";
           dots.innerHTML = "<span></span><span></span><span></span>";
           el.before(dots);
+          chat!.scrollTop = chat!.scrollHeight;
           timer.id = setTimeout(() => {
             dots.remove();
             el.classList.add("alv-msg-in", "alv-writing");
@@ -548,20 +511,26 @@ export default function LifeLayer() {
               el.classList.remove("alv-writing");
               timer.id = setTimeout(() => playFrom(i + 1), 380);
             });
-          }, 950);
+          }, 750);
         } else {
           el.classList.add("alv-msg-in");
-          timer.id = setTimeout(() => playFrom(i + 1), isBubble ? 650 : 140);
+          chat!.scrollTop = chat!.scrollHeight;
+          timer.id = setTimeout(() => playFrom(i + 1), isBubble ? 550 : 120);
         }
       };
+      // Start eagerly (a fifth of the phone visible), and wake the screen
+      // first so the device visibly turns on before the conversation
+      // begins. A fast scroller now always sees a living phone, never a
+      // dead black rectangle.
       const chatIO = new IntersectionObserver(
         ([e]) => {
           if (e.isIntersecting) {
             chatIO.disconnect();
-            timer.id = setTimeout(() => playFrom(0), 350);
+            phone.classList.add("alv-screen-on");
+            timer.id = setTimeout(() => playFrom(0), 250);
           }
         },
-        { threshold: 0.45 }
+        { threshold: 0.2 }
       );
       chatIO.observe(phone);
       cleanups.push(() => {

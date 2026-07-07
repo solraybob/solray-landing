@@ -399,6 +399,43 @@ section.hero {
   letter-spacing: 0.14em;
 }
 
+/* Store badges row (Google Play now, App Store when iOS is approved).
+   Centered, refined pill that matches the hero buttons. */
+.store-badges {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: rgba(243, 146, 48, 0.05);
+  border: 1px solid rgba(243, 146, 48, 0.4);
+  color: var(--pearl);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1;
+  box-shadow: 0 8px 24px -16px rgba(243, 146, 48, 0.5);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+.store-badge .gp-mark {
+  display: block;
+  flex-shrink: 0;
+}
+.store-badge:hover {
+  background: rgba(243, 146, 48, 0.1);
+  border-color: rgba(243, 146, 48, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -14px rgba(243, 146, 48, 0.6);
+}
+
 /* Slim "add to home screen" bar pinned above the header (component: InstallBar).
    Quiet, readable, dismissible. When present, html.has-ibar drops the fixed nav
    below it and gives the hero a touch more top room. */
@@ -1064,9 +1101,37 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 .invocation {
   padding: 140px 0;
   text-align: center;
+  position: relative;
   background:
     radial-gradient(ellipse 60% 40% at 50% 50%, rgba(243, 146, 48, 0.05), transparent 70%),
     var(--forest-deep);
+}
+/* The finale scrim: a deep-forest pool behind the closing words so they
+   stay legible directly over the galaxy core. Sits under the text, over
+   the sky. */
+.invocation .wrap { position: relative; }
+.invocation .wrap::before {
+  content: "";
+  position: absolute;
+  inset: -70px -10vw;
+  background: radial-gradient(
+    ellipse 62% 58% at 50% 46%,
+    rgba(5, 15, 8, 0.82) 0%,
+    rgba(5, 15, 8, 0.55) 52%,
+    transparent 76%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+.invocation .wrap > * { position: relative; z-index: 1; }
+.invocation-sun { display: flex; justify-content: center; margin-bottom: 30px; }
+.invocation-sun img {
+  filter: drop-shadow(0 0 38px rgba(243, 146, 48, 0.5));
+  animation: invocation-sun-breathe 7s ease-in-out infinite;
+}
+@keyframes invocation-sun-breathe {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(243, 146, 48, 0.4)); }
+  50%      { transform: scale(1.05); filter: drop-shadow(0 0 52px rgba(243, 146, 48, 0.62)); }
 }
 .invocation p {
   font-family: var(--font-serif);
@@ -1075,19 +1140,51 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   line-height: 1.4;
   color: var(--pearl);
   max-width: 780px; margin: 0 auto;
+  text-shadow: 0 2px 30px rgba(5, 15, 8, 0.9);
 }
 .invocation .sig {
   margin-top: 40px;
   font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--moss);
 }
+.invocation-cta {
+  margin-top: 38px;
+  display: flex; flex-direction: column; align-items: center; gap: 13px;
+}
+.invocation-cta .btn.primary { padding: 15px 38px; font-size: 13px; letter-spacing: 0.1em; }
+.invocation-trial {
+  font-size: 12px; letter-spacing: 0.07em; color: var(--text-muted);
+}
 
 /* Footer -------------------------------------------------------------- */
 footer.site {
   padding: 56px 0 40px;
-  border-top: 1px solid var(--forest-border);
   font-size: 12px;
   color: var(--moss-dim);
   text-align: center;
+  /* Mirror of the header (Bob 2026-07-07): same frosted forest glass, same
+     amber breath (rising from the bottom edge instead of falling from the
+     top), same faded border treatment, so the page opens and closes on the
+     same material. */
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  background:
+    radial-gradient(ellipse 40% 180% at 50% 100%, rgba(243, 146, 48, 0.05) 0%, transparent 70%),
+    linear-gradient(to top, rgba(5, 15, 8, 0.72) 0%, rgba(5, 15, 8, 0.48) 100%);
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(26, 48, 32, 0.9) 20%,
+    rgba(26, 48, 32, 0.9) 80%,
+    transparent 100%
+  ) 1;
+}
+@media (prefers-reduced-transparency: reduce) {
+  footer.site {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(5, 15, 8, 0.92);
+  }
 }
 footer.site .brand {
   font-family: var(--font-serif);
@@ -1727,8 +1824,11 @@ footer.site .socials svg {
 .alive .alv-fill { transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1); }
 
 /* --- Invocation: words ignite as you read ---------------------------------------- */
+/* Unlit words stay readable (0.38, was 0.16): over the galaxy core the old
+   floor rendered the finale invisible to anyone who did not scroll the
+   section fully past the upper third. The ignition wave still reads. */
 .alive .alv-word {
-  opacity: 0.16;
+  opacity: 0.38;
   transition: opacity 0.7s ease, color 0.7s ease, text-shadow 0.7s ease;
 }
 .alive .alv-word.alv-word-lit {
@@ -1912,6 +2012,363 @@ footer.site .socials svg {
 .alive-pre .hero .hero-sub,
 .alive-pre .hero .hero-ctas,
 .alive-pre .hero .hero-tag,
+.alive-pre .hero .store-badges,
 .alive-pre .hero .specimen {
   opacity: 0;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   3D cosmos hero (preview build). The Solray sun stays the LITERAL logo
+   (public/solray-sun.png), crisp and unaltered. The upgrade is the world
+   around it: a cinematic generated cosmos drifting behind it, a volumetric
+   amber atmosphere, a slow breath, and pointer parallax for real depth.
+   Reduced-motion visitors get the still poster and zero motion.
+   ════════════════════════════════════════════════════════════════════ */
+.hero-cosmos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--forest-deep) url("/hero-cosmos.jpg") center / cover no-repeat;
+  will-change: transform;
+}
+.hero-cosmos video {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 112%; height: 112%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.92;
+}
+/* Frame it: keep the centre clear for the sun, deepen the edges for
+   legibility, and dissolve the bottom into the page so the hero meets the
+   next section without a seam (and blends into the LifeLayer cosmos). */
+.hero-cosmos::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 66% 58% at 50% 44%, transparent 0%, rgba(5, 15, 8, 0.30) 66%, rgba(5, 15, 8, 0.72) 100%),
+    linear-gradient(to bottom, rgba(5, 15, 8, 0.55) 0%, transparent 20%, transparent 64%, var(--forest-deep) 100%);
+}
+/* The old CSS dot starfield is replaced by the cosmos layer. */
+.hero .starfield { display: none; }
+
+/* Sun stack: .sun-mark is the parallax + glow shell, .sun-core breathes. */
+.hero .sun-mark {
+  width: 216px; height: 216px;
+  margin: 0 auto 4px;
+  position: relative;
+  z-index: 2;
+  filter:
+    drop-shadow(0 0 54px rgba(243, 146, 48, 0.50))
+    drop-shadow(0 0 130px rgba(243, 146, 48, 0.26))
+    drop-shadow(0 0 230px rgba(243, 146, 48, 0.12));
+  will-change: transform;
+}
+/* Pull the wordmark up so it sits an even distance between the sun and the
+   headline below it. */
+.hero .brand-lockup { margin: 0 auto 26px; }
+.hero .sun-mark .sun-core {
+  position: relative;
+  width: 100%; height: 100%;
+  animation: sun-breathe 7.5s ease-in-out infinite;
+  will-change: transform;
+}
+.hero .sun-mark .sun-core img { width: 100%; height: 100%; display: block; object-fit: contain; }
+/* Amber atmosphere disc behind the mark, breathing in step. */
+.hero .sun-mark .sun-core::before {
+  content: "";
+  position: absolute; inset: -38%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 146, 48, 0.24) 0%, rgba(243, 146, 48, 0.07) 42%, transparent 70%);
+  z-index: -1;
+  animation: sun-halo 7.5s ease-in-out infinite;
+}
+@keyframes sun-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes sun-halo {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.10); }
+}
+@media (max-width: 640px) {
+  .hero .sun-mark { width: 152px; height: 152px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cosmos video { display: none; }
+  .hero .sun-mark .sun-core,
+  .hero .sun-mark .sun-core::before { animation: none; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   PAGE COSMOS: the cinematic cosmos as ONE persistent, full-page background
+   that stays with you and parallaxes as you scroll (the clouds follow you
+   down), on a seamless boomerang loop. It sits BEHIND the LifeLayer star
+   canvas (z-index -1), so the rich nebula and the living stars read as one
+   continuous night sky across every section. Reduced-motion gets the still.
+   ════════════════════════════════════════════════════════════════════ */
+.page-cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-color: var(--forest-deep);
+  background-image: url("/cosmos-tall.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* JS pans this from 0% to 100% as you scroll: you descend through the
+     nebula's colour bands all the way down the page (amber to moss to indigo
+     to wisteria). */
+  background-position: center 0%;
+  /* Overscan so the pointer-parallax translate never reveals an edge. */
+  transform: scale(1.08);
+  will-change: background-position, transform;
+}
+/* Lighter scrim than before: let the colour come through, tame it just enough
+   that copy stays readable. */
+.page-cosmos::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 92% 72% at 50% 40%, transparent 0%, rgba(5, 15, 8, 0.20) 100%),
+    linear-gradient(to bottom, rgba(5, 15, 8, 0.16) 0%, rgba(5, 15, 8, 0.30) 100%);
+}
+/* Let the cosmos breathe through the one section that still paints a ground. */
+.philosophy {
+  background: radial-gradient(ellipse 70% 52% at 50% 40%, rgba(14, 36, 22, 0.40), transparent 78%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-cosmos { background-position: center 32% !important; transform: none; }
+}
+
+/* The live sky wheel tilts to the pointer, a small piece of 3D play. */
+.skynow-orrery {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   THE GALAXY: a real WebGL spiral galaxy (components/GalaxyField.tsx) fixed
+   behind everything, descending 1:1 with scroll. The gradient below is the
+   WebGL-unavailable fallback. The galaxy is the starfield now, so LifeLayer's
+   own canvas is retired to avoid a doubled sky.
+   ════════════════════════════════════════════════════════════════════ */
+.galaxy-field {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 46%, transparent 16%, rgba(3, 11, 7, 0.74) 100%),
+    radial-gradient(ellipse 100% 60% at 50% 22%, rgba(243, 146, 48, 0.02), transparent 50%),
+    var(--forest-deep);
+}
+.galaxy-field canvas { display: block; width: 100% !important; height: 100% !important; position: relative; z-index: 1; }
+/* Soft Higgsfield Milky Way colour wash behind the live particles: blurred and
+   dimmed so it reads as ambient colour depth, not a competing galaxy. Painted
+   before the canvas, so the particles glow on top of it. */
+.galaxy-field::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  background: url("/cosmos-mw.jpg") center / cover no-repeat;
+  filter: blur(46px) brightness(0.26) saturate(1.05);
+  opacity: 0.2;
+}
+.alv-cosmos { display: none !important; }
+/* Soft radial scrim behind the hero text only, so the wordmark and headline
+   read cleanly over the bright galaxy core while the galaxy still shows around
+   them. Sits inside the hero-inner stacking context, behind its content. */
+.hero .hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: -8% -16% -2%;
+  z-index: -1;
+  background: radial-gradient(ellipse 72% 60% at 50% 44%, rgba(5, 15, 8, 0.48) 0%, rgba(5, 15, 8, 0.22) 46%, transparent 75%);
+  pointer-events: none;
+}
+
+/* --- Meteors: rare shooting stars behind content ------------------------------- */
+.meteor-field {
+  position: fixed; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.meteor {
+  position: absolute;
+  width: 190px; height: 1.5px;
+  transform-origin: right center;
+  transform: rotate(206deg) scale(var(--meteor-scale, 1));
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(236, 228, 207, 0.0) 12%,
+    rgba(236, 228, 207, 0.55) 78%,
+    rgba(247, 185, 104, 0.95) 100%
+  );
+  border-radius: 2px;
+  filter: drop-shadow(0 0 6px rgba(247, 185, 104, 0.65));
+  animation: meteor-streak 1.7s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
+  opacity: 0;
+}
+@keyframes meteor-streak {
+  0%   { opacity: 0; translate: 0 0; }
+  8%   { opacity: 0.9; }
+  62%  { opacity: 0.55; }
+  100% { opacity: 0; translate: -46vw 24vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .meteor { display: none; }
+}
+
+/* --- Zodiac descent rail -------------------------------------------------------- */
+.zodiac-rail {
+  position: fixed;
+  right: 20px; top: 50%;
+  translate: 0 -50%;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 7px;
+  z-index: 70;
+  padding: 12px 6px;
+}
+.zodiac-rail::before {
+  content: "";
+  position: absolute;
+  top: 4px; bottom: 4px; left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--forest-edge) 18%, var(--forest-edge) 82%, transparent);
+  z-index: -1;
+}
+.zr-glyph {
+  appearance: none; border: 0; background: var(--forest-deep);
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  font-size: 13px; line-height: 1;
+  /* Text presentation, never emoji: paired with the U+FE0E selector in JSX. */
+  font-family: var(--font-serif), "Times New Roman", serif;
+  color: var(--text-muted);
+  opacity: 0.42;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.35s ease, opacity 0.35s ease, text-shadow 0.35s ease, transform 0.25s ease;
+}
+.zr-glyph:hover { opacity: 1; color: var(--pearl); transform: scale(1.22); }
+.zr-glyph.zr-passed { opacity: 0.85; color: var(--text-secondary); }
+.zr-glyph.zr-active {
+  opacity: 1;
+  color: var(--amber-bright);
+  text-shadow: 0 0 14px rgba(247, 185, 104, 0.8);
+  transform: scale(1.3);
+}
+@media (max-width: 1099px) { .zodiac-rail { display: none; } }
+
+/* --- Page-wide headline legibility over the living sky --------------------------- */
+h2.section, .section-head .lead, .philosophy .lede {
+  text-shadow: 0 2px 26px rgba(5, 15, 8, 0.85);
+}
+
+/* --- Constellation chapters ------------------------------------------------------ */
+.constellation-field {
+  position: fixed; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.constellation {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  will-change: opacity;
+}
+.cst-line {
+  fill: none;
+  stroke: rgba(236, 228, 207, 0.38);
+  stroke-width: 0.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: var(--cst-draw, 1);
+  transition: stroke-dashoffset 0.35s ease-out;
+}
+.cst-star {
+  fill: #ece4cf;
+  filter: drop-shadow(0 0 3px rgba(236, 228, 207, 0.8));
+  /* Stars kindle with the drawing, not before it. Values above 1 clamp. */
+  opacity: calc((1 - var(--cst-draw, 1)) * 1.4);
+  transition: opacity 0.6s ease;
+}
+.cst-star:nth-of-type(3n) { fill: #f7b968; filter: drop-shadow(0 0 4px rgba(247, 185, 104, 0.8)); }
+.cst-star:nth-of-type(5n) { fill: #9b86a0; }
+.cst-star:nth-of-type(4n) { fill: #9caf78; }
+.cst-star:nth-of-type(7n) { fill: #9babb9; }
+.cst-name {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  /* The name is the last thing to arrive, once the figure is nearly whole. */
+  opacity: calc((1 - var(--cst-draw, 1)) * 1.1 - 0.45);
+  transition: opacity 0.8s ease;
+}
+@media (max-width: 1099px) { .constellation-field { display: none; } }
+
+/* --- Comet cursor ----------------------------------------------------------------- */
+.comet-cursor {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 75; /* over content, under the film grain (80) */
+  pointer-events: none;
+}
+
+/* --- Clean first fold ------------------------------------------------------------- */
+/* The opening viewport holds only sun + name + headline, centered. The
+   sub-paragraph, CTAs and specimen begin below the fold and arrive on
+   scroll. 100svh so mobile URL bars do not cause a peek. The hero section
+   has 140px top padding, hence the offset. */
+.hero-fold {
+  /* 140px = the hero's top padding, so the fold's bottom edge lands exactly
+     on the viewport's bottom edge and the sub-paragraph starts below it. */
+  min-height: calc(100svh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-sub { padding-top: 34px; }
+@media (max-width: 767px) {
+  /* Mobile hero padding is 104px (see the hero media block). */
+  .hero-fold { min-height: calc(100svh - 104px); }
+}
+html.has-ibar .hero-fold { min-height: calc(100svh - 172px); }
+
+/* --- The amber line arrives whole ------------------------------------------------- */
+/* .alv-line = the headline's amber accent, kept as ONE unit by LifeLayer
+   (splitting it into letters killed its background-clip shimmer). Same
+   blur-to-sharp arrival as the letters, timed to land just after them. */
+.alive .alv-letters .alv-line {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(10px);
+}
+.alive .alv-letters.alv-letters-in .alv-line {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--ld, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .alive .alv-letters .alv-line { opacity: 1; filter: none; transform: none; }
+}
+
+/* --- Every primary pill is the same pill ------------------------------------------ */
+.invocation-cta .btn.primary { border-radius: 999px; }

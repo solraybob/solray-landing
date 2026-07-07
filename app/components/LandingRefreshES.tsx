@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import InstallBar from "./InstallBar";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
+import GalaxyField from "./GalaxyField";
+import Meteors from "./Meteors";
+import ConstellationChapters from "./ConstellationChapters";
+import ZodiacRail from "./ZodiacRail";
 
 const SIGNOS: Record<string, string> = {
   Capricorn: "Capricornio", Aquarius: "Acuario", Pisces: "Piscis",
@@ -46,10 +50,18 @@ function faseLunar(d: Date): string {
 
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
+const PLAY_URL = "https://play.google.com/store/apps/details?id=ai.solray.app";
 
 export default function LandingRefreshES() {
   return (
     <>
+      {/* The same living sky as the English page: galaxy descent, rare
+          meteors, constellation chapters, zodiac rail. Mirrored 2026-07-07
+          on Bob's go-live. */}
+      <GalaxyField />
+      <Meteors />
+      <ConstellationChapters locale="es" />
+      <ZodiacRail locale="es" />
       <InstallBar
         text="Añade Solray a tu pantalla de inicio"
         iosHint="Toca el botón Compartir en la barra del navegador y elige Añadir a pantalla de inicio."
@@ -82,20 +94,22 @@ export default function LandingRefreshES() {
       <section className="hero">
         <div className="starfield"></div>
         <div className="hero-inner">
-          <div className="sun-mark" aria-hidden="true">
-            <Image src="/solray-sun.png" alt="" width={150} height={150} priority />
+          <div className="hero-fold">
+            <div className="sun-mark" aria-hidden="true">
+              <Image src="/solray-sun.png" alt="" width={150} height={150} priority />
+            </div>
+            <div className="brand-lockup">
+              <div className="name">Solray</div>
+              <div className="tagline">Vivir por diseño</div>
+            </div>
+            <h1 className="display">
+              Naciste bajo
+              <br />
+              un cielo específico.
+              <br />
+              <span className="amber-accent">Todavía está hablando.</span>
+            </h1>
           </div>
-          <div className="brand-lockup">
-            <div className="name">Solray</div>
-            <div className="tagline">Vivir por diseño</div>
-          </div>
-          <h1 className="display">
-            Naciste bajo
-            <br />
-            un cielo específico.
-            <br />
-            <span className="amber-accent">Todavía está hablando.</span>
-          </h1>
           <p className="hero-sub">
             Solray lee el instante exacto en que llegaste contra el cielo de este momento. Astrología occidental, Diseño Humano y Gene Keys, calculados juntos, sólo contra tu carta. Cada mañana, en tu propio idioma.
           </p>
@@ -107,7 +121,24 @@ export default function LandingRefreshES() {
               Conoce al Oráculo
             </a>
           </div>
-          <div className="hero-tag">Cinco días gratis. $23 al mes después. Cancela cuando quieras.</div>
+          <div className="hero-tag">Tres días gratis. $23 al mes después. Cancela cuando quieras.</div>
+          <div className="store-badges">
+            <a
+              href={PLAY_URL}
+              className="store-badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Consigue Solray en Google Play"
+            >
+              <svg className="gp-mark" viewBox="0 0 26 30" width={18} height={21} aria-hidden="true">
+                <polygon points="0,0 11,6.35 11,15 0,15" fill="#00C3FF" />
+                <polygon points="0,15 11,15 11,23.65 0,30" fill="#00EA80" />
+                <polygon points="11,6.35 26,15 11,15" fill="#FF424B" />
+                <polygon points="11,15 26,15 11,23.65" fill="#FFD400" />
+              </svg>
+              <span>Disponible en Google Play</span>
+            </a>
+          </div>
 
           <div className="specimen">
             <div className="row">
@@ -437,7 +468,7 @@ export default function LandingRefreshES() {
             <div className="amount">
               $23<span className="per">por mes</span>
             </div>
-            <div className="trial">Cinco días gratis. Cancela en cualquier momento antes de que termine la prueba.</div>
+            <div className="trial">Tres días gratis. Cancela en cualquier momento antes de que termine la prueba.</div>
 
             <ul>
               <li>
@@ -465,7 +496,7 @@ export default function LandingRefreshES() {
 
             <div className="cta">
               <a href={APP_URL} className="btn primary pricing-cta">
-                Empieza cinco días gratis
+                Empieza tres días gratis
               </a>
             </div>
           </div>
@@ -473,9 +504,13 @@ export default function LandingRefreshES() {
         </div>
       </section>
 
-      {/* Closing invocation */}
+      {/* Closing invocation: el broche. Dejaste el sol arriba, descendiste
+          por todo el cielo, y llegas de vuelta a él. */}
       <section className="invocation">
         <div className="wrap">
+          <div className="invocation-sun" aria-hidden="true">
+            <Image src="/solray-sun.png" alt="" width={92} height={92} />
+          </div>
           <p>
             El cielo seguirá hablando
             <br />
@@ -486,6 +521,12 @@ export default function LandingRefreshES() {
             donde por fin lo oyes.
           </p>
           <div className="sig">Solray, vivir por diseño</div>
+          <div className="invocation-cta">
+            <a href={APP_URL} className="btn primary">
+              Empieza tu viaje
+            </a>
+            <div className="invocation-trial">Tres días gratis. Cancela cuando quieras.</div>
+          </div>
         </div>
       </section>
 
@@ -560,7 +601,7 @@ const FAQS_ES: [string, string][] = [
   ],
   [
     "¿Y si quiero cancelar?",
-    "Cancela dentro de la app en dos toques, cuando quieras. Si cancelas durante los cinco días gratis no pagas nada. Si cancelas después, tu acceso simplemente llega hasta el final del mes que ya pagaste.",
+    "Cancela dentro de la app en dos toques, cuando quieras. Si cancelas durante los tres días gratis no pagas nada. Si cancelas después, tu acceso simplemente llega hasta el final del mes que ya pagaste.",
   ],
   [
     "¿En qué se diferencia de otras apps de astrología?",
