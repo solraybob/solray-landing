@@ -476,18 +476,24 @@ export default function LifeLayer() {
         };
         collect(el);
         let ni = 0, ci = 0, sinceScroll = 0;
+        // Phones write in small chunks instead of single characters: a
+        // third of the DOM writes and timer wakeups, which is the
+        // difference between smooth and stuttering alongside the galaxy.
+        // Desktop keeps the char-by-char intimacy.
+        const chunk = finePointer ? 1 : 3;
         const step = () => {
           if (ni >= nodes.length) { done(); return; }
           const cur = nodes[ni];
           if (ci >= cur.full.length) { ni++; ci = 0; timer.id = setTimeout(step, 0); return; }
-          const ch = cur.full[ci];
-          cur.node.textContent = cur.full.slice(0, ++ci);
+          ci = Math.min(ci + chunk, cur.full.length);
+          cur.node.textContent = cur.full.slice(0, ci);
+          const ch = cur.full[ci - 1];
           // Keep the newest words in view while the Oracle writes.
-          if (++sinceScroll >= 6) { sinceScroll = 0; chat!.scrollTop = chat!.scrollHeight; }
+          if (++sinceScroll >= 8) { sinceScroll = 0; chat!.scrollTop = chat!.scrollHeight; }
           const pause =
             ch === "." || ch === "?" ? 150 :
             ch === "," ? 70 :
-            7 + Math.random() * 13;
+            chunk === 1 ? 7 + Math.random() * 13 : 20 + Math.random() * 14;
           timer.id = setTimeout(step, pause);
         };
         step();

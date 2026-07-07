@@ -46,12 +46,12 @@ export default function GalaxyField() {
           return; // no WebGL: the CSS gradient fallback stays
         }
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1.3 : 2));
         renderer.setClearColor(0x000000, 0);
         host.appendChild(renderer.domElement);
 
         // ---- the galaxy ----
-        const COUNT = coarse ? 6500 : 15000;
+        const COUNT = coarse ? 5200 : 15000;
         const RADIUS = 10;
         const BRANCHES = 4;
         const SPIN = 1.15;
@@ -278,9 +278,14 @@ export default function GalaxyField() {
           // it. baseY is measured off the real sun logo (see alignToSun).
           galaxy.position.y = baseY - prog * 6.3;
           galaxy.rotation.x = 0.58 + prog * 0.22;
-          // gentle push toward the plane + pointer parallax
-          camera.position.x += (pX * 2.4 - camera.position.x) * 0.08;
-          camera.position.y = 0.6 + pY * 1.2 - prog * 0.6;
+          // gentle push toward the plane + pointer parallax. The parallax is
+          // DEPTH-GATED: zero at the top of the page (so the core never
+          // drifts off the sun when the mouse moves, which read as "the
+          // mouse thing is weird"), easing up to full strength as you
+          // descend into the sky.
+          const par = Math.min(prog * 2.2, 1);
+          camera.position.x += (pX * 1.5 * par - camera.position.x) * 0.08;
+          camera.position.y = 0.6 + pY * 0.9 * par - prog * 0.6;
           camera.position.z = 9 - prog * 1.6;
           camera.lookAt(0, -prog * 5.4, 0);
           renderer.render(scene, camera);
