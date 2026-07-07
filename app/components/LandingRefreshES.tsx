@@ -53,6 +53,16 @@ const LOGIN_URL = "https://app.solray.ai/login";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=ai.solray.app";
 
 export default function LandingRefreshES() {
+  // Declare the real document language. The root layout says lang="en" for
+  // the whole site, so Chrome saw "an English page full of Spanish text"
+  // on /es and auto-translated it back to English for English-UI visitors,
+  // skipping only the letter-split hero (which is why "only the hero looked
+  // Spanish"). With lang="es" the page is a legitimate Spanish document.
+  useEffect(() => {
+    document.documentElement.lang = "es";
+    return () => { document.documentElement.lang = "en"; };
+  }, []);
+
   return (
     <>
       {/* The same living sky as the English page: galaxy descent, rare

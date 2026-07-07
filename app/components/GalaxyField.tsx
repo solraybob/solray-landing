@@ -290,10 +290,17 @@ export default function GalaxyField() {
           if (!disposed) raf = requestAnimationFrame(loop);
         }
         onScroll();
-        // Two passes: once now, once after fonts/layout settle, so the
-        // measured sun position is the one people actually see.
+        // Repeated passes while the page settles (fonts, install bar,
+        // translate bars, anything that shifts layout after first paint),
+        // plus a ResizeObserver so ANY later reflow re-centres the core on
+        // the sun. The maths is cheap; misalignment is expensive.
         alignToSun();
-        window.setTimeout(alignToSun, 450);
+        const alignTimers = [450, 1500, 3000, 6000].map((ms) => window.setTimeout(alignToSun, ms));
+        let ro: ResizeObserver | null = null;
+        try {
+          ro = new ResizeObserver(() => alignToSun());
+          ro.observe(document.body);
+        } catch { /* older browsers: the timed passes cover it */ }
         if (reduced) {
           frame(); // single still frame, no loop
         } else {
@@ -311,6 +318,8 @@ export default function GalaxyField() {
 
         cleanup = () => {
           if (raf) cancelAnimationFrame(raf);
+          alignTimers.forEach((t) => clearTimeout(t));
+          ro?.disconnect();
           window.removeEventListener("scroll", onScroll);
           window.removeEventListener("pointermove", onPointer);
           window.removeEventListener("resize", onResize);
