@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import LifeLayer from "./components/LifeLayer";
@@ -63,6 +63,14 @@ export const metadata: Metadata = {
   },
 };
 
+// Kill the white flash on load: color-scheme dark makes the browser's very
+// first paint (before any CSS arrives) a dark canvas instead of white, and
+// theme-color darkens the surrounding browser chrome to match.
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#050f08",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,7 +94,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${inter.variable}`}
+      style={{ backgroundColor: "#050f08" }}
+    >
       <body>
         {/* Pre-paint guard against the hydration flash: without this, the
             plain server-rendered hero paints first, then LifeLayer hides it
