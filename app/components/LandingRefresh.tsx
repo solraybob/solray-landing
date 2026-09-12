@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
 import GalaxyField from "./GalaxyField";
-import Meteors from "./Meteors";
-import ZodiacRail from "./ZodiacRail";
 import ConstellationChapters from "./ConstellationChapters";
 
 const APP_URL = "https://app.solray.ai/onboard";
@@ -81,13 +79,11 @@ export default function LandingRefresh() {
           particles over cream read as a grey film, and the cream is the point.
           The component stays in the tree, unrendered, so it can come back if
           the ground ever goes dark again. */}
-      {false && <GalaxyField />}
+      {/* GalaxyField held back on paper */ false && <GalaxyField />}
       {/* The deliberate subtraction (2026-07-07): a comet cursor trail
           lived here for one night. It decorated the pointer instead of
           serving the sky, so it was cut. The restraint IS the design. */}
-      <Meteors />
       <ConstellationChapters />
-      <ZodiacRail />
       <InstallBar
         text="Add Solray to your home screen"
         iosHint="Tap the Share button in your browser bar, then choose Add to Home Screen."
@@ -668,7 +664,13 @@ export default function LandingRefresh() {
       {/* Footer */}
       <footer className="site">
         <div className="wrap">
-          <div className="brand">Solray</div>
+          <div className="brand">
+            <span className="word" aria-label="Solray">
+              <span>s</span>
+              <Image className="word-orb" src="/solray-orb.png" alt="" width={24} height={24} />
+              <span>lray</span>
+            </span>
+          </div>
           <div>Iceland. Calculated with Swiss Ephemeris. Built for people, not markets.</div>
           <div className="socials" aria-label="Follow Solray">
             <a

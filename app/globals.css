@@ -11,18 +11,18 @@
   --forest-edge:    #E2DACA;
 
   /* Solar accent */
-  --amber:          #6C3CCC;
-  --amber-bright:   #C4602F;
-  --amber-dim:      #543F96;
+  --amber:          #5A31AE;
+  --amber-bright:   #B02E72;
+  --amber-dim:      #4A2E9E;
 
   /* Pigments */
   --pearl:          #22201C;
   --pearl-dim:      #6E6659;
-  --moss:           #3F6A3C;
-  --moss-dim:       #3F6A3C;
+  --moss:           #A34A22;
+  --moss-dim:       #A34A22;
   --wisteria:       #B02E72;
   --mist:           #543F96;
-  --indigo:         #4A6FA5;
+  --indigo:         #4A2E9E;
   --ember:          #C4602F;
 
   /* Text */
@@ -579,8 +579,8 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
    the full-strength pigment for the SVG, then override border-color
    to a rgba version so the ring sits softer than the icon. */
 .three .card .glyph.astro { color: var(--amber);   border-color: rgba(108,60,204, 0.4); }
-.three .card .glyph.hd    { color: var(--moss);    border-color: rgba(79,122,74, 0.45); }
-.three .card .glyph.gk    { color: var(--indigo);  border-color: rgba(74,111,165, 0.5); }
+.three .card .glyph.hd    { color: var(--moss);    border-color: rgba(196,96,47, 0.45); }
+.three .card .glyph.gk    { color: var(--indigo);  border-color: rgba(74,46,158, 0.5); }
 .three .card h3 { margin-bottom: 14px; }
 .three .card p { font-size: 0.92rem; line-height: 1.75; color: var(--text-secondary); }
 .three .card .note {
@@ -591,8 +591,8 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
    top and bottom of each card rhyme. Sit the note at ~0.78 alpha so
    the icon stays the loudest voice in the card. */
 .three .card .note.astro { color: #5A31AE; }
-.three .card .note.hd    { color: #3F6A3C; }
-.three .card .note.gk    { color: #3A5A88; }
+.three .card .note.hd    { color: #C4602F; }
+.three .card .note.gk    { color: #4A2E9E; }
 
 /* Oracle preview ------------------------------------------------------- */
 .oracle-frame {
@@ -726,7 +726,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   width: 44px; height: 44px; border-radius: 13px;
   display: flex; align-items: center; justify-content: center;
 }
-.chat-input .mic { background: rgba(74,111,165, 0.12); color: var(--mist); border: 1px solid rgba(74,111,165,0.35); }
+.chat-input .mic { background: rgba(74,46,158, 0.12); color: var(--mist); border: 1px solid rgba(74,46,158,0.35); }
 /* Send sits in its empty/resting state in the mock, neutral and dim like the app. */
 .chat-input .send { background: transparent; color: var(--text-secondary); border: 1px solid var(--forest-border); }
 
@@ -839,8 +839,8 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   min-height: 460px;
   padding: 40px 32px;
   background:
-    radial-gradient(ellipse at 30% 40%, rgba(74,111,165, 0.10), transparent 55%),
-    radial-gradient(ellipse at 75% 72%, rgba(74,111,165, 0.06), transparent 55%),
+    radial-gradient(ellipse at 30% 40%, rgba(74,46,158, 0.10), transparent 55%),
+    radial-gradient(ellipse at 75% 72%, rgba(74,46,158, 0.06), transparent 55%),
     linear-gradient(180deg, var(--forest-dark), var(--forest-deep));
   border: 1px solid var(--forest-border);
   border-radius: 6px;
@@ -856,16 +856,16 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   max-width: 360px;
   padding: 24px;
   border-radius: 24px;
-  background: linear-gradient(155deg, rgba(74,111,165, 0.10) 0%, rgba(250,246,236, 0.95) 55%, #FAF6EC 100%);
-  border: 1px solid rgba(74,111,165, 0.25);
-  box-shadow: 0 20px 60px -30px rgba(74,111,165, 0.35);
+  background: linear-gradient(155deg, rgba(74,46,158, 0.10) 0%, rgba(250,246,236, 0.95) 55%, #FAF6EC 100%);
+  border: 1px solid rgba(74,46,158, 0.25);
+  box-shadow: 0 20px 60px -30px rgba(74,46,158, 0.35);
 }
 .bond-eyebrow {
   font-family: var(--font-sans);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(74,111,165, 0.75);
+  color: rgba(74,46,158, 0.75);
   margin-bottom: 6px;
 }
 .bond-heading {
@@ -900,13 +900,13 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   border: 1px solid rgba(34,32,28, 0.12);
 }
 .bond-pill.partner {
-  background: rgba(74,111,165, 0.08);
-  border: 1px solid rgba(74,111,165, 0.45);
+  background: rgba(74,46,158, 0.08);
+  border: 1px solid rgba(74,46,158, 0.45);
   padding: 4px 6px;
   gap: 6px;
 }
 .bond-star {
-  color: rgba(74,111,165, 0.55);
+  color: rgba(74,46,158, 0.55);
   font-size: 11px;
 }
 .bond-avatar {
@@ -923,7 +923,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   flex-shrink: 0;
 }
 .bond-avatar.you-avatar {
-  background: linear-gradient(135deg, #4A6FA5, #5a7582);
+  background: linear-gradient(135deg, #4A2E9E, #5a7582);
 }
 .bond-avatar.partner-avatar {
   width: 24px;
@@ -975,8 +975,8 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   color: var(--text-muted);
 }
 .bond-lens-pill.active {
-  background: rgba(74,111,165, 0.15);
-  border-color: rgba(74,111,165, 0.55);
+  background: rgba(74,46,158, 0.15);
+  border-color: rgba(74,46,158, 0.55);
   color: var(--text-primary);
 }
 .bond-cta {
@@ -986,7 +986,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   width: 100%;
   padding: 13px 0;
   border-radius: 12px;
-  background: linear-gradient(135deg, #4A6FA5, #5a7582);
+  background: linear-gradient(135deg, #4A2E9E, #5a7582);
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 12px;
@@ -1160,7 +1160,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 footer.site {
   padding: 56px 0 40px;
   font-size: 12px;
-  color: var(--moss-dim);
+  color: var(--text-muted);
   text-align: center;
   /* Mirror of the header (Bob 2026-07-07): same frosted forest glass, same
      amber breath (rising from the bottom edge instead of falling from the
@@ -1714,7 +1714,7 @@ footer.site .socials svg {
     from 0deg,
     rgba(108,60,204, 0.0) 0deg,
     rgba(108,60,204, 0.35) 70deg,
-    rgba(79,122,74, 0.25) 140deg,
+    rgba(196,96,47, 0.25) 140deg,
     rgba(210,63,140, 0.25) 220deg,
     rgba(108,60,204, 0.0) 300deg
   );
@@ -2512,7 +2512,46 @@ nav.top-nav .btn.primary { font-size: .84rem; padding: 9px 20px; }
 .bond-eyebrow, .insight-attr, .chat-handle, .attr, .oracle-copy .eyebrow,
 .oracle .eyebrow { color: #B02E72; opacity: 1; }
 .note.hd { color: #B02E72; opacity: 1; }
-.note.gk { color: #3F6A3C; opacity: 1; }
+.note.gk { color: #C4602F; opacity: 1; }
 .note.astro { color: #5A31AE; opacity: 1; }
 
 .today-widget .insight-attr { color: #5A31AE; opacity: 1; }
+
+
+/* ── matching the connector, 2026-09-12 ──────────────────────────────────
+   Same gutters, same type scale, same vertical rhythm as
+   connector/web/landing.html, so the two pages feel like one hand. */
+.wrap { max-width: 1080px; padding: 0 56px; }
+.narrow { max-width: 720px; padding: 0 56px; }
+body { font-size: 17px; line-height: 1.7; }
+section { padding-top: 170px; }
+section.hero { padding-top: 140px; }
+.section-head h2, h2.section { font-size: clamp(2.1rem, 5.6vw, 3.6rem); letter-spacing: -.038em;
+  line-height: 1.08; max-width: 18ch; }
+h1.display { font-size: clamp(2rem, 4.9vw, 3.95rem); letter-spacing: -.042em; line-height: 1.06; }
+.lead, .hero-sub { font-size: 1.06rem; line-height: 1.78; max-width: 56ch; color: var(--text-secondary); }
+.eyebrow { font-size: .7rem; font-weight: 500; letter-spacing: .22em; color: var(--text-muted); }
+.rule { height: 1px; background: var(--forest-border); margin: 0; }
+footer.site { backdrop-filter: none; -webkit-backdrop-filter: none; background: transparent;
+  border-top: 1px solid var(--forest-border); padding: 40px 0 64px; }
+footer.site .brand { font-family: var(--font-sans); font-size: 1.28rem; font-weight: 700;
+  letter-spacing: -.02em; color: var(--text-primary); margin-bottom: 14px; }
+footer.site .socials a { color: var(--text-secondary); border-color: var(--forest-border); }
+footer.site .socials a:hover { color: var(--text-primary); border-color: var(--text-muted); }
+@media (max-width: 860px) {
+  .wrap, .narrow { padding: 0 26px; }
+  section { padding-top: 112px; }
+}
+
+footer.site, footer.site div, footer.site a { color: var(--text-muted); }
+footer.site .brand, footer.site .brand * { color: var(--text-primary); }
+footer.site a:hover { color: var(--text-primary); }
+
+/* the last small-text offenders, measured on cream */
+.three .card .note.astro { color: #5A31AE; }
+.three .card .note.hd    { color: #B02E72; }
+.three .card .note.gk    { color: #4A2E9E; }
+.label, .kicker, .per, .note, .sig, .skynow-stamp { color: var(--text-muted); }
+.specimen .label { color: var(--text-muted); }
+
+.bar-pct { color: var(--text-secondary); }

@@ -6,9 +6,7 @@ import InstallBar from "./InstallBar";
 import SkyTaste from "./SkyTaste";
 import SkyNow from "./SkyNow";
 import GalaxyField from "./GalaxyField";
-import Meteors from "./Meteors";
 import ConstellationChapters from "./ConstellationChapters";
-import ZodiacRail from "./ZodiacRail";
 
 const SIGNOS: Record<string, string> = {
   Capricorn: "Capricornio", Aquarius: "Acuario", Pisces: "Piscis",
@@ -73,10 +71,8 @@ export default function LandingRefreshES() {
           particles over cream read as a grey film, and the cream is the point.
           The component stays in the tree, unrendered, so it can come back if
           the ground ever goes dark again. */}
-      {false && <GalaxyField />}
-      <Meteors />
+      {/* GalaxyField held back on paper */ false && <GalaxyField />}
       <ConstellationChapters locale="es" />
-      <ZodiacRail locale="es" />
       <InstallBar
         text="Añade Solray a tu pantalla de inicio"
         iosHint="Toca el botón Compartir en la barra del navegador y elige Añadir a pantalla de inicio."
@@ -631,7 +627,13 @@ export default function LandingRefreshES() {
       {/* Footer */}
       <footer className="site">
         <div className="wrap">
-          <div className="brand">Solray</div>
+          <div className="brand">
+            <span className="word" aria-label="Solray">
+              <span>s</span>
+              <Image className="word-orb" src="/solray-orb.png" alt="" width={24} height={24} />
+              <span>lray</span>
+            </span>
+          </div>
           <div>Islandia. Calculado con Swiss Ephemeris. Hecho para personas, no para mercados.</div>
           <div className="socials" aria-label="Sigue a Solray">
             <a href="https://www.instagram.com/solray.ai/" target="_blank" rel="noopener noreferrer" aria-label="Solray en Instagram">

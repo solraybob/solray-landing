@@ -216,7 +216,7 @@ export default function LifeLayer() {
       }
 
       // Shooting star, page-wide, rare.
-      if (!shoot && now > nextShootAt) {
+      if (false && !shoot && now > nextShootAt) {
         const fromLeft = Math.random() > 0.5;
         shoot = {
           x: fromLeft ? -20 : w * (0.3 + Math.random() * 0.6),
