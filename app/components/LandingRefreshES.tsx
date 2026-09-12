@@ -69,7 +69,11 @@ export default function LandingRefreshES() {
       {/* The same living sky as the English page: galaxy descent, rare
           meteors, constellation chapters, zodiac rail. Mirrored 2026-07-07
           on Bob's go-live. */}
-      <GalaxyField />
+      {/* The WebGL galaxy is held back on the paper design. Thousands of
+          particles over cream read as a grey film, and the cream is the point.
+          The component stays in the tree, unrendered, so it can come back if
+          the ground ever goes dark again. */}
+      {false && <GalaxyField />}
       <Meteors />
       <ConstellationChapters locale="es" />
       <ZodiacRail locale="es" />

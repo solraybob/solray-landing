@@ -18,17 +18,17 @@
   /* Pigments */
   --pearl:          #22201C;
   --pearl-dim:      #6E6659;
-  --moss:           #4F7A4A;
-  --moss-dim:       #4F7A4A;
-  --wisteria:       #D23F8C;
+  --moss:           #3F6A3C;
+  --moss-dim:       #3F6A3C;
+  --wisteria:       #B02E72;
   --mist:           #543F96;
   --indigo:         #4A6FA5;
   --ember:          #C4602F;
 
   /* Text */
   --text-primary:   #22201C;
-  --text-secondary: #6E6659;
-  --text-muted:     #A79E90;
+  --text-secondary: #5C5548;
+  --text-muted:     #6E6659;
 
   --font-serif: var(--font-zen), "Zen Kaku Gothic New", system-ui, sans-serif;
   --font-sans:  var(--font-zen), "Zen Kaku Gothic New", system-ui, sans-serif;
@@ -385,7 +385,7 @@ section.hero {
 }
 .hero-ctas .btn.oracle-cta:hover {
   background: rgba(210,63,140, 0.14);
-  color: #c4b2c9;
+  color: var(--text-primary);
   border-color: rgba(210,63,140, 0.7);
   transform: translateY(-1px);
   box-shadow:
@@ -590,9 +590,9 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 /* Bottom caption picks up the same pigment as its card's icon, so the
    top and bottom of each card rhyme. Sit the note at ~0.78 alpha so
    the icon stays the loudest voice in the card. */
-.three .card .note.astro { color: rgba(108,60,204, 0.82); }
-.three .card .note.hd    { color: rgba(79,122,74, 0.85); }
-.three .card .note.gk    { color: rgba(74,111,165, 0.92); }
+.three .card .note.astro { color: #5A31AE; }
+.three .card .note.hd    { color: #3F6A3C; }
+.three .card .note.gk    { color: #3A5A88; }
 
 /* Oracle preview ------------------------------------------------------- */
 .oracle-frame {
@@ -680,7 +680,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   font-weight: 300;
   font-size: 16px;
   line-height: 1.55;
-  color: rgba(214, 216, 208, 0.58);
+  color: var(--text-secondary);
 }
 /* Per-message label under each message, wisteria, like the app. */
 .msg-label {
@@ -702,7 +702,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
   font-weight: 300;
   font-size: 16px;
   line-height: 1.55;
-  color: rgba(236, 231, 221, 0.82);
+  color: var(--text-primary);
 }
 .bubble.oracle em { color: var(--wisteria); font-style: italic; }
 .chat-input {
@@ -712,8 +712,8 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 }
 .chat-input .box {
   flex: 1; height: 44px;
-  border: 1px solid rgba(236, 231, 221, 0.12);
-  background: rgba(236, 231, 221, 0.05);
+  border: 1px solid var(--forest-border);
+  background: transparent;
   border-radius: 14px;
   padding: 0 16px;
   display: flex; align-items: center;
@@ -728,7 +728,7 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 }
 .chat-input .mic { background: rgba(74,111,165, 0.12); color: var(--mist); border: 1px solid rgba(74,111,165,0.35); }
 /* Send sits in its empty/resting state in the mock, neutral and dim like the app. */
-.chat-input .send { background: rgba(236, 231, 221, 0.05); color: rgba(236, 231, 221, 0.4); border: 1px solid rgba(236, 231, 221, 0.12); }
+.chat-input .send { background: transparent; color: var(--text-secondary); border: 1px solid var(--forest-border); }
 
 .oracle-copy h2 { margin-bottom: 24px; }
 /* Eyebrow + attribution in the Oracle section pick up the wisteria tint
@@ -1525,7 +1525,8 @@ footer.site .socials svg {
   width: 100%; height: 100%;
   z-index: 80;
   pointer-events: none;
-  opacity: 0.028;
+  opacity: 0;
+  display: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   animation: alv-grain-shift 1.4s steps(3) infinite;
@@ -1829,7 +1830,7 @@ footer.site .socials svg {
    floor rendered the finale invisible to anyone who did not scroll the
    section fully past the upper third. The ignition wave still reads. */
 .alive .alv-word {
-  opacity: 0.38;
+  opacity: 0.62;
   transition: opacity 0.7s ease, color 0.7s ease, text-shadow 0.7s ease;
 }
 .alive .alv-word.alv-word-lit {
@@ -2163,7 +2164,7 @@ footer.site .socials svg {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 120% 90% at 50% 46%, transparent 16%, rgba(226,218,202,0.16) 100%),
+    radial-gradient(ellipse 120% 90% at 50% 46%, transparent 16%, rgba(226,218,202,0) 100%),
     radial-gradient(ellipse 100% 60% at 50% 22%, rgba(108,60,204, 0.02), transparent 50%),
     var(--forest-deep);
 }
@@ -2172,13 +2173,10 @@ footer.site .socials svg {
    dimmed so it reads as ambient colour depth, not a competing galaxy. Painted
    before the canvas, so the particles glow on top of it. */
 .galaxy-field::before {
-  content: "";
-  position: absolute;
-  inset: -8%;
-  z-index: 0;
-  background: url("/cosmos-mw.jpg") center / cover no-repeat;
-  filter: blur(46px) brightness(0.26) saturate(1.05);
-  opacity: 0.2;
+  /* The blurred, darkened Milky Way photo was the colour depth behind the
+     particles on the forest ground. On paper it is simply a grey film over
+     the whole page, so it is off. The cream is the ground now. */
+  content: none;
 }
 .alv-cosmos { display: none !important; }
 /* Soft radial scrim behind the hero text only, so the wordmark and headline
@@ -2490,3 +2488,31 @@ nav.top-nav .btn.primary { font-size: .84rem; padding: 9px 20px; }
   box-shadow: none !important;
 }
 .btn.ghost:hover { border-color: var(--text-muted) !important; color: var(--text-primary) !important; }
+
+
+/* ── contrast pass, 2026-09-12 ───────────────────────────────────────────
+   Everything below was tuned for light text on a dark ground. On paper the
+   same values read as faint or invisible, so each one is brought up to at
+   least AA against #F5F0E6. */
+.zr-glyph, .zr-glyph.zr-active { opacity: .85; color: var(--text-secondary); }
+.zr-glyph.zr-active { color: var(--amber); opacity: 1; }
+.cst-name { color: var(--text-secondary); }
+.taste-privacy { opacity: 1; color: var(--text-muted); }
+.tagline, .hc-eyebrow, .hc-fine, .eyebrow, .quiet, .label, .msg-label,
+.skynow-stamp, .note, .fine, .foot, .hero-tag { color: var(--text-muted); }
+.quiet b { color: var(--text-secondary); }
+.bubble.oracle em { color: var(--amber); }
+.chat-input .box { color: var(--text-muted); }
+.btn.primary { opacity: 1 !important; }
+.hero-sub, .lead, .body p, .duo p { color: var(--text-secondary); }
+
+
+/* Small coloured captions: the pigment stays, the value comes down so 10 and
+   11px text clears AA on cream. Measured, not guessed. */
+.bond-eyebrow, .insight-attr, .chat-handle, .attr, .oracle-copy .eyebrow,
+.oracle .eyebrow { color: #B02E72; opacity: 1; }
+.note.hd { color: #B02E72; opacity: 1; }
+.note.gk { color: #3F6A3C; opacity: 1; }
+.note.astro { color: #5A31AE; opacity: 1; }
+
+.today-widget .insight-attr { color: #5A31AE; opacity: 1; }

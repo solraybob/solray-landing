@@ -128,8 +128,8 @@ export default function LifeLayer() {
           y: Math.random() * (h * 1.6),
           r: (0.35 + Math.random() * 1.1) * depth,
           rgb: pickStarColor(),
-          base: 0.03 + Math.random() * 0.09,
-          amp: 0.02 + Math.random() * 0.06,
+          base: 0.02 + Math.random() * 0.05,
+          amp: 0.015 + Math.random() * 0.035,
           phase: Math.random() * Math.PI * 2,
           speed: 0.2 + Math.random() * 0.85,
           vx: (Math.random() - 0.5) * 0.01 * depth,
@@ -189,12 +189,12 @@ export default function LifeLayer() {
       const n2y = h * (0.66 + 0.09 * Math.sin(t * 0.06));
       const nr = Math.max(w, h) * 0.55;
       const g1 = ctx.createRadialGradient(n1x, n1y, 0, n1x, n1y, nr);
-      g1.addColorStop(0, `rgba(${a[0] | 0},${a[1] | 0},${a[2] | 0},0.05)`);
+      g1.addColorStop(0, `rgba(${a[0] | 0},${a[1] | 0},${a[2] | 0},0.03)`);
       g1.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = g1;
       ctx.fillRect(0, 0, w, h);
       const g2 = ctx.createRadialGradient(n2x, n2y, 0, n2x, n2y, nr * 0.9);
-      g2.addColorStop(0, `rgba(${b[0] | 0},${b[1] | 0},${b[2] | 0},0.045)`);
+      g2.addColorStop(0, `rgba(${b[0] | 0},${b[1] | 0},${b[2] | 0},0.025)`);
       g2.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, w, h);

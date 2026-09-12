@@ -77,7 +77,11 @@ export default function LandingRefresh() {
       {/* The living galaxy: a real WebGL spiral galaxy in the palette that
           descends with the scroll, completely connected to it, behind all
           content. The sun logo above is its bright anchor. */}
-      <GalaxyField />
+      {/* The WebGL galaxy is held back on the paper design. Thousands of
+          particles over cream read as a grey film, and the cream is the point.
+          The component stays in the tree, unrendered, so it can come back if
+          the ground ever goes dark again. */}
+      {false && <GalaxyField />}
       {/* The deliberate subtraction (2026-07-07): a comet cursor trail
           lived here for one night. It decorated the pointer instead of
           serving the sky, so it was cut. The restraint IS the design. */}
