@@ -1127,12 +1127,13 @@ section:not(.hero):not(.invocation) { padding: 72px 0; }
 .invocation .wrap > * { position: relative; z-index: 1; }
 .invocation-sun { display: flex; justify-content: center; margin-bottom: 30px; }
 .invocation-sun img {
-  filter: drop-shadow(0 0 38px rgba(108,60,204, 0.5));
-  animation: invocation-sun-breathe 7s ease-in-out infinite;
+  /* the orb, breathing exactly as it does on the connector page */
+  filter: drop-shadow(0 18px 26px rgba(84,63,150,.26));
+  animation: invocation-sun-breathe 11s ease-in-out infinite;
 }
 @keyframes invocation-sun-breathe {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(108,60,204, 0.4)); }
-  50%      { transform: scale(1.05); filter: drop-shadow(0 0 52px rgba(108,60,204, 0.62)); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-8px) scale(1.012); }
 }
 .invocation p {
   font-family: var(--font-serif);

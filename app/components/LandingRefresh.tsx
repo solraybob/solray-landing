@@ -638,7 +638,7 @@ export default function LandingRefresh() {
       <section className="invocation">
         <div className="wrap">
           <div className="invocation-sun" aria-hidden="true">
-            <Image src="/solray-sun.png" alt="" width={92} height={92} />
+            <Image src="/solray-orb.png" alt="" width={112} height={112} />
           </div>
           <p>
             The sky will keep speaking
