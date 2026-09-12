@@ -1,6 +1,6 @@
 export default function Oracle() {
   return (
-    <section className="py-28 px-6" style={{ borderTop: "1px solid #1a3020" }}>
+    <section className="py-28 px-6" style={{ borderTop: "1px solid #E2DACA" }}>
       <div className="max-w-3xl mx-auto">
         {/* Section label */}
         <p
@@ -25,7 +25,7 @@ export default function Oracle() {
         {/* Description */}
         <p
           className="font-body font-light text-sm md:text-base leading-loose text-center max-w-2xl mx-auto mb-16"
-          style={{ color: "#8a9e8d" }}
+          style={{ color: "#A79E90" }}
         >
           The Oracle holds your complete chart across three systems and remembers
           every conversation. It does not speak from a knowledge base. It speaks
@@ -66,7 +66,7 @@ export default function Oracle() {
           >
             <p
               className="font-body text-[11px] tracking-[0.18em] uppercase mb-1"
-              style={{ color: "#9b86a0" }}
+              style={{ color: "#D23F8C" }}
             >
               Your Higher Self
             </p>
@@ -89,8 +89,8 @@ export default function Oracle() {
               <div
                 className="px-4 py-2.5"
                 style={{
-                  background: "rgba(155,134,160,0.12)",
-                  border: "1px solid rgba(155,134,160,0.18)",
+                  background: "rgba(210,63,140,0.12)",
+                  border: "1px solid rgba(210,63,140,0.18)",
                   borderRadius: "16px 16px 4px 16px",
                   maxWidth: "82%",
                 }}
@@ -121,7 +121,7 @@ export default function Oracle() {
               </p>
               <span
                 className="font-body text-[11px] tracking-[0.18em] uppercase mt-3 block"
-                style={{ color: "rgba(155,134,160,0.75)" }}
+                style={{ color: "rgba(210,63,140,0.75)" }}
               >
                 Oracle
               </span>

@@ -51,6 +51,7 @@ function faseLunar(d: Date): string {
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=ai.solray.app";
+const CONNECTOR_URL = "https://solray-backend-production.up.railway.app/connect";
 
 export default function LandingRefreshES() {
   // Declare the real document language. The root layout says lang="en" for
@@ -80,9 +81,14 @@ export default function LandingRefreshES() {
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
-          <span className="wordmark">SOLRAY</span>
+          <span className="wordmark word" aria-label="Solray">
+            <span>s</span>
+            <Image className="word-orb" src="/solray-orb.png" alt="" width={20} height={20} />
+            <span>lray</span>
+          </span>
         </div>
         <div className="links">
+          <a href="#connector">El Conector</a>
           <a href="#map">El Mapa</a>
           <a href="#oracle">El Oráculo</a>
           <a href="#today">Hoy</a>
@@ -106,10 +112,16 @@ export default function LandingRefreshES() {
         <div className="hero-inner">
           <div className="hero-fold">
             <div className="sun-mark" aria-hidden="true">
-              <Image src="/solray-sun.png" alt="" width={150} height={150} priority />
+              <Image className="orb-mark" src="/solray-orb.png" alt="" width={150} height={150} priority />
             </div>
             <div className="brand-lockup">
-              <div className="name">Solray</div>
+              <div className="name">
+                <span className="word" aria-label="Solray">
+                  <span>s</span>
+                  <Image className="word-orb" src="/solray-orb.png" alt="" width={40} height={40} />
+                  <span>lray</span>
+                </span>
+              </div>
               <div className="tagline">Vivir por diseño</div>
             </div>
             <h1 className="display">
@@ -132,6 +144,21 @@ export default function LandingRefreshES() {
             </a>
           </div>
           <div className="hero-tag">Tres días gratis. $23 al mes después. Cancela cuando quieras.</div>
+
+          {/* El conector, en el primer pliegue. */}
+          <div className="hero-connector">
+            <div className="hc-eyebrow">Nuevo &middot; el conector</div>
+            <p>
+              Lleva tu carta calculada a Claude o ChatGPT. Solray aporta las posiciones,
+              el cielo del día que preguntes y la guía de voz. Tu IA escribe la lectura
+              dentro de tu propia conversación.
+            </p>
+            <div className="hc-btns">
+              <a href={CONNECTOR_URL} className="btn primary">Obtener el conector</a>
+              <a href="#connector" className="btn ghost">Cómo funciona</a>
+            </div>
+            <p className="hc-fine">$6.99 al mes, propuesto. Incluido con tu membresía de Solray durante la vista previa.</p>
+          </div>
           <div className="store-badges">
             <a
               href={PLAY_URL}
@@ -174,6 +201,61 @@ export default function LandingRefreshES() {
             <div className="row">
               <span className="label">Cielo de hoy</span>
               <span className="value">Luna en trígono a tu Sol, orbe 0°22&apos;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="rule"></div>
+
+      {/* La página del conector, dentro de la portada. */}
+      <section id="connector" className="connector-sec">
+        <div className="wrap">
+          <div className="section-head">
+            <span className="eyebrow">El conector</span>
+            <h2 className="section">Tu cielo, dentro de la IA que ya usas.</h2>
+            <p className="lead">
+              Solray reúne tu carta natal, Diseño Humano y Claves Genéticas en una sola imagen
+              y se la entrega a Claude o ChatGPT cuando preguntas. El cálculo es nuestro. La
+              lectura se escribe en tu conversación, con tus palabras, donde ya trabajas.
+            </p>
+          </div>
+
+          <div className="duo">
+            <div>
+              <p className="role">Tú</p>
+              <p className="said">¿Qué está cambiando en mi cielo esta semana?</p>
+              <div className="quiet">
+                <b>solray</b> &middot; tu carta natal calculada<br />
+                <b>solray</b> &middot; tránsitos a tus posiciones natales<br />
+                <b>solray</b> &middot; guía de voz para la lectura<br />
+                <b>Tu IA</b> &middot; la lectura, escrita en tu chat
+              </div>
+              <p>
+                Conecta una vez. Solray calcula el cielo de la fecha que preguntes, cada vez.
+                Tu IA lo pone en palabras. El cálculo y la interpretación quedan separados, y
+                los datos de nacimiento que falten se dicen con claridad en vez de adivinarse.
+              </p>
+            </div>
+            <div>
+              <h3>Astrólogos, lectores, coaches</h3>
+              <p>
+                Cuatro pestañas para armar una sola imagen del cliente se convierten en una
+                pregunta, hecha dentro del documento donde ya escribes la lectura.
+              </p>
+              <h3 style={{ marginTop: 26 }}>Quien ya le preguntó a una IA por su carta</h3>
+              <p>
+                Y recibió posiciones que nunca se calcularon. Solray responde con la efeméride
+                real, tu momento de nacimiento guardado y las zonas horarias históricas bien resueltas.
+              </p>
+              <div className="hc-btns" style={{ justifyContent: "flex-start", marginTop: 24 }}>
+                <a href={CONNECTOR_URL} className="btn primary">Conectar con Claude</a>
+                <a href={CONNECTOR_URL} className="btn ghost">ChatGPT, vista previa</a>
+              </div>
+              <p className="hc-fine" style={{ textAlign: "left" }}>
+                $6.99 al mes, propuesto. Incluido con tu membresía durante la vista previa.
+                Desconecta cuando quieras. Tu carta sigue siendo tuya.
+              </p>
             </div>
           </div>
         </div>

@@ -4,14 +4,14 @@ export default function Footer() {
   return (
     <footer
       className="py-16 px-6 text-center"
-      style={{ borderTop: "1px solid #1a3020" }}
+      style={{ borderTop: "1px solid #E2DACA" }}
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
         {/* Logo + name */}
         <div className="flex items-center gap-3">
           <div
             className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0"
-            style={{ border: "1px solid #1a3020" }}
+            style={{ border: "1px solid #E2DACA" }}
           >
             <Image
               src="/logo.jpg"
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           <span
             className="font-body font-light text-sm tracking-[0.2em] uppercase"
-            style={{ color: "#8a9e8d" }}
+            style={{ color: "#A79E90" }}
           >
             solray.ai
           </span>
@@ -43,7 +43,7 @@ export default function Footer() {
           >
             Terms & Privacy
           </a>
-          <span style={{ color: "#1a3020" }}>·</span>
+          <span style={{ color: "#E2DACA" }}>·</span>
           <a
             href="mailto:support@solray.ai"
             className="font-body font-light text-xs tracking-wider uppercase hover:opacity-80 transition-opacity"
@@ -51,7 +51,7 @@ export default function Footer() {
           >
             Contact
           </a>
-          <span style={{ color: "#1a3020" }}>·</span>
+          <span style={{ color: "#E2DACA" }}>·</span>
           <span
             className="font-body font-light text-xs tracking-wider"
             style={{ color: "#4a5e4d" }}

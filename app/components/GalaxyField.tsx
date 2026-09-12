@@ -63,18 +63,18 @@ export default function GalaxyField() {
         const SPIN = 1.15;
         const RAND = 0.45;
         const RAND_POW = 3.0;
-        const cCore = new THREE.Color("#d49a5e");   // soft amber core (subtle)
-        const cMoss = new THREE.Color("#9caf78");   // moss
-        const cIndigo = new THREE.Color("#6a8692"); // indigo
-        const cWist = new THREE.Color("#9b86a0");   // wisteria rim
-        const cEmber = new THREE.Color("#d47a52");  // ember sparkle
+        const cCore = new THREE.Color("#C4602F");   // soft amber core (subtle)
+        const cMoss = new THREE.Color("#4F7A4A");   // moss
+        const cIndigo = new THREE.Color("#4A6FA5"); // indigo
+        const cWist = new THREE.Color("#D23F8C");   // wisteria rim
+        const cEmber = new THREE.Color("#C4602F");  // ember sparkle
         // Full aged-pigment palette scattered through the cluster, including
         // the bright centre, so the core reads multi-coloured not just amber.
         const PAL = [
-          new THREE.Color("#f3b968"), new THREE.Color("#9caf78"),
-          new THREE.Color("#6a8692"), new THREE.Color("#9b86a0"),
-          new THREE.Color("#9babb9"), new THREE.Color("#d47a52"),
-          new THREE.Color("#ece4cf"),
+          new THREE.Color("#C4602F"), new THREE.Color("#4F7A4A"),
+          new THREE.Color("#4A6FA5"), new THREE.Color("#D23F8C"),
+          new THREE.Color("#543F96"), new THREE.Color("#C4602F"),
+          new THREE.Color("#22201C"),
         ];
 
         const positions = new Float32Array(COUNT * 3);
@@ -130,13 +130,13 @@ export default function GalaxyField() {
         geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
         geo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
         const mat = new THREE.PointsMaterial({
-          size: 0.04,
+          size: 0.032,
           sizeAttenuation: true,
           depthWrite: false,
-          blending: THREE.AdditiveBlending,
+          blending: THREE.NormalBlending,
           vertexColors: true,
           transparent: true,
-          opacity: 0.42,
+          opacity: 0.055,
         });
         const galaxy = new THREE.Points(geo, mat);
         galaxy.rotation.x = 0.58;
@@ -149,9 +149,9 @@ export default function GalaxyField() {
         // Stars carry the aged-pigment palette: mostly pearl, then amber,
         // wisteria, mist, moss, indigo, like the rest of the brand.
         const STAR_COLORS = [
-          new THREE.Color("#ece4cf"), new THREE.Color("#f3b968"),
-          new THREE.Color("#9b86a0"), new THREE.Color("#9babb9"),
-          new THREE.Color("#9caf78"), new THREE.Color("#6a8692"),
+          new THREE.Color("#22201C"), new THREE.Color("#C4602F"),
+          new THREE.Color("#D23F8C"), new THREE.Color("#543F96"),
+          new THREE.Color("#4F7A4A"), new THREE.Color("#4A6FA5"),
         ];
         // Reweighted 2026-07-07 (Bob): less plain pearl, more of the aged
         // pigments, so the deep field reads as OUR sky, not generic white.
@@ -176,8 +176,8 @@ export default function GalaxyField() {
           // Quieter deep field (Bob 2026-07-07): smaller, dimmer, additive so
           // the dots glow softly instead of sitting as grey squares.
           size: 0.04, vertexColors: true, sizeAttenuation: true,
-          transparent: true, opacity: 0.16, depthWrite: false,
-          blending: THREE.AdditiveBlending,
+          transparent: true, opacity: 0.03, depthWrite: false,
+          blending: THREE.NormalBlending,
         });
         const stars = new THREE.Points(sGeo, sMat);
         scene.add(stars);
@@ -242,7 +242,7 @@ export default function GalaxyField() {
         const clock = new THREE.Clock();
         let raf = 0;
         let introDone = !startScattered;
-        const BASE_OPACITY = 0.42;
+        const BASE_OPACITY = 0.055;
         if (startScattered) mat.opacity = 0.0;
         function frame() {
           const t = clock.getElapsedTime();

@@ -13,6 +13,7 @@ import ConstellationChapters from "./ConstellationChapters";
 const APP_URL = "https://app.solray.ai/onboard";
 const LOGIN_URL = "https://app.solray.ai/login";
 const PLAY_URL = "https://play.google.com/store/apps/details?id=ai.solray.app";
+const CONNECTOR_URL = "https://solray-backend-production.up.railway.app/connect";
 
 // Real current date + sun sign + moon phase for the Today specimen, so the
 // page that promises "to the exact degree" never shows last April. Sun sign
@@ -91,9 +92,14 @@ export default function LandingRefresh() {
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
-          <span className="wordmark">SOLRAY</span>
+          <span className="wordmark word" aria-label="Solray">
+            <span>s</span>
+            <Image className="word-orb" src="/solray-orb.png" alt="" width={20} height={20} />
+            <span>lray</span>
+          </span>
         </div>
         <div className="links">
+          <a href="#connector">The Connector</a>
           <a href="#map">The Map</a>
           <a href="#oracle">The Oracle</a>
           <a href="#today">Today</a>
@@ -127,10 +133,16 @@ export default function LandingRefresh() {
               the fold edge made the opening feel less clean. */}
           <div className="hero-fold">
             <div className="sun-mark" aria-hidden="true">
-              <Image src="/solray-sun.png" alt="" width={216} height={216} priority />
+              <Image className="orb-mark" src="/solray-orb.png" alt="" width={216} height={216} priority />
             </div>
             <div className="brand-lockup">
-              <div className="name">Solray</div>
+              <div className="name">
+                <span className="word" aria-label="Solray">
+                  <span>s</span>
+                  <Image className="word-orb" src="/solray-orb.png" alt="" width={40} height={40} />
+                  <span>lray</span>
+                </span>
+              </div>
               <div className="tagline">Living by design</div>
             </div>
             <h1 className="display">
@@ -153,6 +165,23 @@ export default function LandingRefresh() {
             </a>
           </div>
           <div className="hero-tag">Three days free. $23 a month after. Cancel any time.</div>
+
+          {/* The connector, in the first fold. Solray now also lives inside the
+              AI people already talk to, and the front page says so before it
+              says anything else about the app. */}
+          <div className="hero-connector">
+            <div className="hc-eyebrow">New &middot; the connector</div>
+            <p>
+              Bring your calculated chart into Claude or ChatGPT. Solray supplies the
+              placements, the sky for the day you ask about, and the voice guidance.
+              Your AI writes the reading inside your own conversation.
+            </p>
+            <div className="hc-btns">
+              <a href={CONNECTOR_URL} className="btn primary">Get the connector</a>
+              <a href="#connector" className="btn ghost">How it works</a>
+            </div>
+            <p className="hc-fine">$6.99 a month, proposed. Included with your Solray membership during the preview.</p>
+          </div>
           <div className="store-badges">
             <a
               href={PLAY_URL}
@@ -196,6 +225,62 @@ export default function LandingRefresh() {
             <div className="row">
               <span className="label">Today&apos;s sky</span>
               <span className="value">Moon trine your Sun, 0°22&apos; orb</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="rule"></div>
+
+      {/* The connector page, brought onto the front page. Same copy and same
+          structure as the connector site, wearing this page's layout. */}
+      <section id="connector" className="connector-sec">
+        <div className="wrap">
+          <div className="section-head">
+            <span className="eyebrow">The connector</span>
+            <h2 className="section">Your sky, inside the AI you already use.</h2>
+            <p className="lead">
+              Solray brings your natal chart, Human Design and Gene Keys into one picture and
+              hands it to Claude or ChatGPT when you ask. The calculation is ours. The reading
+              is written in your conversation, in your own words, wherever you already work.
+            </p>
+          </div>
+
+          <div className="duo">
+            <div>
+              <p className="role">You</p>
+              <p className="said">What is changing in my sky this week?</p>
+              <div className="quiet">
+                <b>solray</b> &middot; your calculated birth chart<br />
+                <b>solray</b> &middot; transits to your natal placements<br />
+                <b>solray</b> &middot; voice guidance for the reading<br />
+                <b>Your AI</b> &middot; the reading, written in your chat
+              </div>
+              <p>
+                Connect once. Solray calculates the sky for the date you ask about, every time.
+                Your AI puts it into words. The calculations and the interpretation stay distinct,
+                and missing birth details are stated plainly instead of guessed.
+              </p>
+            </div>
+            <div>
+              <h3>Astrologers, readers, coaches</h3>
+              <p>
+                Four tabs to assemble one client picture becomes one question, asked inside the
+                document you are already writing the reading in.
+              </p>
+              <h3 style={{ marginTop: 26 }}>Anyone who has asked an AI about their chart</h3>
+              <p>
+                And been given placements that were never calculated. Solray answers with the real
+                ephemeris, your saved birth moment, and historical timezones handled properly.
+              </p>
+              <div className="hc-btns" style={{ justifyContent: "flex-start", marginTop: 24 }}>
+                <a href={CONNECTOR_URL} className="btn primary">Connect to Claude</a>
+                <a href={CONNECTOR_URL} className="btn ghost">ChatGPT, preview</a>
+              </div>
+              <p className="hc-fine" style={{ textAlign: "left" }}>
+                $6.99 a month, proposed. Included with your membership during the preview.
+                Disconnect any time. Your chart stays yours.
+              </p>
             </div>
           </div>
         </div>

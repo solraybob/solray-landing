@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import LifeLayer from "./components/LifeLayer";
 
@@ -7,6 +7,15 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant",
+  display: "swap",
+});
+
+// The connector's typeface. One family at four weights carries the whole
+// site now: 400 body, 500 eyebrows, 700 emphasis, 900 headlines.
+const zen = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-zen",
   display: "swap",
 });
 
@@ -99,7 +108,7 @@ export default function RootLayout({
     // regression). color-scheme dark alone keeps the pre-CSS first paint
     // dark, and body's forest-deep propagates to the canvas beneath the
     // negative-z sky layers.
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${zen.variable}`}>
       <body>
         {/* Pre-paint guard against the hydration flash: without this, the
             plain server-rendered hero paints first, then LifeLayer hides it

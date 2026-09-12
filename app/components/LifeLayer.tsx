@@ -29,19 +29,19 @@ import { useEffect } from "react";
 type RGB = [number, number, number];
 
 const STAR_PALETTE: [string, number][] = [
-  ["242,236,216", 0.55], // pearl
-  ["243,146,48", 0.16],  // amber
-  ["155,134,160", 0.14], // wisteria
-  ["155,171,185", 0.15], // mist
+  ["34,32,28", 0.55],    // ink: on paper the stars are dark, not bright
+  ["108,60,204", 0.16],  // orb violet
+  ["210,63,140", 0.14],  // orb pink
+  ["196,96,47", 0.15],   // burnt coral
 ];
 
 // Nebula hue journey down the page: forest-amber dawn at the hero, deep
 // indigo-wisteria night around the Oracle, ember warmth by the pricing close.
 const NEBULA_STOPS: { at: number; a: RGB; b: RGB }[] = [
-  { at: 0.0, a: [243, 146, 48], b: [156, 175, 120] },
-  { at: 0.35, a: [106, 134, 146], b: [155, 134, 160] },
-  { at: 0.7, a: [155, 134, 160], b: [212, 122, 82] },
-  { at: 1.0, a: [212, 122, 82], b: [243, 146, 48] },
+  { at: 0.0, a: [108, 60, 204], b: [210, 63, 140] },
+  { at: 0.35, a: [84, 63, 150], b: [210, 63, 140] },
+  { at: 0.7, a: [210, 63, 140], b: [196, 96, 47] },
+  { at: 1.0, a: [196, 96, 47], b: [108, 60, 204] },
 ];
 
 function lerp(a: number, b: number, k: number) { return a + (b - a) * k; }
@@ -128,8 +128,8 @@ export default function LifeLayer() {
           y: Math.random() * (h * 1.6),
           r: (0.35 + Math.random() * 1.1) * depth,
           rgb: pickStarColor(),
-          base: 0.1 + Math.random() * 0.38,
-          amp: 0.08 + Math.random() * 0.4,
+          base: 0.03 + Math.random() * 0.09,
+          amp: 0.02 + Math.random() * 0.06,
           phase: Math.random() * Math.PI * 2,
           speed: 0.2 + Math.random() * 0.85,
           vx: (Math.random() - 0.5) * 0.01 * depth,
@@ -238,8 +238,8 @@ export default function LifeLayer() {
         const grad = ctx.createLinearGradient(
           shoot.x, shoot.y, shoot.x - shoot.vx * len, shoot.y - shoot.vy * len
         );
-        grad.addColorStop(0, `rgba(242,236,216,${(0.85 * fade).toFixed(3)})`);
-        grad.addColorStop(1, "rgba(242,236,216,0)");
+        grad.addColorStop(0, `rgba(34,32,28,${(0.28 * fade).toFixed(3)})`);
+        grad.addColorStop(1, "rgba(34,32,28,0)");
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1.1;
         ctx.beginPath();
@@ -430,7 +430,7 @@ export default function LifeLayer() {
         pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0]} ${p[1]}`).join(" ")
       );
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "rgba(242,236,216,0.22)");
+      path.setAttribute("stroke", "rgba(34,32,28,0.22)");
       path.setAttribute("stroke-width", "0.7");
       path.setAttribute("pathLength", "1");
       path.setAttribute("class", "alv-asterism-line");
@@ -439,7 +439,7 @@ export default function LifeLayer() {
         const c = document.createElementNS(NS, "circle");
         c.setAttribute("cx", String(x)); c.setAttribute("cy", String(y));
         c.setAttribute("r", i === 2 ? "2" : "1.3");
-        c.setAttribute("fill", i === 2 ? "rgba(243,146,48,0.8)" : "rgba(242,236,216,0.7)");
+        c.setAttribute("fill", i === 2 ? "rgba(108,60,204,0.8)" : "rgba(34,32,28,0.7)");
         c.setAttribute("class", "alv-asterism-star");
         (c as unknown as HTMLElement).style?.setProperty("--si", String(i));
         svg.appendChild(c);

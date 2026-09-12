@@ -18,7 +18,7 @@ const pillars = [
 
 export default function Philosophy() {
   return (
-    <section className="py-24 px-6" style={{ borderTop: "1px solid #1a3020" }}>
+    <section className="py-24 px-6" style={{ borderTop: "1px solid #E2DACA" }}>
       <div className="max-w-6xl mx-auto">
         <p
           className="text-center text-xs tracking-[0.22em] uppercase font-body font-light mb-16"
@@ -33,7 +33,7 @@ export default function Philosophy() {
               key={i}
               className="p-8"
               style={{
-                background: "#0a1f12",
+                background: "#FAF6EC",
                 borderTop: `2px solid ${item.accent}`,
                 borderRadius: "2px",
               }}
@@ -46,7 +46,7 @@ export default function Philosophy() {
               </h3>
               <p
                 className="font-body font-light text-sm leading-loose"
-                style={{ color: "#8a9e8d" }}
+                style={{ color: "#A79E90" }}
               >
                 {item.body}
               </p>

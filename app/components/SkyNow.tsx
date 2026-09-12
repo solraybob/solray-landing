@@ -79,13 +79,13 @@ const ASPECTS_ES: Record<string, string> = {
 
 // Aged-pigment palette, planet voices.
 const PLANET_COLOR: Record<string, string> = {
-  Sun: "#f39230", Moon: "#ece4cf", Mercury: "#9babb9", Venus: "#9caf78",
-  Mars: "#d47a52", Jupiter: "#f7b968", Saturn: "#6a8692", Uranus: "#9babb9",
-  Neptune: "#9b86a0", Pluto: "#9b86a0",
+  Sun: "#6C3CCC", Moon: "#22201C", Mercury: "#543F96", Venus: "#4F7A4A",
+  Mars: "#C4602F", Jupiter: "#C4602F", Saturn: "#4A6FA5", Uranus: "#543F96",
+  Neptune: "#D23F8C", Pluto: "#D23F8C",
 };
 const ASPECT_COLOR: Record<string, string> = {
-  trine: "#9caf78", sextile: "#9babb9", square: "#d47a52",
-  opposition: "#6a8692", conjunction: "#f39230",
+  trine: "#4F7A4A", sextile: "#543F96", square: "#C4602F",
+  opposition: "#4A6FA5", conjunction: "#6C3CCC",
 };
 const ASPECT_MAX_ORB: Record<string, number> = {
   conjunction: 6, sextile: 3, square: 5, trine: 5, opposition: 6,
@@ -209,40 +209,40 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
             <svg viewBox={`0 0 ${S} ${S}`} className={data ? "is-live" : "is-loading"}>
               <defs>
                 <radialGradient id="snGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="rgba(243,146,48,0.08)" />
-                  <stop offset="60%" stopColor="rgba(243,146,48,0.02)" />
+                  <stop offset="0%" stopColor="rgba(108,60,204,0.08)" />
+                  <stop offset="60%" stopColor="rgba(108,60,204,0.02)" />
                   <stop offset="100%" stopColor="rgba(0,0,0,0)" />
                 </radialGradient>
                 <linearGradient id="snSweep" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgba(243,146,48,0)" />
-                  <stop offset="100%" stopColor="rgba(243,146,48,0.16)" />
+                  <stop offset="0%" stopColor="rgba(108,60,204,0)" />
+                  <stop offset="100%" stopColor="rgba(108,60,204,0.16)" />
                 </linearGradient>
               </defs>
 
               <circle cx={C} cy={C} r={250} fill="url(#snGlow)" />
 
               {/* Bezel */}
-              <circle cx={C} cy={C} r={250} fill="none" stroke="rgba(242,236,216,0.3)" strokeWidth="1.2" />
-              <circle cx={C} cy={C} r={214} fill="none" stroke="rgba(242,236,216,0.22)" strokeWidth="1" />
-              <circle cx={C} cy={C} r={120} fill="none" stroke="rgba(242,236,216,0.05)" strokeWidth="1" strokeDasharray="1 6" />
+              <circle cx={C} cy={C} r={250} fill="none" stroke="rgba(34,32,28,0.3)" strokeWidth="1.2" />
+              <circle cx={C} cy={C} r={214} fill="none" stroke="rgba(34,32,28,0.22)" strokeWidth="1" />
+              <circle cx={C} cy={C} r={120} fill="none" stroke="rgba(34,32,28,0.05)" strokeWidth="1" strokeDasharray="1 6" />
 
               {/* Sign sectors + ticks */}
               {Array.from({ length: 12 }, (_, i) => {
                 const [x1, y1] = point(i * 30, 214, C);
                 const [x2, y2] = point(i * 30, 250, C);
-                return <line key={`sep-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(242,236,216,0.26)" strokeWidth="1" />;
+                return <line key={`sep-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(34,32,28,0.26)" strokeWidth="1" />;
               })}
               {Array.from({ length: 72 }, (_, i) => {
                 if (i % 6 === 0) return null;
                 const [x1, y1] = point(i * 5, 244, C);
                 const [x2, y2] = point(i * 5, 250, C);
-                return <line key={`tick-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(242,236,216,0.08)" strokeWidth="0.8" />;
+                return <line key={`tick-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(34,32,28,0.08)" strokeWidth="0.8" />;
               })}
               {signNames.map((name, i) => {
                 const [x, y] = point(i * 30 + 15, 232, C);
                 return (
                   <text key={name} x={x} y={y} textAnchor="middle" dominantBaseline="central"
-                    fill="rgba(242,236,216,0.72)"
+                    fill="rgba(34,32,28,0.72)"
                     style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
                     {name.slice(0, 3)}
                   </text>
@@ -278,7 +278,7 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
                     style={{ filter: `drop-shadow(0 0 ${p.name === "Sun" ? 10 : 6}px ${PLANET_COLOR[p.name]})` }}
                   />
                   <text x={p.lx} y={p.ly} textAnchor="middle" dominantBaseline="central"
-                    fill="rgba(242,236,216,0.78)"
+                    fill="rgba(34,32,28,0.78)"
                     style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
                     {fmtPlanet(p.name)}{p.retrograde ? " ·R" : ""}
                   </text>
@@ -288,9 +288,9 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
               {/* The Moon at her true illumination, center stage */}
               {data && layout && (
                 <g className="skynow-moon">
-                  <circle cx={C} cy={C} r={34} fill="rgba(5,15,8,0.8)" stroke="rgba(242,236,216,0.16)" strokeWidth="1" />
-                  <circle cx={C} cy={C} r={26} fill="rgba(236,228,207,0.1)" />
-                  <path d={moonPath(C, C, 26, data.moon.illumination, layout.waxing)} fill="rgba(236,228,207,0.82)" />
+                  <circle cx={C} cy={C} r={34} fill="rgba(245,240,230,0.8)" stroke="rgba(34,32,28,0.16)" strokeWidth="1" />
+                  <circle cx={C} cy={C} r={26} fill="rgba(34,32,28,0.1)" />
+                  <path d={moonPath(C, C, 26, data.moon.illumination, layout.waxing)} fill="rgba(34,32,28,0.82)" />
                 </g>
               )}
             </svg>
