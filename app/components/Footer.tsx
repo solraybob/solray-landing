@@ -14,7 +14,7 @@ export default function Footer() {
             style={{ border: "1px solid #E2DACA" }}
           >
             <Image
-              src="/logo.jpg"
+              src="/solray-orb.png"
               alt="Solray"
               fill
               style={{ objectFit: "cover" }}
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           <span
             className="font-body font-light text-sm tracking-[0.2em] uppercase"
-            style={{ color: "#A79E90" }}
+            style={{ color: "var(--text-muted)" }}
           >
             solray.ai
           </span>
@@ -30,7 +30,7 @@ export default function Footer() {
 
         <p
           className="font-body font-light text-xs tracking-wide"
-          style={{ color: "#4a5e4d" }}
+          style={{ color: "var(--text-secondary)" }}
         >
           Built for those ready to know themselves.
         </p>
@@ -39,7 +39,7 @@ export default function Footer() {
           <a
             href="/legal"
             className="font-body font-light text-xs tracking-wider uppercase hover:opacity-80 transition-opacity"
-            style={{ color: "#4a5e4d" }}
+            style={{ color: "var(--text-secondary)" }}
           >
             Terms & Privacy
           </a>
@@ -47,14 +47,14 @@ export default function Footer() {
           <a
             href="mailto:support@solray.ai"
             className="font-body font-light text-xs tracking-wider uppercase hover:opacity-80 transition-opacity"
-            style={{ color: "#4a5e4d" }}
+            style={{ color: "var(--text-secondary)" }}
           >
             Contact
           </a>
           <span style={{ color: "#E2DACA" }}>·</span>
           <span
             className="font-body font-light text-xs tracking-wider"
-            style={{ color: "#4a5e4d" }}
+            style={{ color: "var(--text-secondary)" }}
           >
             $23/month · 30-day refund
           </span>

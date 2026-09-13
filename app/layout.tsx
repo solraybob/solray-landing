@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 // theme-color darkens the surrounding browser chrome to match.
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#050f08",
+  themeColor: "#F5F0E6",
 };
 
 export default function RootLayout({

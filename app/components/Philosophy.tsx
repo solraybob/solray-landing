@@ -2,17 +2,17 @@ const pillars = [
   {
     title: "Your chart is not a personality quiz.",
     body: "Every Scorpio on earth reads the same forecast this morning. Solray calculates your exact planetary positions, your Human Design gates, your Gene Keys profile. The result is a reading that could not belong to anyone else alive.",
-    accent: "#c4623a", // ember
+    accent: "var(--ember)", // ember
   },
   {
     title: "The Oracle remembers you.",
     body: "Most apps forget you the moment you close them. Solray\u2019s Higher Self builds a relationship over time. Every conversation deepens its understanding of how you think, what you are working through, and what you need to hear next.",
-    accent: "#7d6680", // wisteria
+    accent: "var(--mist)", // wisteria
   },
   {
     title: "Three ancient systems. One living voice.",
     body: "Western Astrology maps your sky. Human Design maps your body. Gene Keys maps your potential. Solray reads all three and speaks to you in plain language, connecting patterns that no single system can see alone.",
-    accent: "#6b7d4a", // moss
+    accent: "var(--text-secondary)", // moss
   },
 ];
 
@@ -22,7 +22,7 @@ export default function Philosophy() {
       <div className="max-w-6xl mx-auto">
         <p
           className="text-center text-xs tracking-[0.22em] uppercase font-body font-light mb-16"
-          style={{ color: "#4a5e4d" }}
+          style={{ color: "var(--text-secondary)" }}
         >
           What makes this different
         </p>
@@ -40,13 +40,13 @@ export default function Philosophy() {
             >
               <h3
                 className="font-heading font-light text-2xl md:text-3xl mb-4 leading-tight"
-                style={{ color: "#f5f0e8" }}
+                style={{ color: "var(--forest-deep)" }}
               >
                 {item.title}
               </h3>
               <p
                 className="font-body font-light text-sm leading-loose"
-                style={{ color: "#A79E90" }}
+                style={{ color: "var(--text-muted)" }}
               >
                 {item.body}
               </p>

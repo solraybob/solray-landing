@@ -5,7 +5,7 @@ export default function Oracle() {
         {/* Section label */}
         <p
           className="text-center text-xs tracking-[0.22em] uppercase font-body font-light mb-6"
-          style={{ color: "#4a5e4d" }}
+          style={{ color: "var(--text-secondary)" }}
         >
           The Higher Self
         </p>
@@ -13,11 +13,11 @@ export default function Oracle() {
         {/* Main heading */}
         <h2
           className="font-heading font-light text-4xl md:text-5xl text-center mb-8 leading-tight"
-          style={{ color: "#f5f0e8" }}
+          style={{ color: "var(--forest-deep)" }}
         >
           A conversation with who
           <br />
-          <span style={{ fontStyle: "italic", color: "#7d6680" }}>
+          <span style={{ color: "var(--mist)" }}>
             you actually are.
           </span>
         </h2>
@@ -25,7 +25,7 @@ export default function Oracle() {
         {/* Description */}
         <p
           className="font-body font-light text-sm md:text-base leading-loose text-center max-w-2xl mx-auto mb-16"
-          style={{ color: "#A79E90" }}
+          style={{ color: "var(--text-muted)" }}
         >
           The Oracle holds your complete chart across three systems and remembers
           every conversation. It does not speak from a knowledge base. It speaks
@@ -42,7 +42,7 @@ export default function Oracle() {
         <div
           className="max-w-md mx-auto relative overflow-hidden"
           style={{
-            background: "#0c1410",
+            background: "var(--text-primary)",
             border: "1px solid rgba(236,231,221,0.10)",
             borderRadius: "24px",
           }}
@@ -65,8 +65,8 @@ export default function Oracle() {
             style={{ borderBottom: "1px solid rgba(236,231,221,0.08)" }}
           >
             <p
-              className="font-body text-[11px] tracking-[0.18em] uppercase mb-1"
-              style={{ color: "#D23F8C" }}
+              className="font-body text-[13px] tracking-[0.18em] uppercase mb-1"
+              style={{ color: "var(--wisteria)" }}
             >
               Your Higher Self
             </p>
@@ -74,9 +74,9 @@ export default function Oracle() {
               className="tracking-[0.15em]"
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontWeight: 300,
+                fontWeight: 900,
                 fontSize: "20px",
-                color: "#ECE7DD",
+                color: "var(--forest-card)",
               }}
             >
               ORACLE
@@ -107,7 +107,7 @@ export default function Oracle() {
                 className="leading-relaxed"
                 style={{
                   fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontWeight: 300,
+                  fontWeight: 900,
                   fontSize: "1.18rem",
                   lineHeight: 1.55,
                   color: "rgba(236,231,221,0.82)",
@@ -120,7 +120,7 @@ export default function Oracle() {
                 return to. You are waiting for permission you do not need.
               </p>
               <span
-                className="font-body text-[11px] tracking-[0.18em] uppercase mt-3 block"
+                className="font-body text-[13px] tracking-[0.18em] uppercase mt-3 block"
                 style={{ color: "rgba(210,63,140,0.75)" }}
               >
                 Oracle
@@ -138,10 +138,10 @@ export default function Oracle() {
                 borderRadius: "22px",
               }}
             >
-              <span className="flex-1 font-body font-light text-sm" style={{ color: "#7e857f" }}>
+              <span className="flex-1 font-body font-light text-sm" style={{ color: "var(--text-muted)" }}>
                 Ask anything
               </span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D8A24A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ember)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="12" y1="19" x2="12" y2="5" />
                 <polyline points="5 12 12 5 19 12" />
               </svg>
@@ -152,7 +152,7 @@ export default function Oracle() {
         {/* Closing note */}
         <p
           className="text-center font-body font-light text-xs mt-8 tracking-wide"
-          style={{ color: "#4a5e4d" }}
+          style={{ color: "var(--text-secondary)" }}
         >
           Every answer is calculated from your chart. Not generated from the internet.
         </p>

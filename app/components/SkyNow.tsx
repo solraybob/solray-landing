@@ -79,13 +79,13 @@ const ASPECTS_ES: Record<string, string> = {
 
 // Aged-pigment palette, planet voices.
 const PLANET_COLOR: Record<string, string> = {
-  Sun: "#6C3CCC", Moon: "#22201C", Mercury: "#543F96", Venus: "#4F7A4A",
-  Mars: "#C4602F", Jupiter: "#C4602F", Saturn: "#4A6FA5", Uranus: "#543F96",
-  Neptune: "#D23F8C", Pluto: "#D23F8C",
+  Sun: "var(--amber)", Moon: "#22201C", Mercury: "var(--mist)", Venus: "var(--text-secondary)",
+  Mars: "var(--ember)", Jupiter: "var(--ember)", Saturn: "var(--mist)", Uranus: "var(--mist)",
+  Neptune: "var(--wisteria)", Pluto: "var(--wisteria)",
 };
 const ASPECT_COLOR: Record<string, string> = {
-  trine: "#4F7A4A", sextile: "#543F96", square: "#C4602F",
-  opposition: "#4A6FA5", conjunction: "#6C3CCC",
+  trine: "var(--text-secondary)", sextile: "var(--mist)", square: "var(--ember)",
+  opposition: "var(--mist)", conjunction: "var(--amber)",
 };
 const ASPECT_MAX_ORB: Record<string, number> = {
   conjunction: 6, sextile: 3, square: 5, trine: 5, opposition: 6,
@@ -243,7 +243,7 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
                 return (
                   <text key={name} x={x} y={y} textAnchor="middle" dominantBaseline="central"
                     fill="rgba(34,32,28,0.72)"
-                    style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
+                    style={{ fontSize: 13, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
                     {name.slice(0, 3)}
                   </text>
                 );
@@ -279,7 +279,7 @@ export default function SkyNow({ locale }: { locale: "en" | "es" }) {
                   />
                   <text x={p.lx} y={p.ly} textAnchor="middle" dominantBaseline="central"
                     fill="rgba(34,32,28,0.78)"
-                    style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
+                    style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}>
                     {fmtPlanet(p.name)}{p.retrograde ? " ·R" : ""}
                   </text>
                 </g>

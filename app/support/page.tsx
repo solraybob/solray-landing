@@ -66,7 +66,7 @@ export default function SupportPage() {
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
         <p
           style={{
-            fontSize: 12,
+            fontSize: 14,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
             color: "var(--wisteria)",
@@ -78,7 +78,7 @@ export default function SupportPage() {
         <h1
           style={{
             fontFamily: "var(--font-serif)",
-            fontWeight: 300,
+            fontWeight: 900,
             fontSize: 40,
             lineHeight: 1.1,
             margin: 0,
@@ -86,7 +86,7 @@ export default function SupportPage() {
         >
           We are here to help.
         </h1>
-        <p style={{ color: "var(--pearl-dim)", fontSize: 16, lineHeight: 1.6, marginTop: 18 }}>
+        <p style={{ color: "var(--pearl-dim)", fontSize: 17, lineHeight: 1.6, marginTop: 18 }}>
           The fastest way to reach a person is email. Write to us at{" "}
           <a href={`mailto:${CONTACT}`} style={{ color: "var(--amber)" }}>
             {CONTACT}
@@ -104,14 +104,14 @@ export default function SupportPage() {
               <h2
                 style={{
                   fontFamily: "var(--font-serif)",
-                  fontWeight: 400,
+                  fontWeight: 500,
                   fontSize: 21,
                   margin: "0 0 8px",
                 }}
               >
                 {f.q}
               </h2>
-              <p style={{ color: "var(--pearl-dim)", fontSize: 15.5, lineHeight: 1.65, margin: 0 }}>
+              <p style={{ color: "var(--pearl-dim)", fontSize: 17, lineHeight: 1.65, margin: 0 }}>
                 {f.a}
               </p>
             </div>
@@ -123,7 +123,7 @@ export default function SupportPage() {
             marginTop: 40,
             paddingTop: 24,
             borderTop: "1px solid rgba(236,231,221,0.12)",
-            fontSize: 14,
+            fontSize: 15,
             color: "var(--moss-dim, #5f7163)",
           }}
         >
