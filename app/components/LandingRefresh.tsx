@@ -180,7 +180,7 @@ export default function LandingRefresh() {
               <a href={CONNECTOR_URL} className="btn primary">Get the connector</a>
               <a href="#connector" className="btn ghost">How it works</a>
             </div>
-            <p className="hc-fine">$6.99 a month, proposed. Included with your Solray membership during the preview.</p>
+            <p className="hc-fine">$19.99 a month, proposed. Included with your Solray membership during the preview.</p>
           </div>
           <div className="store-badges">
             <a
@@ -278,7 +278,7 @@ export default function LandingRefresh() {
                 <a href={CONNECTOR_URL} className="btn ghost">ChatGPT, preview</a>
               </div>
               <p className="hc-fine" style={{ textAlign: "left" }}>
-                $6.99 a month, proposed. Included with your membership during the preview.
+                $19.99 a month, proposed. Included with your membership during the preview.
                 Disconnect any time. Your chart stays yours.
               </p>
             </div>

@@ -157,7 +157,7 @@ export default function LandingRefreshES() {
               <a href={CONNECTOR_URL} className="btn primary">Obtener el conector</a>
               <a href="#connector" className="btn ghost">Cómo funciona</a>
             </div>
-            <p className="hc-fine">$6.99 al mes, propuesto. Incluido con tu membresía de Solray durante la vista previa.</p>
+            <p className="hc-fine">$19.99 al mes, propuesto. Incluido con tu membresía de Solray durante la vista previa.</p>
           </div>
           <div className="store-badges">
             <a
@@ -253,7 +253,7 @@ export default function LandingRefreshES() {
                 <a href={CONNECTOR_URL} className="btn ghost">ChatGPT, vista previa</a>
               </div>
               <p className="hc-fine" style={{ textAlign: "left" }}>
-                $6.99 al mes, propuesto. Incluido con tu membresía durante la vista previa.
+                $19.99 al mes, propuesto. Incluido con tu membresía durante la vista previa.
                 Desconecta cuando quieras. Tu carta sigue siendo tuya.
               </p>
             </div>
