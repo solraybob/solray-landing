@@ -58,10 +58,10 @@ export const metadata: Metadata = {
     siteName: "Solray",
     images: [
       {
-        url: "/og.png?v=orb2",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "solray. Living by design.",
+        alt: "Solray. You were born under a specific sky. It is still speaking.",
       },
     ],
   },
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "Solray. Your Higher Self, Calculated.",
     description:
       "Live astrology, Human Design, and Gene Keys, read together against your exact birth moment. Every morning.",
-    images: ["/og.png?v=orb2"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://solray.ai",
