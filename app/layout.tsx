@@ -39,6 +39,16 @@ export const metadata: Metadata = {
     "personalised horoscope",
   ],
   metadataBase: new URL("https://solray.ai"),
+  // Icons are declared here with a version query instead of the app/favicon.ico
+  // convention, so browsers that cached the old sun icon under /favicon.ico
+  // fetch the orb. Bump ?v= whenever the mark changes.
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=orb2", sizes: "any" },
+      { url: "/icon.png?v=orb2", type: "image/png", sizes: "512x512" },
+    ],
+    apple: { url: "/apple-touch-icon.png?v=orb2", sizes: "180x180" },
+  },
   openGraph: {
     title: "Solray. Your Higher Self, Calculated.",
     description:
@@ -48,10 +58,10 @@ export const metadata: Metadata = {
     siteName: "Solray",
     images: [
       {
-        url: "/og.png",
+        url: "/og.png?v=orb2",
         width: 1200,
         height: 630,
-        alt: "Solray. You were born under a specific sky. It is still speaking.",
+        alt: "solray. Living by design.",
       },
     ],
   },
@@ -60,7 +70,7 @@ export const metadata: Metadata = {
     title: "Solray. Your Higher Self, Calculated.",
     description:
       "Live astrology, Human Design, and Gene Keys, read together against your exact birth moment. Every morning.",
-    images: ["/og.png"],
+    images: ["/og.png?v=orb2"],
   },
   alternates: {
     canonical: "https://solray.ai",
