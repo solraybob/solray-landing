@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import LifeLayer from "./components/LifeLayer";
+import ForwardAttribution from "./components/ForwardAttribution";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -120,6 +121,7 @@ export default function RootLayout({
     // negative-z sky layers.
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${zen.variable}`}>
       <body>
+        <ForwardAttribution />
         {/* Pre-paint guard against the hydration flash: without this, the
             plain server-rendered hero paints first, then LifeLayer hides it
             and replays the entrance, a visible old-page/new-page swap. This
